@@ -6,28 +6,33 @@
   <title>PAiVE | Assisted Intelligence</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
   <!-- HEADER / LOGO -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- LOGO PLACE -->
       <div class="logo">
-        <!-- Replace src with your actual logo file -->
-        <img src="images/paivelogo.svg" alt="PAiVE Logo" />
+        <a href="#home">
+          <img src="images/paivelogo.svg" alt="PAiVE Logo" />
+        </a>
       </div>
+      <nav class="main-nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#philosophy" class="nav-link">Philosophy</a>
+        <a href="#four-pillars" class="nav-link">Solutions</a>
+        <a href="#engagement-model" class="nav-link">How It Works</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="container grid grid-2">
       <div class="hero-content">
         <div class="tagline">CLARITY • DISCIPLINE • CONTROL • LEAN</div>
         <h1>
-          Helping Businesses<br />
-          Run Like Enterprises
+          <span id="typing-text"></span><span class="typing-cursor">|</span>
         </h1>
         <p>
           PAiVE enables SMEs to achieve enterprise-grade execution through
@@ -35,15 +40,15 @@
         </p>
 
         <div class="actions">
-          <button class="btn btn-primary">Talk to an Expert</button>
-          <button class="btn btn-outline">How It Works</button>
+          <a href="#contact" class="btn btn-primary">Talk to an Expert</a>
+          <a href="#engagement-model" class="btn btn-outline">How It Works</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WHO WE ARE -->
-  <section class="section-dark">
+  <section class="section-dark" id="who-we-are">
     <div class="container grid grid-2">
       <div>
         <h2>Who We Are</h2>
@@ -55,22 +60,363 @@
       </div>
 
       <div class="grid grid-2">
-        <div class="card">Consulting-Led</div>
-        <div class="card">AI as Collaborator</div>
-        <div class="card">System-Agnostic</div>
-        <div class="card">Outcome Driven</div>
+        <div class="card">
+          <div class="card-icon">💼</div>
+          <div class="card-title">Consulting-Led</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <div class="card-title">AI as Collaborator</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔗</div>
+          <div class="card-title">System-Agnostic</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Outcome Driven</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta center">
+  <!-- Our Philosophy -->
+  <section class="section-dark" id="philosophy">
+    <div class="container">
+      <h2>Our Philosophy</h2>
+      <p style="font-size: 1.3rem; margin-bottom: 40px;"><strong>We start with understanding. We design what works. And we stay to make it run.</strong></p>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Consulting First</h3>
+          <p>We move organizations from fragmented, intuition-driven operations (As-Is) to structured, data-informed, decision-driven models (To-Be).</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Clarity Before Technology</h3>
+          <p>Technology is introduced only after operational clarity is achieved—ensuring tools solve real business problems.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Human + AI Synergy</h3>
+          <p>Consultants focus on judgment, leadership, and strategy while AI handles analysis, coordination, and execution consistency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Four-Pillar Model -->
+  <section class="section-dark" id="four-pillars">
+    <div class="container">
+      <h2>The PAiVE Four-Pillar Model</h2>
+      <p style="margin-bottom: 40px;">Our integrated delivery model is unified by one objective: <strong>measurable business outcomes</strong>.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">1. AI-Agentic Workforce Layer</h3>
+          <p>Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">2. Operational Backbone</h3>
+          <p>Structured workflows, governance frameworks, and operating discipline that ensure consistency and control.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">3. Physical Intelligence Layer</h3>
+          <p>IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">♻️</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">4. Sustainability & Value Engineering</h3>
+          <p>Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI-Agentic Workforce -->
+  <section class="section-dark" id="ai-workforce">
+    <div class="container">
+      <h2>AI-Agentic Workforce Platform (Powered by Personal.ai)</h2>
+      <p style="margin-bottom: 24px;">Transform individual expertise into scalable, collaborative AI workers.</p>
+      <div class="card" style="margin-bottom: 24px;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Specialized AI Personas by role and function
+          </li>
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Proprietary Personal Language Models (PLMs)
+          </li>
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            No-code training and deployment
+          </li>
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Enterprise-grade security (SOC 2, HIPAA)
+          </li>
+        </ul>
+      </div>
+      <p style="margin-bottom: 24px;">Trusted by organizations like AT&T, Amer Sports, and more.</p>
+      <a href="#contact" class="btn btn-primary">Explore AI Workforce</a>
+    </div>
+  </section>
+
+  <!-- Physical Intelligence -->
+  <section class="section-dark" id="physical-intelligence">
+    <div class="container">
+      <h2>Physical Intelligence Layer – Clipxu AI Security</h2>
+      <p style="margin-bottom: 24px;">AI-powered early threat detection and automated response for real-world environments.</p>
+      <div class="card" style="margin-bottom: 24px;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Real-time weapon and threat detection
+          </li>
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Automated IoT-driven lockdowns
+          </li>
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Smart location tracking
+          </li>
+          <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+            Policy-based emergency protocols
+          </li>
+        </ul>
+      </div>
+      <p style="margin-bottom: 24px;">Proven deployments including public school systems.</p>
+      <a href="#contact" class="btn btn-primary">Learn About Physical Intelligence</a>
+    </div>
+  </section>
+
+  <!-- Odoo Solutions -->
+  <section class="section-dark" id="odoo-solutions">
+    <div class="container">
+      <h2>Odoo Solutions by PAiVE</h2>
+      <p style="margin-bottom: 32px;">PAiVE delivers Odoo as a strategic platform—not just software.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">What We Do</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Architect & Align: Fit-gap analysis and solution design
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Implement & Customize: Configuration, migration, and workflow tailoring
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Hosting Advisory: Odoo Online, Odoo.sh, or On-Premise
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Enable & Sustain: Training, change management, and managed support
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Why Odoo</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Fully integrated business apps
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Fast, modern user experience
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Cost-effective ERP alternative
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent-cyan);">▸</span>
+              Scales from SMB to enterprise
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hosting Options -->
+  <section class="section-dark" id="hosting-options">
+    <div class="container">
+      <h2>Hosting Options</h2>
+      <p style="margin-bottom: 40px; color: var(--text-secondary);">Choose the deployment model that fits your technical requirements and business scale.</p>
+      <div class="grid grid-3">
+        <!-- Odoo Online -->
+        <div class="hosting-card" style="border-top: 4px solid #10b981;">
+          <div class="hosting-icon" style="color: #10b981; font-size: 3.5rem; margin-bottom: 16px;">☁️</div>
+          <h3 style="color: var(--text-primary); margin-bottom: 8px;">Odoo Online</h3>
+          <p style="color: #10b981; font-weight: 600; margin-bottom: 24px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">SAAS (CLOUD)</p>
+          <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #10b981; font-size: 1.2rem;">✓</span>
+              Hosted & Managed by Odoo
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">👥</span>
+              Standard Apps Only (Out-of-box)
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #f97316; font-size: 1.2rem;">🚫</span>
+              No Third-Party Apps or Custom Code
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">⚡</span>
+              Instant Deployment
+            </li>
+          </ul>
+          <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem;"><strong>Best for:</strong> &lt; 50 Users</p>
+          <button class="btn btn-secondary" style="width: 100%; background: #374151; color: var(--text-primary); border: 1px solid #4b5563;">Free Hosting</button>
+        </div>
+
+        <!-- Odoo.sh -->
+        <div class="hosting-card" style="border-top: 4px solid var(--accent-cyan);">
+          <div class="hosting-icon hosting-logo" style="margin-bottom: 16px; background: var(--card-bg); padding: 12px; border-radius: 8px;">
+            <img src="images/odoologo.png" alt="Odoo.sh Logo" style="height: 60px; width: auto; object-fit: contain; display: block;" />
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 8px;">Odoo.sh</h3>
+          <p style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 24px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">PAAS (CLOUD PLATFORM)</p>
+          <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #10b981; font-size: 1.2rem;">✓</span>
+              Hosted by Odoo + GitHub Integration
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">📦</span>
+              Standard + 3rd Party Apps + Custom
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">🔧</span>
+              Built-in CI/CD, Staging, & Backups
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">📄</span>
+              Commission for Partners (+50%)
+            </li>
+          </ul>
+          <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem;"><strong>Best for:</strong> &lt; 1000 Users</p>
+          <button class="btn btn-secondary" style="width: 100%; background: #374151; color: var(--text-primary); border: 1px solid #4b5563;">Subscription Basis</button>
+        </div>
+
+        <!-- On-Premise -->
+        <div class="hosting-card" style="border-top: 4px solid #a855f7;">
+          <div class="hosting-icon" style="color: #a855f7; font-size: 3.5rem; margin-bottom: 16px;">🖥️</div>
+          <h3 style="color: var(--text-primary); margin-bottom: 8px;">On-Premise</h3>
+          <p style="color: #a855f7; font-weight: 600; margin-bottom: 24px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">SELF-HOSTING</p>
+          <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #10b981; font-size: 1.2rem;">👥</span>
+              Managed by Partner or Client
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">∞</span>
+              Full Flexibility & Control
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #60a5fa; font-size: 1.2rem;">🗄️</span>
+              Any Cloud or Local Hardware
+            </li>
+            <li style="margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-secondary);">
+              <span style="position: absolute; left: 0; color: #f97316; font-size: 1.2rem;">⚙️</span>
+              Requires Infrastructure Maintenance
+            </li>
+          </ul>
+          <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem;"><strong>Best for:</strong> Complex / Data Sovereign</p>
+          <button class="btn btn-secondary" style="width: 100%; background: #374151; color: var(--text-primary); border: 1px solid #4b5563;">Partner Managed Fees</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Model -->
+  <section class="section-dark" id="engagement-model">
+    <div class="container">
+      <h2>PAiVE Engagement Model</h2>
+      <p style="margin-bottom: 32px;">A structured lifecycle with clear ownership and accountability.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-icon">🔎</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">1. Scan</h3>
+          <p>Understand operations and identify value leakage</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">2. Diagnose</h3>
+          <p>Define KRAs and improvement levers</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✏️</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">3. Design</h3>
+          <p>Architect AI and operating model changes</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">4. Deploy</h3>
+          <p>Execute with human + AI collaboration</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">5. Measure</h3>
+          <p>Track KPIs and ROI</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">6. Scale</h3>
+          <p>Expand across teams, sites, or regions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Journey -->
+  <section class="section-dark" id="success-journey">
+    <div class="container">
+      <h2>Your Success Journey</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Dedicated Account Manager</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <div class="card-title">Certified consulting experts</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <div class="card-title">Comprehensive training</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔄</div>
+          <div class="card-title">Continuous optimization and support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section class="cta center" id="contact">
     <div class="container">
       <h2>Ready to Operate Like an Enterprise?</h2>
-      <p>
-        Let’s design an operating model that scales with intelligence.
+      <p style="margin-bottom: 32px;">
+        Let's design an operating model that scales with intelligence.
       </p>
-      <button class="btn btn-primary">Start the Conversation</button>
+      <div style="margin-bottom: 32px;">
+        <p style="margin-bottom: 12px;">📞 +1-408-644-2055</p>
+        <p style="margin-bottom: 12px;">📧 <a href="mailto:prem@paive.net" style="color: var(--accent-cyan); text-decoration: none;">prem@paive.net</a></p>
+        <p>🌐 <a href="http://www.paive.net" style="color: var(--accent-cyan); text-decoration: none;">www.paive.net</a></p>
+      </div>
+      <a href="#contact" class="btn btn-primary">Start the Conversation</a>
     </div>
   </section>
 

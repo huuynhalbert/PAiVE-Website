@@ -1,5 +1,5 @@
-// Button click handlers
-document.querySelectorAll(".btn").forEach((button) => {
+// Button click handlers - only for buttons without href (not anchor links)
+document.querySelectorAll("button.btn").forEach((button) => {
   button.addEventListener("click", () => {
     alert("Thanks for your interest! Contact form coming next.");
   });
@@ -59,16 +59,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200);
   }
 
-  // Animate heading
-  const heading = document.querySelector("h1");
-  if (heading) {
-    heading.style.opacity = "0";
-    heading.style.transform = "translateY(20px)";
-    heading.style.transition = "opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s";
+  // Typing animation for heading
+  const typingText = document.getElementById("typing-text");
+  if (typingText) {
+    const lines = ["Helping Businesses", "Run Like Enterprises"];
+    let lineIndex = 0;
+    let charIndex = 0;
+    let isTyping = true;
+    
+    function typeText() {
+      if (lineIndex < lines.length) {
+        const currentLine = lines[lineIndex];
+        
+        if (isTyping && charIndex <= currentLine.length) {
+          // Build the display text
+          let displayText = "";
+          for (let i = 0; i <= lineIndex; i++) {
+            if (i === lineIndex) {
+              // Current line being typed
+              displayText += currentLine.substring(0, charIndex);
+            } else {
+              // Already completed lines
+              displayText += lines[i];
+            }
+            if (i < lineIndex) {
+              displayText += "<br />";
+            }
+          }
+          
+          typingText.innerHTML = displayText;
+          charIndex++;
+          
+          // Typing speed varies - slower for spaces, normal for letters
+          const speed = currentLine[charIndex - 1] === " " ? 150 : 80;
+          setTimeout(typeText, speed);
+        } else if (charIndex > currentLine.length) {
+          // Finished typing this line
+          lineIndex++;
+          charIndex = 0;
+          
+          if (lineIndex < lines.length) {
+            // Add line break and continue to next line
+            setTimeout(typeText, 300);
+          } else {
+            // All done - hide cursor after a moment
+            setTimeout(() => {
+              const cursor = document.querySelector(".typing-cursor");
+              if (cursor) {
+                cursor.style.display = "none";
+              }
+            }, 1000);
+          }
+        }
+      }
+    }
+    
+    // Start typing animation after a short delay
     setTimeout(() => {
-      heading.style.opacity = "1";
-      heading.style.transform = "translateY(0)";
-    }, 400);
+      typeText();
+    }, 1000);
   }
 
   // Animate paragraph
@@ -151,16 +200,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Smooth scroll behavior
+// Smooth scroll behavior with offset for fixed header
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+    const href = this.getAttribute("href");
+    // Only prevent default for same-page anchors
+    if (href.startsWith("#") && href !== "#" && !href.includes(".")) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const headerOffset = 100;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  });
+});
+
+// Highlight active navigation link on scroll
+window.addEventListener("scroll", () => {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+  
+  let current = "";
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const sectionHeight = section.offsetHeight;
+    
+    if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
     }
   });
 });
