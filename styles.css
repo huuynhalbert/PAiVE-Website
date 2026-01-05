@@ -1,0 +1,164 @@
+:root {
+    --bg-dark: #050b14;
+    --bg-deep: #02060c;
+    --card-bg: #0b1624;
+  
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+  
+    --accent-cyan: #00e5ff;
+    --accent-teal: #0fb9b1;
+  
+    --border-glow: rgba(0, 229, 255, 0.25);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  
+  /* HEADER */
+  .site-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .header-inner {
+    display: flex;
+    align-items: center;
+    padding: 24px 0;
+  }
+  
+.logo img {
+  height: 80px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+  
+  /* SECTIONS */
+  section {
+    padding: 100px 24px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .section-dark {
+    background: linear-gradient(
+      180deg,
+      var(--bg-dark),
+      var(--bg-deep)
+    );
+  }
+  
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(circle at right, rgba(0,229,255,0.15), transparent 40%),
+      linear-gradient(180deg, var(--bg-dark), var(--bg-deep));
+  }
+  
+  .hero-content {
+    max-width: 600px;
+  }
+  
+  .tagline {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--accent-cyan);
+    margin-bottom: 16px;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  
+  /* GRID */
+  .grid {
+    display: grid;
+    gap: 32px;
+  }
+  
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  /* CARDS */
+  .card {
+    background: var(--card-bg);
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--border-glow);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* BUTTONS */
+  .actions {
+    margin-top: 32px;
+  }
+  
+  .btn {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(
+      135deg,
+      var(--accent-cyan),
+      var(--accent-teal)
+    );
+    color: #001016;
+    border: none;
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+  }
+  
+  /* CTA */
+  .cta {
+    background: radial-gradient(circle at center, rgba(0,229,255,0.2), var(--bg-deep));
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
