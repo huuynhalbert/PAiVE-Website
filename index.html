@@ -29,6 +29,41 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
+    <!-- AI Neural Network Animation -->
+    <div class="ai-animation">
+      <svg class="neural-network" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+        <!-- Animated connections -->
+        <line class="connection" x1="50" y1="100" x2="150" y2="150" />
+        <line class="connection" x1="150" y1="150" x2="250" y2="100" />
+        <line class="connection" x1="250" y1="100" x2="350" y2="200" />
+        <line class="connection" x1="50" y1="200" x2="150" y2="150" />
+        <line class="connection" x1="150" y1="150" x2="250" y2="250" />
+        <line class="connection" x1="250" y1="250" x2="350" y2="200" />
+        <line class="connection" x1="50" y1="300" x2="150" y2="250" />
+        <line class="connection" x1="150" y1="250" x2="250" y2="300" />
+        <line class="connection" x1="250" y1="300" x2="350" y2="300" />
+        <line class="connection" x1="100" y1="100" x2="200" y2="200" />
+        <line class="connection" x1="200" y1="200" x2="300" y2="150" />
+        <line class="connection" x1="100" y1="300" x2="200" y2="200" />
+        
+        <!-- Animated nodes -->
+        <circle class="node node-1" cx="50" cy="100" r="8" />
+        <circle class="node node-2" cx="150" cy="150" r="10" />
+        <circle class="node node-3" cx="250" cy="100" r="8" />
+        <circle class="node node-4" cx="350" cy="200" r="10" />
+        <circle class="node node-5" cx="50" cy="200" r="8" />
+        <circle class="node node-6" cx="250" cy="250" r="8" />
+        <circle class="node node-7" cx="50" cy="300" r="8" />
+        <circle class="node node-8" cx="150" cy="250" r="8" />
+        <circle class="node node-9" cx="250" cy="300" r="8" />
+        <circle class="node node-10" cx="350" cy="300" r="8" />
+        <circle class="node node-11" cx="100" cy="100" r="6" />
+        <circle class="node node-12" cx="200" cy="200" r="12" />
+        <circle class="node node-13" cx="300" cy="150" r="6" />
+        <circle class="node node-14" cx="100" cy="300" r="6" />
+      </svg>
+    </div>
+    
     <div class="container grid grid-2">
       <div class="hero-content">
         <div class="tagline">CLARITY • DISCIPLINE • CONTROL • LEAN</div>
@@ -50,57 +85,69 @@
 
   <!-- WHO WE ARE -->
   <section class="section-dark" id="who-we-are">
-    <div class="container grid grid-2">
-      <div>
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto 60px; text-align: center;">
         <h2>Who We Are</h2>
-        <p>
+        <p style="font-size: 1.2rem; line-height: 1.8;">
           PAiVE is a consulting-led services organization helping businesses
           operate with enterprise-grade clarity, discipline, and control —
           without the overhead.
         </p>
       </div>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="card-icon">💼</div>
-          <div class="card-title">Consulting-Led</div>
+      
+      <div class="features-row">
+        <div class="feature-item">
+          <div class="feature-icon">💼</div>
+          <h4>Consulting-Led</h4>
         </div>
-        <div class="card">
-          <div class="card-icon">🤖</div>
-          <div class="card-title">AI as Collaborator</div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon">🤖</div>
+          <h4>AI as Collaborator</h4>
         </div>
-        <div class="card">
-          <div class="card-icon">🔗</div>
-          <div class="card-title">System-Agnostic</div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon">🔗</div>
+          <h4>System-Agnostic</h4>
         </div>
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <div class="card-title">Outcome Driven</div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <h4>Outcome Driven</h4>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Our Philosophy -->
-  <section class="section-dark" id="philosophy">
+  <section class="section-alt" id="philosophy">
     <div class="container">
-      <h2>Our Philosophy</h2>
-      <p style="font-size: 1.3rem; margin-bottom: 40px;"><strong>We start with understanding. We design what works. And we stay to make it run.</strong></p>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="card-icon">📋</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Consulting First</h3>
-          <p>We move organizations from fragmented, intuition-driven operations (As-Is) to structured, data-informed, decision-driven models (To-Be).</p>
+      <div style="text-align: center; margin-bottom: 60px;">
+        <h2>Our Philosophy</h2>
+        <p style="font-size: 1.4rem; margin-top: 20px; color: var(--accent-cyan); font-weight: 600;">
+          We start with understanding. We design what works. And we stay to make it run.
+        </p>
+      </div>
+      
+      <div class="philosophy-layout">
+        <div class="philosophy-card-large">
+          <div class="card-icon" style="font-size: 4rem;">📋</div>
+          <h3 style="color: var(--accent-cyan); margin: 24px 0 16px; font-size: 1.8rem;">Consulting First</h3>
+          <p style="font-size: 1.1rem; line-height: 1.8;">We move organizations from fragmented, intuition-driven operations (As-Is) to structured, data-informed, decision-driven models (To-Be).</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🔍</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Clarity Before Technology</h3>
-          <p>Technology is introduced only after operational clarity is achieved—ensuring tools solve real business problems.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🤝</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Human + AI Synergy</h3>
-          <p>Consultants focus on judgment, leadership, and strategy while AI handles analysis, coordination, and execution consistency.</p>
+        
+        <div class="philosophy-cards-small">
+          <div class="philosophy-card-small">
+            <div class="card-icon" style="font-size: 2.5rem;">🔍</div>
+            <h3 style="color: var(--accent-cyan); margin: 16px 0 12px; font-size: 1.3rem;">Clarity Before Technology</h3>
+            <p>Technology is introduced only after operational clarity is achieved—ensuring tools solve real business problems.</p>
+          </div>
+          
+          <div class="philosophy-card-small">
+            <div class="card-icon" style="font-size: 2.5rem;">🤝</div>
+            <h3 style="color: var(--accent-cyan); margin: 16px 0 12px; font-size: 1.3rem;">Human + AI Synergy</h3>
+            <p>Consultants focus on judgment, leadership, and strategy while AI handles analysis, coordination, and execution consistency.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -109,28 +156,46 @@
   <!-- Four-Pillar Model -->
   <section class="section-dark" id="four-pillars">
     <div class="container">
-      <h2>The PAiVE Four-Pillar Model</h2>
-      <p style="margin-bottom: 40px;">Our integrated delivery model is unified by one objective: <strong>measurable business outcomes</strong>.</p>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="card-icon">🧠</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">1. AI-Agentic Workforce Layer</h3>
-          <p>Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.</p>
+      <div style="text-align: center; margin-bottom: 60px;">
+        <h2>The PAiVE Four-Pillar Model</h2>
+        <p style="font-size: 1.1rem; margin-top: 20px;">Our integrated delivery model is unified by one objective: <strong style="color: var(--accent-cyan);">measurable business outcomes</strong>.</p>
+      </div>
+      
+      <div class="pillars-container">
+        <div class="pillar-item">
+          <div class="pillar-number">01</div>
+          <div class="pillar-content">
+            <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px;">🧠</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 16px; font-size: 1.5rem;">AI-Agentic Workforce Layer</h3>
+            <p>Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">⚙️</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">2. Operational Backbone</h3>
-          <p>Structured workflows, governance frameworks, and operating discipline that ensure consistency and control.</p>
+        
+        <div class="pillar-item">
+          <div class="pillar-number">02</div>
+          <div class="pillar-content">
+            <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px;">⚙️</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 16px; font-size: 1.5rem;">Operational Backbone</h3>
+            <p>Structured workflows, governance frameworks, and operating discipline that ensure consistency and control.</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">🛡️</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">3. Physical Intelligence Layer</h3>
-          <p>IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.</p>
+        
+        <div class="pillar-item">
+          <div class="pillar-number">03</div>
+          <div class="pillar-content">
+            <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 16px; font-size: 1.5rem;">Physical Intelligence Layer</h3>
+            <p>IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">♻️</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">4. Sustainability & Value Engineering</h3>
-          <p>Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements.</p>
+        
+        <div class="pillar-item">
+          <div class="pillar-number">04</div>
+          <div class="pillar-content">
+            <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px;">♻️</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 16px; font-size: 1.5rem;">Sustainability & Value Engineering</h3>
+            <p>Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -343,63 +408,99 @@
   <!-- Engagement Model -->
   <section class="section-dark" id="engagement-model">
     <div class="container">
-      <h2>PAiVE Engagement Model</h2>
-      <p style="margin-bottom: 32px;">A structured lifecycle with clear ownership and accountability.</p>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="card-icon">🔎</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">1. Scan</h3>
-          <p>Understand operations and identify value leakage</p>
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2>PAiVE Engagement Model</h2>
+        <p style="font-size: 1.1rem; margin-top: 20px;">A structured lifecycle with clear ownership and accountability.</p>
+      </div>
+      
+      <div class="engagement-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">🔎</div>
+          <div class="timeline-content">
+            <div class="timeline-number">01</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.3rem;">Scan</h3>
+            <p>Understand operations and identify value leakage</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">🔬</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">2. Diagnose</h3>
-          <p>Define KRAs and improvement levers</p>
+        
+        <div class="timeline-connector"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon">🔬</div>
+          <div class="timeline-content">
+            <div class="timeline-number">02</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.3rem;">Diagnose</h3>
+            <p>Define KRAs and improvement levers</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">✏️</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">3. Design</h3>
-          <p>Architect AI and operating model changes</p>
+        
+        <div class="timeline-connector"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon">✏️</div>
+          <div class="timeline-content">
+            <div class="timeline-number">03</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.3rem;">Design</h3>
+            <p>Architect AI and operating model changes</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">🚀</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">4. Deploy</h3>
-          <p>Execute with human + AI collaboration</p>
+        
+        <div class="timeline-connector"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon">🚀</div>
+          <div class="timeline-content">
+            <div class="timeline-number">04</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.3rem;">Deploy</h3>
+            <p>Execute with human + AI collaboration</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">📊</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">5. Measure</h3>
-          <p>Track KPIs and ROI</p>
+        
+        <div class="timeline-connector"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon">📊</div>
+          <div class="timeline-content">
+            <div class="timeline-number">05</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.3rem;">Measure</h3>
+            <p>Track KPIs and ROI</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">📈</div>
-          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">6. Scale</h3>
-          <p>Expand across teams, sites, or regions</p>
+        
+        <div class="timeline-connector"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon">📈</div>
+          <div class="timeline-content">
+            <div class="timeline-number">06</div>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.3rem;">Scale</h3>
+            <p>Expand across teams, sites, or regions</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Success Journey -->
-  <section class="section-dark" id="success-journey">
+  <section class="section-alt" id="success-journey">
     <div class="container">
-      <h2>Your Success Journey</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="card-icon">👤</div>
-          <div class="card-title">Dedicated Account Manager</div>
+      <h2 style="text-align: center; margin-bottom: 50px;">Your Success Journey</h2>
+      <div class="success-grid">
+        <div class="success-item">
+          <div class="success-icon">👤</div>
+          <h4>Dedicated Account Manager</h4>
         </div>
-        <div class="card">
-          <div class="card-icon">🎓</div>
-          <div class="card-title">Certified consulting experts</div>
+        <div class="success-item">
+          <div class="success-icon">🎓</div>
+          <h4>Certified consulting experts</h4>
         </div>
-        <div class="card">
-          <div class="card-icon">📚</div>
-          <div class="card-title">Comprehensive training</div>
+        <div class="success-item">
+          <div class="success-icon">📚</div>
+          <h4>Comprehensive training</h4>
         </div>
-        <div class="card">
-          <div class="card-icon">🔄</div>
-          <div class="card-title">Continuous optimization and support</div>
+        <div class="success-item">
+          <div class="success-icon">🔄</div>
+          <h4>Continuous optimization and support</h4>
         </div>
       </div>
     </div>
