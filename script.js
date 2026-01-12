@@ -9,6 +9,34 @@ document.addEventListener("DOMContentLoaded", () => {
       contactForm.reset();
     });
   }
+
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mainNav = document.getElementById("main-nav");
+  
+  if (mobileMenuToggle && mainNav) {
+    mobileMenuToggle.addEventListener("click", () => {
+      mobileMenuToggle.classList.toggle("active");
+      mainNav.classList.toggle("active");
+    });
+
+    // Close menu when clicking on a nav link
+    const navLinks = mainNav.querySelectorAll(".nav-link");
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mainNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        mobileMenuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
+      }
+    });
+  }
 });
 
 // Intersection Observer for fade-in animations
