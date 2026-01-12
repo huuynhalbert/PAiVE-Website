@@ -253,6 +253,151 @@ window.addEventListener("scroll", () => {
 
 // Removed parallax effect to prevent buttons from covering content
 
+// How We Work - Active step highlighting
+const workSteps = document.querySelectorAll(".work-step");
+const stepIndicators = document.querySelectorAll(".step-indicator");
+
+if (workSteps.length > 0) {
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const stepNumber = entry.target.getAttribute("data-step");
+        
+        // Update step content
+        workSteps.forEach((step) => step.classList.remove("active"));
+        entry.target.classList.add("active");
+        
+        // Update visual indicator
+        stepIndicators.forEach((indicator) => indicator.classList.remove("active"));
+        const activeIndicator = document.querySelector(`.step-indicator[data-step="${stepNumber}"]`);
+        if (activeIndicator) {
+          activeIndicator.classList.add("active");
+        }
+      }
+    });
+  }, {
+    threshold: 0.5,
+    rootMargin: "-20% 0px -20% 0px"
+  });
+
+  workSteps.forEach((step) => {
+    stepObserver.observe(step);
+  });
+}
+
+// Lighthouse Fixed Layout - Content Updates Based on Scroll
+const lighthouseTextboxContent = document.getElementById("lighthouse-textbox-content");
+const scrollTriggerSections = document.querySelectorAll(".scroll-trigger-section");
+const lighthouseShowcase = document.getElementById("what-we-do");
+
+const layerData = {
+  1: {
+    icon: "⚙️",
+    title: "Operational Backbone",
+    subtitle: "Structure & Discipline",
+    description: "Structured workflows, governance frameworks, and operating discipline that ensure consistency and control. This foundational layer provides the operational backbone for all other capabilities.",
+    details: [
+      "Workflow design and optimization",
+      "Governance frameworks and controls",
+      "Process standardization across teams",
+      "Consistency and operational discipline"
+    ]
+  },
+  2: {
+    icon: "🛡️",
+    title: "Physical Intelligence",
+    subtitle: "Real-World Visibility",
+    description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments.",
+    details: [
+      "Real-time monitoring and threat detection",
+      "IoT sensor integration and data collection",
+      "Automated response protocols",
+      "Safety and security optimization"
+    ]
+  },
+  3: {
+    icon: "🤖",
+    title: "AI Agentic Workforce",
+    subtitle: "Intelligent Collaboration",
+    description: "Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.",
+    details: [
+      "Specialized AI Personas by role and function",
+      "Proprietary Personal Language Models (PLMs)",
+      "No-code training and deployment",
+      "Enterprise-grade security (SOC 2, HIPAA)"
+    ]
+  },
+  4: {
+    icon: "🌿",
+    title: "Sustainability & Value Engineering",
+    subtitle: "The Unifying Lens",
+    description: "Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements. Value Engineering connects all pillars to deliver measurable business outcomes.",
+    details: [
+      "Energy efficiency optimization",
+      "ESG-aligned process improvements",
+      "Value-driven decision making",
+      "ROI measurement and optimization"
+    ]
+  }
+};
+
+function updateTextboxContent(layerNumber) {
+  const data = layerData[layerNumber];
+  if (!data || !lighthouseTextboxContent) return;
+  
+  // Add exit animation
+  lighthouseTextboxContent.classList.add("updating");
+  
+  // Wait for exit animation to complete, then update content
+  setTimeout(() => {
+    lighthouseTextboxContent.innerHTML = `
+      <div style="position: relative;">
+        <div class="layer-number">0${layerNumber}</div>
+        <div class="layer-icon">${data.icon}</div>
+        <h3>${data.title}</h3>
+        <p class="layer-subtitle">${data.subtitle}</p>
+        <p>${data.description}</p>
+        <ul>
+          ${data.details.map(detail => `<li>${detail}</li>`).join("")}
+        </ul>
+      </div>
+    `;
+    
+    // Remove updating class to trigger enter animation
+    lighthouseTextboxContent.classList.remove("updating");
+  }, 150);
+}
+
+// Initialize with first layer
+if (lighthouseTextboxContent && Object.keys(layerData).length > 0) {
+  updateTextboxContent(1);
+}
+
+// Intersection Observer for scroll-triggered content updates
+if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
+  let currentActiveLayer = 1;
+  
+  const triggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const layerNumber = parseInt(entry.target.getAttribute("data-layer"));
+        if (layerNumber !== currentActiveLayer) {
+          currentActiveLayer = layerNumber;
+          updateTextboxContent(layerNumber);
+        }
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: "-30% 0px -30% 0px"
+  });
+
+  scrollTriggerSections.forEach((trigger) => {
+    triggerObserver.observe(trigger);
+  });
+}
+
+
 // Button hover animations
 document.querySelectorAll(".btn").forEach((button) => {
   button.addEventListener("mouseenter", function() {
