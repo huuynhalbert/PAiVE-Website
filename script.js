@@ -405,6 +405,16 @@ if (lighthouseTextboxContent && Object.keys(layerData).length > 0) {
 if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
   let currentActiveLayer = 1;
   
+  // Adjust settings for mobile vs desktop
+  const isMobile = window.innerWidth <= 768;
+  const observerOptions = isMobile ? {
+    threshold: 0.2,
+    rootMargin: "-20% 0px -20% 0px"
+  } : {
+    threshold: 0.3,
+    rootMargin: "-30% 0px -30% 0px"
+  };
+  
   const triggerObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -415,13 +425,45 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
         }
       }
     });
-  }, {
-    threshold: 0.3,
-    rootMargin: "-30% 0px -30% 0px"
-  });
+  }, observerOptions);
 
   scrollTriggerSections.forEach((trigger) => {
     triggerObserver.observe(trigger);
+  });
+
+  // Re-adjust on window resize
+  window.addEventListener('resize', () => {
+    const newIsMobile = window.innerWidth <= 768;
+    if (newIsMobile !== isMobile) {
+      // Recreate observer with new settings if needed
+      scrollTriggerSections.forEach((trigger) => {
+        triggerObserver.unobserve(trigger);
+      });
+      
+      const newOptions = newIsMobile ? {
+        threshold: 0.2,
+        rootMargin: "-20% 0px -20% 0px"
+      } : {
+        threshold: 0.3,
+        rootMargin: "-30% 0px -30% 0px"
+      };
+      
+      const newObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const layerNumber = parseInt(entry.target.getAttribute("data-layer"));
+            if (layerNumber !== currentActiveLayer) {
+              currentActiveLayer = layerNumber;
+              updateTextboxContent(layerNumber);
+            }
+          }
+        });
+      }, newOptions);
+      
+      scrollTriggerSections.forEach((trigger) => {
+        newObserver.observe(trigger);
+      });
+    }
   });
 }
 
