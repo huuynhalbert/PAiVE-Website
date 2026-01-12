@@ -1,8 +1,14 @@
-// Button click handlers - only for buttons without href (not anchor links)
-document.querySelectorAll("button.btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    alert("Thanks for your interest! Contact form coming next.");
-  });
+// Contact form handler
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // In a real implementation, this would send data to a server
+      alert("Thank you for your interest! We'll be in touch soon.");
+      contactForm.reset();
+    });
+  }
 });
 
 // Intersection Observer for fade-in animations
