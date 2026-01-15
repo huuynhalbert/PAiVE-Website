@@ -320,7 +320,11 @@ const lighthouseShowcase = document.getElementById("what-we-do");
 
 const layerData = {
   1: {
-    icon: "⚙️",
+    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19 12L20.09 18.26L22 19L20.09 19.74L19 22L17.91 19.74L16 19L17.91 18.26L19 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5 12L6.09 18.26L8 19L6.09 19.74L5 22L3.91 19.74L2 19L3.91 18.26L5 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
     title: "Operational Backbone",
     subtitle: "Structure & Discipline",
     description: "Structured workflows, governance frameworks, and operating discipline that ensure consistency and control. This foundational layer provides the operational backbone for all other capabilities.",
@@ -332,7 +336,10 @@ const layerData = {
     ]
   },
   2: {
-    icon: "🛡️",
+    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
     title: "Physical Intelligence",
     subtitle: "Real-World Visibility",
     description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments.",
@@ -344,7 +351,14 @@ const layerData = {
     ]
   },
   3: {
-    icon: "🤖",
+    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 9C21 10.1 20.1 11 19 11C17.9 11 17 10.1 17 9C17 7.9 17.9 7 19 7C20.1 7 21 7.9 21 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3 9C3 10.1 3.9 11 5 11C6.1 11 7 10.1 7 9C7 7.9 6.1 7 5 7C3.9 7 3 7.9 3 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 21C9 22.1 9.9 23 11 23C12.1 23 13 22.1 13 21C13 19.9 12.1 19 11 19C9.9 19 9 19.9 9 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19 21C19 22.1 19.9 23 21 23C22.1 23 23 22.1 23 21C23 19.9 22.1 19 21 19C19.9 19 19 19.9 19 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 6V9M12 15V18M9 12H6M18 12H15M14.5 8.5L13 10M11 14L9.5 15.5M14.5 15.5L13 14M11 10L9.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
     title: "AI Agentic Workforce",
     subtitle: "Intelligent Collaboration",
     description: "Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.",
@@ -356,7 +370,12 @@ const layerData = {
     ]
   },
   4: {
-    icon: "🌿",
+    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3 21L6 18L9 21L6 18L3 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15 21L18 18L21 21L18 18L15 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 15L12 12L15 15L12 12L9 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
     title: "Sustainability & Value Engineering",
     subtitle: "The Unifying Lens",
     description: "Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements. Value Engineering connects all pillars to deliver measurable business outcomes.",
@@ -373,13 +392,16 @@ function updateTextboxContent(layerNumber) {
   const data = layerData[layerNumber];
   if (!data || !lighthouseTextboxContent) return;
   
+  // Remove all layer classes
+  lighthouseTextboxContent.classList.remove("layer-1", "layer-2", "layer-3", "layer-4");
+  
   // Add exit animation
   lighthouseTextboxContent.classList.add("updating");
   
   // Wait for exit animation to complete, then update content
   setTimeout(() => {
     lighthouseTextboxContent.innerHTML = `
-      <div style="position: relative;">
+      <div style="position: relative; top: 0; left: 0; width: 100%; margin: 0; padding: 0;">
         <div class="layer-number">0${layerNumber}</div>
         <div class="layer-icon">${data.icon}</div>
         <h3>${data.title}</h3>
@@ -391,6 +413,9 @@ function updateTextboxContent(layerNumber) {
       </div>
     `;
     
+    // Add layer class for scrollbar control
+    lighthouseTextboxContent.classList.add(`layer-${layerNumber}`);
+    
     // Remove updating class to trigger enter animation
     lighthouseTextboxContent.classList.remove("updating");
   }, 150);
@@ -401,10 +426,46 @@ if (lighthouseTextboxContent && Object.keys(layerData).length > 0) {
   updateTextboxContent(1);
 }
 
+// Navigation bar functionality
+const lighthouseNavButtons = document.querySelectorAll(".lighthouse-nav-btn");
+let currentActiveLayer = 1; // Shared variable for both scroll and click navigation
+
+function setActiveNavButton(layerNumber) {
+  lighthouseNavButtons.forEach((btn) => {
+    const btnLayer = parseInt(btn.getAttribute("data-layer"));
+    if (btnLayer === layerNumber) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+// Initialize active button
+if (lighthouseNavButtons.length > 0) {
+  setActiveNavButton(1);
+}
+
+// Add click handlers to navigation buttons
+lighthouseNavButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const layerNumber = parseInt(btn.getAttribute("data-layer"));
+    if (layerNumber !== currentActiveLayer) {
+      currentActiveLayer = layerNumber;
+      updateTextboxContent(layerNumber);
+      setActiveNavButton(layerNumber);
+      
+      // Scroll to corresponding trigger section
+      const targetTrigger = document.querySelector(`.scroll-trigger-section[data-layer="${layerNumber}"]`);
+      if (targetTrigger) {
+        targetTrigger.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  });
+});
+
 // Intersection Observer for scroll-triggered content updates
 if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
-  let currentActiveLayer = 1;
-  
   // Adjust settings for mobile vs desktop
   const isMobile = window.innerWidth <= 768;
   const observerOptions = isMobile ? {
@@ -422,6 +483,9 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
         if (layerNumber !== currentActiveLayer) {
           currentActiveLayer = layerNumber;
           updateTextboxContent(layerNumber);
+          if (lighthouseNavButtons.length > 0) {
+            setActiveNavButton(layerNumber);
+          }
         }
       }
     });
@@ -455,6 +519,7 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
             if (layerNumber !== currentActiveLayer) {
               currentActiveLayer = layerNumber;
               updateTextboxContent(layerNumber);
+              setActiveNavButton(layerNumber);
             }
           }
         });
@@ -479,6 +544,6 @@ document.querySelectorAll(".btn").forEach((button) => {
   button.addEventListener("mouseleave", function() {
     this.style.transform = "translateY(0) scale(1)";
     this.style.boxShadow = "none";
+    });
   });
-});
   

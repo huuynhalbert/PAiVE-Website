@@ -290,16 +290,20 @@
   }
 
   .lighthouse-image-box {
-    padding: 20px;
-    border-radius: 16px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
     transition: transform 0.3s ease;
   }
 
   .lighthouse-img {
-    max-height: 250px;
+    max-height: 300px;
     width: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.15));
   }
 
   .lighthouse-textbox-side {
@@ -314,11 +318,36 @@
     border-radius: 16px;
     transition: all 0.3s ease;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .lighthouse-textbox-content {
     animation: slideInFade 0.4s ease-out;
     position: relative;
+    flex: 1;
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  /* Lighthouse Navigation Bar Mobile */
+  .lighthouse-nav-bar {
+    padding: 12px 0 0 0;
+    margin-top: 16px;
+    gap: 10px;
+  }
+
+  .lighthouse-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .lighthouse-nav-btn:active {
+    transform: scale(0.95);
   }
 
   .lighthouse-textbox-content h3 {
@@ -349,12 +378,108 @@
   }
 
   .lighthouse-textbox-content .layer-icon {
-    font-size: 2rem;
+    width: 48px;
+    height: 48px;
     margin-bottom: 12px;
+    color: var(--accent-cyan);
+  }
+
+  .lighthouse-textbox-content .layer-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .lighthouse-textbox-content .layer-number {
     font-size: 2.5rem;
+  }
+
+  /* IMAGE-TEXT LAYOUT MOBILE */
+  .image-text-layout {
+    padding: 30px 20px !important;
+    gap: 30px !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+
+  section.one-screen-section {
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .image-container {
+    padding: 15px !important;
+  }
+
+  .text-side h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .text-side h3 {
+    font-size: 1.4rem !important;
+  }
+
+  .text-side .highlight-stat {
+    font-size: 2.2rem !important;
+  }
+
+  .text-side p {
+    font-size: 1rem !important;
+  }
+
+  .text-side li {
+    font-size: 0.95rem !important;
+  }
+
+  /* NEW LAYOUT VARIATIONS MOBILE */
+  .lifecycle-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .lifecycle-step {
+    padding: 24px 16px !important;
+  }
+
+  .lifecycle-step .step-number {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.5rem !important;
+  }
+
+  .lifecycle-step h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .accountability-cards,
+  .ai-partners-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .accountability-card,
+  .ai-partner-card {
+    padding: 28px !important;
+  }
+
+  .industries-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .industry-card {
+    padding: 24px !important;
+  }
+
+  .about-philosophy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .philosophy-card {
+    padding: 28px !important;
+  }
     top: -10px;
     right: 0;
   }
@@ -377,8 +502,16 @@
   }
 
   .lighthouse-textbox-content .layer-icon {
-    font-size: 2.5rem;
+    width: 48px;
+    height: 48px;
     margin-bottom: 16px;
+    color: var(--accent-cyan);
+  }
+
+  .lighthouse-textbox-content .layer-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .lighthouse-textbox-content .layer-number {
@@ -696,6 +829,22 @@
   .lighthouse-textbox {
     padding: 20px;
     min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .lighthouse-nav-bar {
+    padding: 10px 0 0 0;
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .lighthouse-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+    border-radius: 8px;
   }
 
   .lighthouse-textbox-content h3 {
@@ -721,8 +870,16 @@
   }
 
   .lighthouse-textbox-content .layer-icon {
-    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
     margin-bottom: 10px;
+    color: var(--accent-cyan);
+  }
+
+  .lighthouse-textbox-content .layer-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .lighthouse-textbox-content .layer-number {
