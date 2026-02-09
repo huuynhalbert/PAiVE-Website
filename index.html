@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>PAiVE | Assisted Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./mobile.css" />
 </head>
@@ -19,12 +22,12 @@
         </a>
       </div>
       <nav class="main-nav" id="main-nav">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#our-approach" class="nav-link">Our Approach</a>
-        <a href="#industries" class="nav-link">Industries</a>
-        <a href="#platforms" class="nav-link">Platforms</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#home" class="nav-link">HOME</a>
+        <a href="#our-approach" class="nav-link">OUR APPROACH</a>
+        <a href="#platforms" class="nav-link">SOLUTIONS</a>
+        <a href="#industries" class="nav-link">INDUSTRIES</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#contact" class="nav-link nav-button">CONTACT</a>
       </nav>
       <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
         <span></span>
@@ -36,47 +39,75 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <!-- AI Neural Network Animation -->
-    <div class="ai-animation">
-      <svg class="neural-network" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-        <!-- Animated connections -->
-        <line class="connection" x1="50" y1="100" x2="150" y2="150" />
-        <line class="connection" x1="150" y1="150" x2="250" y2="100" />
-        <line class="connection" x1="250" y1="100" x2="350" y2="200" />
-        <line class="connection" x1="50" y1="200" x2="150" y2="150" />
-        <line class="connection" x1="150" y1="150" x2="250" y2="250" />
-        <line class="connection" x1="250" y1="250" x2="350" y2="200" />
-        <line class="connection" x1="50" y1="300" x2="150" y2="250" />
-        <line class="connection" x1="150" y1="250" x2="250" y2="300" />
-        <line class="connection" x1="250" y1="300" x2="350" y2="300" />
-        <line class="connection" x1="100" y1="100" x2="200" y2="200" />
-        <line class="connection" x1="200" y1="200" x2="300" y2="150" />
-        <line class="connection" x1="100" y1="300" x2="200" y2="200" />
+    <!-- AI Neural Network Background Animation -->
+    <div class="bg-animation">
+      <svg class="animated-bg" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(0,229,255,0.1);stop-opacity:1" />
+            <stop offset="50%" style="stop-color:rgba(0,229,255,0.6);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(0,229,255,0.1);stop-opacity:1" />
+          </linearGradient>
+          <radialGradient id="nodeGradient">
+            <stop offset="0%" style="stop-color:rgba(0,229,255,0.8);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(0,229,255,0.2);stop-opacity:1" />
+          </radialGradient>
+        </defs>
         
-        <!-- Animated nodes -->
-        <circle class="node node-1" cx="50" cy="100" r="8" />
-        <circle class="node node-2" cx="150" cy="150" r="10" />
-        <circle class="node node-3" cx="250" cy="100" r="8" />
-        <circle class="node node-4" cx="350" cy="200" r="10" />
-        <circle class="node node-5" cx="50" cy="200" r="8" />
-        <circle class="node node-6" cx="250" cy="250" r="8" />
-        <circle class="node node-7" cx="50" cy="300" r="8" />
-        <circle class="node node-8" cx="150" cy="250" r="8" />
-        <circle class="node node-9" cx="250" cy="300" r="8" />
-        <circle class="node node-10" cx="350" cy="300" r="8" />
-        <circle class="node node-11" cx="100" cy="100" r="6" />
-        <circle class="node node-12" cx="200" cy="200" r="12" />
-        <circle class="node node-13" cx="300" cy="150" r="6" />
-        <circle class="node node-14" cx="100" cy="300" r="6" />
+        <!-- Neural Network Connections -->
+        <g class="neural-connections">
+          <line class="connection" x1="200" y1="200" x2="400" y2="300" />
+          <line class="connection" x1="400" y1="300" x2="600" y2="200" />
+          <line class="connection" x1="600" y1="200" x2="800" y2="400" />
+          <line class="connection" x1="200" y1="400" x2="400" y2="300" />
+          <line class="connection" x1="400" y1="300" x2="600" y2="500" />
+          <line class="connection" x1="600" y1="500" x2="800" y2="400" />
+          <line class="connection" x1="200" y1="600" x2="400" y2="500" />
+          <line class="connection" x1="400" y1="500" x2="600" y2="600" />
+          <line class="connection" x1="600" y1="600" x2="800" y2="600" />
+          <line class="connection" x1="300" y1="200" x2="500" y2="400" />
+          <line class="connection" x1="500" y1="400" x2="700" y2="300" />
+          <line class="connection" x1="300" y1="600" x2="500" y2="400" />
+          <line class="connection" x1="200" y1="800" x2="400" y2="700" />
+          <line class="connection" x1="400" y1="700" x2="600" y2="800" />
+          <line class="connection" x1="600" y1="800" x2="800" y2="800" />
+          <line class="connection" x1="800" y1="400" x2="1000" y2="500" />
+          <line class="connection" x1="1000" y1="500" x2="1000" y2="700" />
+          <line class="connection" x1="200" y1="1000" x2="400" y2="900" />
+          <line class="connection" x1="400" y1="900" x2="600" y2="1000" />
+        </g>
+        
+        <!-- Neural Network Nodes -->
+        <circle class="neural-node" cx="200" cy="200" r="8" />
+        <circle class="neural-node" cx="400" cy="300" r="12" />
+        <circle class="neural-node" cx="600" cy="200" r="8" />
+        <circle class="neural-node" cx="800" cy="400" r="10" />
+        <circle class="neural-node" cx="200" cy="400" r="8" />
+        <circle class="neural-node" cx="600" cy="500" r="8" />
+        <circle class="neural-node" cx="200" cy="600" r="8" />
+        <circle class="neural-node" cx="400" cy="500" r="8" />
+        <circle class="neural-node" cx="600" cy="600" r="8" />
+        <circle class="neural-node" cx="800" cy="600" r="8" />
+        <circle class="neural-node" cx="300" cy="200" r="6" />
+        <circle class="neural-node" cx="500" cy="400" r="14" />
+        <circle class="neural-node" cx="700" cy="300" r="6" />
+        <circle class="neural-node" cx="300" cy="600" r="6" />
+        <circle class="neural-node" cx="400" cy="700" r="8" />
+        <circle class="neural-node" cx="600" cy="800" r="8" />
+        <circle class="neural-node" cx="800" cy="800" r="8" />
+        <circle class="neural-node" cx="1000" cy="500" r="10" />
+        <circle class="neural-node" cx="1000" cy="700" r="8" />
+        <circle class="neural-node" cx="400" cy="900" r="8" />
+        <circle class="neural-node" cx="600" cy="1000" r="8" />
       </svg>
     </div>
     
     <div class="container grid grid-2">
       <div class="hero-content">
-        <div class="tagline">CLARITY • DISCIPLINE • CONTROL • LEAN</div>
+        
         <h1>
-          Enterprise-grade operations.<br />
-          Built for SMBs.
+          Enterprise-grade operations<br />
+          Built for <span id="typing-businesses"></span>
         </h1>
         <p style="font-size: 1.2rem; line-height: 1.8;">
           Consulting-led transformation that brings clarity, discipline, and measurable outcomes—without overhead.
@@ -84,90 +115,47 @@
 
         <div class="actions">
           <a href="#contact" class="btn btn-primary">Start a Conversation</a>
-          <a href="#our-approach" class="btn btn-outline">Our Approach</a>
+          
         </div>
       </div>
     </div>
+    
+    <!-- Scroll Down Arrow -->
+    <div class="scroll-down-arrow" id="scroll-down-arrow">
+      <svg width="20" height="50" viewBox="0 0 20 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="10" y1="0" x2="10" y2="38" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <path d="M7 30L10 40L13 30" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="currentColor"/>
+      </svg>
+    </div>
   </section>
 
-  <!-- WHAT WE DO - THE LIGHT HOUSE MODEL -->
-  <section class="section-dark lighthouse-showcase" id="what-we-do">
-    <!-- Fixed Container - Image and Textbox stay in place -->
-    <div class="lighthouse-fixed-container">
-      <!-- Fixed Lighthouse Image on Left -->
-      <div class="lighthouse-image-side">
-        <div class="lighthouse-image-box">
+  <!-- OUR APPROACH - THE LIGHT HOUSE MODEL -->
+  <section class="lighthouse-showcase" id="our-approach">
+    <div class="lighthouse-container">
+      <!-- Left Panel - Layer Names List -->
+      <div class="lighthouse-list-panel">
+        <div class="lighthouse-list-item" data-layer="sustainability">
+          <span>Sustainability Focus</span>
+        </div>
+        <div class="lighthouse-list-item" data-layer="agentic">
+          <span>Agentic Workforce</span>
+        </div>
+        <div class="lighthouse-list-item" data-layer="physical">
+          <span>Physical Intelligence</span>
+        </div>
+        <div class="lighthouse-list-item" data-layer="operational">
+          <span>Operational Backbone</span>
+        </div>
+      </div>
+
+      <!-- Right Panel - Content and Image -->
+      <div class="lighthouse-content-panel">
+        <div class="lighthouse-content-text" id="lighthouse-content-text">
+          <!-- Content will be updated via JavaScript -->
+        </div>
+        <div class="lighthouse-image-container">
           <img src="./images/lighthouse.png" alt="Lighthouse Model" class="lighthouse-img" />
         </div>
-      </div>
-
-      <!-- Fixed Textbox on Right - Content updates on scroll -->
-      <div class="lighthouse-textbox-side">
-        <div class="lighthouse-textbox">
-          <div class="lighthouse-textbox-content" id="lighthouse-textbox-content">
-            <!-- Content will be updated via JavaScript based on scroll -->
-          </div>
-          <!-- Navigation Bar -->
-          <div class="lighthouse-nav-bar">
-            <button class="lighthouse-nav-btn" data-layer="1">1</button>
-            <button class="lighthouse-nav-btn" data-layer="2">2</button>
-            <button class="lighthouse-nav-btn" data-layer="3">3</button>
-            <button class="lighthouse-nav-btn" data-layer="4">4</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll Triggers - Invisible sections that trigger content changes -->
-    <div class="lighthouse-scroll-triggers">
-      <div class="scroll-trigger-section" data-layer="1"></div>
-      <div class="scroll-trigger-section" data-layer="2"></div>
-      <div class="scroll-trigger-section" data-layer="3"></div>
-      <div class="scroll-trigger-section" data-layer="4"></div>
-    </div>
-  </section>
-
-  <!-- OUTCOME SNAPSHOTS -->
-  <section class="section-alt one-screen-section" id="outcomes">
-    <div class="image-text-layout">
-      <div class="image-side">
-        <div class="image-container">
-          <img src="./images/our-approach-consulting.avif" alt="Business Analytics Dashboard" />
-        </div>
-      </div>
-      <div class="text-side">
-        <p class="section-tag">OUTCOME SNAPSHOTS</p>
-        <h2>Real Results from Real Businesses</h2>
-        <p>Measurable improvements that matter. Every engagement tracks KPIs and ROI—not just implementation, but business value.</p>
-        <div class="highlight-stat">20–30%</div>
-        <p style="font-weight: 600; color: var(--accent-cyan); margin-top: -10px;">Reduced Sales Processing Time</p>
-        <p>Streamlined workflows and AI-assisted coordination reduced time from order to fulfillment.</p>
-        <ul>
-          <li><strong>Real-Time Inventory Visibility:</strong> Food & Grocery wholesalers now have instant insights into inventory aging and turnover.</li>
-          <li><strong>Unified Operations:</strong> Replaced QuickBooks + Excel + multiple tools with integrated, disciplined operations.</li>
-          <li><strong>ROI-Driven:</strong> Every engagement tracks KPIs and ROI—not just implementation, but business value.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUR APPROACH -->
-  <section class="section-dark one-screen-section" id="our-approach">
-    <div class="image-text-layout">
-      <div class="image-side">
-        <div class="image-container">
-          <img src="./images/businessstrat.avif" alt="Business Strategy" />
-        </div>
-      </div>
-      <div class="text-side">
-        <p class="section-tag">OUR APPROACH</p>
-        <h2>Consulting-Led by Design</h2>
-        <p>We don't advise and disappear—we stay to make it run. We move organizations from fragmented, intuition-driven operations to structured, data-informed, decision-driven models.</p>
-        <ul>
-          <li><strong>Human + AI Collaboration:</strong> Consultants focus on judgment, leadership, and strategy while AI handles analysis, coordination, and execution consistency.</li>
-          <li><strong>Clarity Before Technology:</strong> Technology is introduced only after operational clarity is achieved—ensuring tools solve real business problems.</li>
-          <li><strong>Measurable Outcomes:</strong> Every engagement tracks KPIs and ROI—not just implementation, but business value.</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -250,129 +238,85 @@
     </div>
   </section>
 
-  <!-- INDUSTRIES WE SERVE -->
-  <section class="section-alt one-screen-section" id="industries">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <p class="section-tag" style="text-align: center; display: block; margin-bottom: 12px;">INDUSTRIES WE SERVE</p>
-        <h2 style="margin-bottom: 16px;">Focusing On Industries That Drive Results</h2>
-        <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">We specialize in industries where operational clarity and discipline drive measurable outcomes. Focus beats breadth.</p>
-      </div>
-      <div class="industries-grid">
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2L3 6V20A2 2 0 0 0 5 22H19A2 2 0 0 0 21 20V6L18 2H6Z"/>
-              <path d="M6 6H18M6 10H18M6 14H12"/>
-            </svg>
+  <!-- SOLUTIONS - COMBINED -->
+  <section class="section-dark odoo-section" id="platforms">
+    <div class="odoo-container">
+      <div class="odoo-layout">
+        <!-- Left Side - Logo -->
+        <div class="odoo-logo-side">
+          <p class="odoo-section-tag">Our services</p>
+          <div class="odoo-logo-container" id="odoo-logo-container">
+            <img src="./images/odoologo.png" alt="Odoo Platform" class="odoo-logo" id="odoo-logo-image" />
+            <div class="odoo-icon-display" id="odoo-icon-display" style="display: none;">
+              <!-- Icons will be inserted here via JavaScript -->
+            </div>
           </div>
-          <h3>Food & Grocery Wholesalers</h3>
-          <p>Inventory-heavy SMBs requiring real-time visibility, aging analysis, and streamlined operations.</p>
         </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 16V8A2 2 0 0 0 19 6H5A2 2 0 0 0 3 8V16A2 2 0 0 0 5 18H19A2 2 0 0 0 21 16Z"/>
-              <path d="M3 10H21M7 14H7.01M11 14H11.01"/>
-            </svg>
+
+        <!-- Right Side - Tabs and Content -->
+        <div class="odoo-content-side">
+          <div class="odoo-tabs">
+            <button class="odoo-tab active" data-tab="what-we-do">What We Do</button>
+            <button class="odoo-tab" data-tab="why-odoo">Why Odoo</button>
+            <button class="odoo-tab" data-tab="ai-agentic">AI-Agentic Workforce</button>
+            <button class="odoo-tab" data-tab="physical-intelligence">Physical Intelligence</button>
           </div>
-          <h3>Inventory-Heavy SMBs</h3>
-          <p>Businesses managing complex inventory, multi-location operations, and supply chain coordination.</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21H21M5 21V7L12 3L19 7V21M9 9V21M15 9V21"/>
-            </svg>
+          
+          <div class="odoo-content-area">
+            <div class="odoo-content" id="odoo-content">
+              <!-- Content will be updated via JavaScript -->
+            </div>
           </div>
-          <h3>Multi-Entity Operators</h3>
-          <p>Organizations operating multiple locations, divisions, or entities requiring unified operational control.</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.5 2V6H17.5M2.5 22V18H6.5M2 11.5A10 10 0 0 1 13 2.5M22 12.5A10 10 0 0 1 11 21.5"/>
-            </svg>
-          </div>
-          <h3>Growing SMBs</h3>
-          <p>Businesses scaling operations and needing enterprise-grade discipline without enterprise overhead.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PLATFORMS & ECOSYSTEM -->
-      <!-- Odoo Solutions -->
-      <section class="section-dark one-screen-section" id="odoo-solutions">
-        <div class="container">
-          <div class="odoo-layout">
-            <div class="odoo-header">
-              <div class="odoo-logo-container">
-                <img src="./images/odoologo.png" alt="Odoo Platform" class="odoo-logo" />
-              </div>
-              <p class="section-tag" style="text-align: center; display: block; margin-bottom: 12px;">PLATFORMS & ECOSYSTEM</p>
-              <h2 style="text-align: center; margin-bottom: 16px;">Odoo Solutions by PAiVE</h2>
-              <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes.</p>
-            </div>
-            <div class="odoo-content-grid">
-              <div class="odoo-card">
-                <h3>What We Do</h3>
-                <ul>
-                  <li><strong>Architect & Align:</strong> Fit-gap analysis and solution design that maps Odoo capabilities to your operational needs</li>
-                  <li><strong>Implement & Customize:</strong> Configuration, migration, and workflow tailoring that fits your business model</li>
-                  <li><strong>Enable & Sustain:</strong> Training, change management, and managed support to ensure adoption and ROI</li>
-                  <li><strong>Hosting Advisory:</strong> Guidance on Odoo Online, Odoo.sh, or On-Premise deployment options</li>
-                </ul>
-              </div>
-              <div class="odoo-card">
-                <h3>Why Odoo</h3>
-                <ul>
-                  <li><strong>Fully Integrated:</strong> All business apps in one platform—CRM, inventory, accounting, manufacturing, and more</li>
-                  <li><strong>Modern UX:</strong> Fast, intuitive interface that your team will actually use</li>
-                  <li><strong>Cost-Effective:</strong> Enterprise-grade capabilities without enterprise pricing</li>
-                  <li><strong>Scalable:</strong> Grows with your business from SMB to enterprise scale</li>
-                </ul>
-              </div>
-            </div>
+  <!-- INDUSTRIES WE SERVE -->
+  <section class="industries-section" id="industries">
+    <div class="industries-container">
+      <h2 class="industries-heading">Focusing On Industries That Drive Results</h2>
+      <p class="industries-subtitle">We specialize in industries where operational clarity and discipline drive measurable outcomes. Focus beats breadth.</p>
+      <div class="industries-content-grid">
+        <div class="industry-content-card">
+          <div class="industry-image">
+            <div class="industry-image-placeholder"></div>
+          </div>
+          <div class="industry-content">
+            <h3>Food & Grocery Wholesalers</h3>
+            <p>Inventory-heavy SMBs requiring real-time visibility, aging analysis, and streamlined operations.</p>
           </div>
         </div>
-      </section>
-
-      <!-- AI & Physical Intelligence Partners -->
-      <section class="section-dark one-screen-section" id="ai-partners">
-        <div class="container">
-          <div style="text-align: center; margin-bottom: 40px;">
-            <p class="section-tag" style="text-align: center; display: block; margin-bottom: 12px;">PLATFORMS & ECOSYSTEM</p>
-            <h2 style="margin-bottom: 16px;">AI & Physical Intelligence Partners</h2>
-            <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">Beyond Odoo, we integrate specialized AI and physical intelligence platforms to deliver comprehensive operational transformation.</p>
+        <div class="industry-content-card">
+          <div class="industry-image">
+            <div class="industry-image-placeholder"></div>
           </div>
-          <div class="ai-partners-grid">
-            <div class="ai-partner-card">
-              <div class="ai-partner-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/>
-                  <path d="M3 21L6 18L9 21L6 18L3 21Z"/>
-                  <path d="M15 21L18 18L21 21L18 18L15 21Z"/>
-                </svg>
-              </div>
-              <h3>AI-Agentic Workforce Platform</h3>
-              <p>Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features.</p>
-              <p class="partner-tag"><em>Powered by Personal.ai</em></p>
-            </div>
-            <div class="ai-partner-card">
-              <div class="ai-partner-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z"/>
-                  <path d="M12 8V12M12 16H12.01"/>
-                </svg>
-              </div>
-              <h3>Physical Intelligence</h3>
-              <p>IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.</p>
-              <p class="partner-tag"><em>Clipxu AI Security</em></p>
-            </div>
+          <div class="industry-content">
+            <h3>Inventory-Heavy SMBs</h3>
+            <p>Businesses managing complex inventory, multi-location operations, and supply chain coordination.</p>
           </div>
         </div>
-      </section>
+        <div class="industry-content-card">
+          <div class="industry-image">
+            <div class="industry-image-placeholder"></div>
+          </div>
+          <div class="industry-content">
+            <h3>Multi-Entity Operators</h3>
+            <p>Organizations operating multiple locations, divisions, or entities requiring unified operational control.</p>
+          </div>
+        </div>
+        <div class="industry-content-card">
+          <div class="industry-image">
+            <div class="industry-image-placeholder"></div>
+          </div>
+          <div class="industry-content">
+            <h3>Growing SMBs</h3>
+            <p>Businesses scaling operations and needing enterprise-grade discipline without enterprise overhead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT PAiVE -->
   <section class="section-alt one-screen-section" id="about">
@@ -419,143 +363,61 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="cta center contact-section" id="contact">
-    <div class="container">
-      <div class="contact-header">
-        <h2 style="margin-bottom: 12px; font-size: 1.8rem;">Let's Talk It Through</h2>
-        <p style="font-size: 1rem; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--text-secondary); line-height: 1.6;">
-          Tell us about your business and challenges. We're here to help.
-        </p>
-      </div>
-      
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-info-card">
-            <h3 style="color: var(--accent-cyan); margin-bottom: 20px; font-size: 1.3rem;">Get in Touch</h3>
-            <div class="contact-methods">
-              <div class="contact-method">
-                <div class="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92V19.92A2 2 0 0 1 20.11 21.92C20.08 21.92 12 21.92 3.89 21.92A2 2 0 0 1 2 19.92V16.92A2 2 0 0 1 3.89 14.92C5.78 14.92 8.67 15.92 12 15.92C15.33 15.92 18.22 14.92 20.11 14.92A2 2 0 0 1 22 16.92Z"/>
-                    <path d="M6.47 12.4L8 10.87C8.35 10.52 8.35 9.95 8 9.6L4.93 6.53C4.58 6.18 4.01 6.18 3.66 6.53L2.13 8.06C1.42 8.77 1.42 9.95 2.13 10.66L6.47 12.4Z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Phone</p>
-                  <a href="tel:+14086442055" style="color: var(--text-primary); text-decoration: none; font-size: 0.95rem; font-weight: 500;">+1-408-644-2055</a>
-                </div>
-              </div>
-              <div class="contact-method">
-                <div class="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/>
-                    <path d="M22 6L12 13L2 6"/>
-                  </svg>
-                </div>
-                <div>
-                  <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Email</p>
-                  <a href="mailto:prem@paive.net" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.95rem; font-weight: 500;">prem@paive.net</a>
-                </div>
-              </div>
-              <div class="contact-method">
-                <div class="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="2" y1="12" x2="22" y2="12"/>
-                    <path d="M12 2A15.3 15.3 0 0 1 16.6 8.4A15.3 15.3 0 0 1 12 22A15.3 15.3 0 0 1 7.4 15.6A15.3 15.3 0 0 1 12 2Z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Website</p>
-                  <a href="http://www.paive.net" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.95rem; font-weight: 500;">www.paive.net</a>
-                </div>
-              </div>
-            </div>
-            <div class="contact-cta-box">
-              <p style="color: var(--text-primary); font-size: 0.9rem; margin-bottom: 12px; font-weight: 500;">Schedule a call?</p>
-              <a href="#contact" class="btn btn-outline" style="width: 100%; text-align: center; display: block; padding: 10px 20px; font-size: 0.9rem;">Schedule a Call</a>
-            </div>
+  <!-- CONTACT/FOOTER -->
+  <footer class="contact-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-columns">
+        <!-- Left Column - Keep in Touch -->
+        <div class="footer-column">
+          <h3 class="footer-heading">KEEP IN TOUCH</h3>
+          <div class="email-input-wrapper">
+            <input type="email" placeholder="ENTER YOUR EMAIL" class="footer-email-input" />
+            <button type="submit" class="footer-email-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
           </div>
         </div>
-        
-        <div class="contact-form-container">
-          <div class="form-header">
-            <h3 style="color: var(--accent-cyan); margin-bottom: 6px; font-size: 1.2rem;">Send us a Message</h3>
-            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px;">Fill out the form below and we'll get back to you soon.</p>
-          </div>
-          <form class="contact-form" id="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="company">Company</label>
-              <input type="text" id="company" name="company" />
-            </div>
-            <div class="form-group">
-              <label for="business">Tell us about your business</label>
-              <textarea id="business" name="business" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="challenges">What challenges are you facing?</label>
-              <textarea id="challenges" name="challenges" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px; font-size: 1rem; padding: 12px;">Start the Conversation</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; margin-bottom: 24px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <img src="./images/paivelogo.svg" alt="PAiVE Logo" style="height: 24px; width: auto; opacity: 0.8;" />
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">© 2026 PAiVE. All rights reserved.</p>
+        <!-- Middle Column - Connect With Us -->
+        <div class="footer-column">
+          <h3 class="footer-heading">CONNECT WITH US</h3>
+          <div class="footer-links">
+            <a href="#" class="footer-link">LINKEDIN</a>
+            <a href="#" class="footer-link">FACEBOOK</a>
+            <a href="#" class="footer-link">X</a>
+            <a href="#" class="footer-link">INSTAGRAM</a>
+            <a href="#" class="footer-link">CAREERS</a>
+          </div>
         </div>
-        <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: center;">
-          <a href="#" class="footer-link">
-            <span class="footer-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                <path d="M7 11V7A5 5 0 0 1 12 2H12A5 5 0 0 1 17 7V11"/>
-              </svg>
-            </span>
-            <span>Privacy</span>
-          </a>
-          <a href="#" class="footer-link">
-            <span class="footer-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V8L14 2Z"/>
-                <path d="M14 2V8H20M16 13H8M16 17H8M10 9H8"/>
-              </svg>
-            </span>
-            <span>Terms</span>
-          </a>
-          <a href="mailto:prem@paive.net" class="footer-link">
-            <span class="footer-icon">@</span>
-            <span>Email</span>
-          </a>
-          <a href="#" class="footer-link">
-            <span class="footer-icon">in</span>
-            <span>LinkedIn</span>
-          </a>
+
+        <!-- Right Column - Customer Service -->
+        <div class="footer-column">
+          <h3 class="footer-heading">CUSTOMER SERVICE</h3>
+          <div class="footer-links">
+            <a href="#contact" class="footer-link">CONTACT US</a>
+            <a href="tel:+14086442055" class="footer-link">1.800.237.9773</a>
+            <a href="#" class="footer-link">TERMS & CONDITIONS</a>
+            <a href="#" class="footer-link">PRIVACY POLICY</a>
+          </div>
         </div>
       </div>
-      <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 24px; border-top: 1px solid var(--border-glow);">
-        Presented by Prem Vish, Founder & CEO
-      </p>
+
+      <!-- Copyright -->
+      <div class="footer-copyright">
+        <p>© 2026 PAIVE CORPORATION, ALL RIGHTS RESERVED</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Back to Top Arrow -->
+  <div class="back-to-top" id="back-to-top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
 
   <script src="./script.js"></script>
 </body>

@@ -154,6 +154,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
+  // Typing animation for "Small and Medium businesses" - continuous loop
+  const typingBusinesses = document.getElementById("typing-businesses");
+  if (typingBusinesses) {
+    const text = "Small and Medium Businesses";
+    let charIndex = 0;
+    let isTyping = true;
+    let isDeleting = false;
+    
+    function typeBusinessesText() {
+      if (isTyping && charIndex < text.length) {
+        // Show text with blinking cursor while typing
+        typingBusinesses.innerHTML = text.substring(0, charIndex) + '<span class="typing-cursor">|</span>';
+        charIndex++;
+        
+        // Typing speed varies - slower for spaces, normal for letters
+        const currentChar = text[charIndex - 1];
+        const speed = currentChar === " " ? 150 : 80;
+        setTimeout(typeBusinessesText, speed);
+      } else if (isTyping && charIndex === text.length) {
+        // Finished typing - show full text with cursor, then wait before deleting
+        typingBusinesses.innerHTML = text + '<span class="typing-cursor">|</span>';
+        isTyping = false;
+        setTimeout(() => {
+          isDeleting = true;
+          typeBusinessesText();
+        }, 2000); // Wait 2 seconds before deleting
+      } else if (isDeleting && charIndex > 0) {
+        // Delete text character by character (backwards)
+        charIndex--;
+        typingBusinesses.innerHTML = text.substring(0, charIndex) + '<span class="typing-cursor">|</span>';
+        setTimeout(typeBusinessesText, 60); // Smooth deletion speed
+      } else if (isDeleting && charIndex === 0) {
+        // Finished deleting - start typing again
+        isDeleting = false;
+        isTyping = true;
+        typingBusinesses.innerHTML = '<span class="typing-cursor">|</span>';
+        setTimeout(typeBusinessesText, 300); // Brief pause before retyping
+      }
+    }
+    
+    // Start typing animation after a short delay (after the main heading animation)
+    setTimeout(() => {
+      typeBusinessesText();
+    }, 2000);
+  }
+
   // Animate paragraph
   const paragraph = document.querySelector(".hero-content p");
   if (paragraph) {
@@ -279,6 +325,94 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// Scroll Down Arrow - Show after 1 second on home page
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollDownArrow = document.getElementById("scroll-down-arrow");
+  const heroSection = document.getElementById("home");
+
+  if (scrollDownArrow && heroSection) {
+    let showArrowTimeout;
+    let isArrowVisible = false;
+    
+    function checkIfOnHomePage() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      
+      // Check if we're still on the home page (within hero section)
+      if (scrollY < heroBottom - 100) {
+        // We're on the home page - show arrow after 1 second if not already visible
+        if (!isArrowVisible && !showArrowTimeout) {
+          showArrowTimeout = setTimeout(() => {
+            scrollDownArrow.classList.add("visible");
+            isArrowVisible = true;
+            showArrowTimeout = null;
+          }, 1000); // Show after 1 second
+        }
+      } else {
+        // We've scrolled past the home page - hide arrow
+        if (showArrowTimeout) {
+          clearTimeout(showArrowTimeout);
+          showArrowTimeout = null;
+        }
+        scrollDownArrow.classList.remove("visible");
+        isArrowVisible = false;
+      }
+    }
+    
+    // Check on scroll
+    window.addEventListener("scroll", checkIfOnHomePage);
+    
+    // Check on initial load - start timer if on home page
+    checkIfOnHomePage();
+    
+    // Add click handler to scroll to next section
+    scrollDownArrow.addEventListener("click", () => {
+      const nextSection = document.querySelector("section:not(#home)");
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
+});
+
+// Hide logo and show back-to-top arrow when scrolling past home page
+const logo = document.querySelector(".logo");
+const backToTop = document.getElementById("back-to-top");
+const heroSection = document.getElementById("home");
+
+if (logo && backToTop && heroSection) {
+  function handleLogoVisibility() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const heroRect = heroSection.getBoundingClientRect();
+    const heroHeight = heroSection.offsetHeight;
+    
+    // Hide logo when scrolled past the hero section
+    if (scrollY > heroHeight - 100) {
+      // Scrolled past home page - hide logo, show back-to-top arrow
+      logo.classList.add("hidden");
+      backToTop.classList.add("visible");
+    } else {
+      // On home page - show logo, hide back-to-top arrow
+      logo.classList.remove("hidden");
+      backToTop.classList.remove("visible");
+    }
+  }
+  
+  // Check on scroll
+  window.addEventListener("scroll", handleLogoVisibility);
+  
+  // Check on initial load
+  handleLogoVisibility();
+  
+  // Add click handler to scroll to top
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
 // Removed parallax effect to prevent buttons from covering content
 
 // How We Work - Active step highlighting
@@ -313,54 +447,23 @@ if (workSteps.length > 0) {
   });
 }
 
-// Lighthouse Fixed Layout - Content Updates Based on Scroll
-const lighthouseTextboxContent = document.getElementById("lighthouse-textbox-content");
-const scrollTriggerSections = document.querySelectorAll(".scroll-trigger-section");
-const lighthouseShowcase = document.getElementById("what-we-do");
+// Lighthouse New Layout - Click-based Content Updates
+const lighthouseContentText = document.getElementById("lighthouse-content-text");
+const lighthouseListItems = document.querySelectorAll(".lighthouse-list-item");
 
 const layerData = {
-  1: {
-    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M19 12L20.09 18.26L22 19L20.09 19.74L19 22L17.91 19.74L16 19L17.91 18.26L19 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M5 12L6.09 18.26L8 19L6.09 19.74L5 22L3.91 19.74L2 19L3.91 18.26L5 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`,
-    title: "Operational Backbone",
-    subtitle: "Structure & Discipline",
-    description: "Structured workflows, governance frameworks, and operating discipline that ensure consistency and control. This foundational layer provides the operational backbone for all other capabilities.",
+  sustainability: {
+    title: "Sustainability Focus",
+    description: "Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements. Value Engineering connects all pillars to deliver measurable business outcomes.",
     details: [
-      "Workflow design and optimization",
-      "Governance frameworks and controls",
-      "Process standardization across teams",
-      "Consistency and operational discipline"
+      "Energy efficiency optimization",
+      "ESG-aligned process improvements",
+      "Value-driven decision making",
+      "ROI measurement and optimization"
     ]
   },
-  2: {
-    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`,
-    title: "Physical Intelligence",
-    subtitle: "Real-World Visibility",
-    description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments.",
-    details: [
-      "Real-time monitoring and threat detection",
-      "IoT sensor integration and data collection",
-      "Automated response protocols",
-      "Safety and security optimization"
-    ]
-  },
-  3: {
-    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M21 9C21 10.1 20.1 11 19 11C17.9 11 17 10.1 17 9C17 7.9 17.9 7 19 7C20.1 7 21 7.9 21 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M3 9C3 10.1 3.9 11 5 11C6.1 11 7 10.1 7 9C7 7.9 6.1 7 5 7C3.9 7 3 7.9 3 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M9 21C9 22.1 9.9 23 11 23C12.1 23 13 22.1 13 21C13 19.9 12.1 19 11 19C9.9 19 9 19.9 9 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M19 21C19 22.1 19.9 23 21 23C22.1 23 23 22.1 23 21C23 19.9 22.1 19 21 19C19.9 19 19 19.9 19 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M12 6V9M12 15V18M9 12H6M18 12H15M14.5 8.5L13 10M11 14L9.5 15.5M14.5 15.5L13 14M11 10L9.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`,
-    title: "AI Agentic Workforce",
-    subtitle: "Intelligent Collaboration",
+  agentic: {
+    title: "Agentic Workforce",
     description: "Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.",
     details: [
       "Specialized AI Personas by role and function",
@@ -369,100 +472,210 @@ const layerData = {
       "Enterprise-grade security (SOC 2, HIPAA)"
     ]
   },
-  4: {
-    icon: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M3 21L6 18L9 21L6 18L3 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M15 21L18 18L21 21L18 18L15 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M9 15L12 12L15 15L12 12L9 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`,
-    title: "Sustainability & Value Engineering",
-    subtitle: "The Unifying Lens",
-    description: "Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements. Value Engineering connects all pillars to deliver measurable business outcomes.",
+  physical: {
+    title: "Physical Intelligence",
+    description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments.",
     details: [
-      "Energy efficiency optimization",
-      "ESG-aligned process improvements",
-      "Value-driven decision making",
-      "ROI measurement and optimization"
+      "Real-time monitoring and threat detection",
+      "IoT sensor integration and data collection",
+      "Automated response protocols",
+      "Safety and security optimization"
+    ]
+  },
+  operational: {
+    title: "Operational Backbone",
+    description: "Structured workflows, governance frameworks, and operating discipline that ensure consistency and control. This foundational layer provides the operational backbone for all other capabilities.",
+    details: [
+      "Workflow design and optimization",
+      "Governance frameworks and controls",
+      "Process standardization across teams",
+      "Consistency and operational discipline"
     ]
   }
 };
 
-function updateTextboxContent(layerNumber) {
-  const data = layerData[layerNumber];
-  if (!data || !lighthouseTextboxContent) return;
+function updateLighthouseContent(layerKey) {
+  const data = layerData[layerKey];
+  if (!data || !lighthouseContentText) return;
   
-  // Remove all layer classes
-  lighthouseTextboxContent.classList.remove("layer-1", "layer-2", "layer-3", "layer-4");
+  lighthouseContentText.style.opacity = "0";
   
-  // Add exit animation
-  lighthouseTextboxContent.classList.add("updating");
-  
-  // Wait for exit animation to complete, then update content
   setTimeout(() => {
-    lighthouseTextboxContent.innerHTML = `
-      <div style="position: relative; top: 0; left: 0; width: 100%; margin: 0; padding: 0;">
-        <div class="layer-number">0${layerNumber}</div>
-        <div class="layer-icon">${data.icon}</div>
-        <h3>${data.title}</h3>
-        <p class="layer-subtitle">${data.subtitle}</p>
-        <p>${data.description}</p>
-        <ul>
-          ${data.details.map(detail => `<li>${detail}</li>`).join("")}
-        </ul>
-      </div>
+    lighthouseContentText.innerHTML = `
+      <h3>${data.title}</h3>
+      <p>${data.description}</p>
+      <ul>
+        ${data.details.map(detail => `<li>– ${detail}</li>`).join("")}
+      </ul>
     `;
-    
-    // Add layer class for scrollbar control
-    lighthouseTextboxContent.classList.add(`layer-${layerNumber}`);
-    
-    // Remove updating class to trigger enter animation
-    lighthouseTextboxContent.classList.remove("updating");
-  }, 150);
+    lighthouseContentText.style.opacity = "1";
+  }, 200);
 }
 
-// Initialize with first layer
-if (lighthouseTextboxContent && Object.keys(layerData).length > 0) {
-  updateTextboxContent(1);
-}
-
-// Navigation bar functionality
-const lighthouseNavButtons = document.querySelectorAll(".lighthouse-nav-btn");
-let currentActiveLayer = 1; // Shared variable for both scroll and click navigation
-
-function setActiveNavButton(layerNumber) {
-  lighthouseNavButtons.forEach((btn) => {
-    const btnLayer = parseInt(btn.getAttribute("data-layer"));
-    if (btnLayer === layerNumber) {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
+function setActiveListItem(activeItem) {
+  lighthouseListItems.forEach((item) => {
+    item.classList.remove("active");
   });
+  activeItem.classList.add("active");
 }
 
-// Initialize active button
-if (lighthouseNavButtons.length > 0) {
-  setActiveNavButton(1);
+// Initialize with first item
+if (lighthouseListItems.length > 0) {
+  const firstItem = lighthouseListItems[0];
+  const firstLayer = firstItem.getAttribute("data-layer");
+  setActiveListItem(firstItem);
+  updateLighthouseContent(firstLayer);
 }
 
-// Add click handlers to navigation buttons
-lighthouseNavButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const layerNumber = parseInt(btn.getAttribute("data-layer"));
-    if (layerNumber !== currentActiveLayer) {
-      currentActiveLayer = layerNumber;
-      updateTextboxContent(layerNumber);
-      setActiveNavButton(layerNumber);
-      
-      // Scroll to corresponding trigger section
-      const targetTrigger = document.querySelector(`.scroll-trigger-section[data-layer="${layerNumber}"]`);
-      if (targetTrigger) {
-        targetTrigger.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }
+// Add click handlers to list items
+lighthouseListItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    const layerKey = item.getAttribute("data-layer");
+    setActiveListItem(item);
+    updateLighthouseContent(layerKey);
   });
 });
+
+// Odoo Tabs Functionality
+const odooTabs = document.querySelectorAll(".odoo-tab");
+const odooContent = document.getElementById("odoo-content");
+
+const odooContentData = {
+  "what-we-do": {
+    title: "What We Do",
+    description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes.",
+    items: [
+      "Architect & Align: Fit-gap analysis and solution design that maps Odoo capabilities to your operational needs",
+      "Implement & Customize: Configuration, migration, and workflow tailoring that fits your business model",
+      "Enable & Sustain: Training, change management, and managed support to ensure adoption and ROI",
+      "Hosting Advisory: Guidance on Odoo Online, Odoo.sh, or On-Premise deployment options"
+    ]
+  },
+  "why-odoo": {
+    title: "Why Odoo",
+    description: "Wondering if Odoo is the right platform for your business? Our team will help you understand the benefits and see how it can transform your operations.",
+    items: [
+      "Fully Integrated: All business apps in one platform—CRM, inventory, accounting, manufacturing, and more",
+      "Modern UX: Fast, intuitive interface that your team will actually use",
+      "Cost-Effective: Enterprise-grade capabilities without enterprise pricing",
+      "Scalable: Grows with your business from SMB to enterprise scale"
+    ]
+  },
+  "ai-agentic": {
+    title: "AI-Agentic Workforce Platform",
+    description: "Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features.",
+    items: [],
+    tag: "Powered by Personal.ai"
+  },
+  "physical-intelligence": {
+    title: "Physical Intelligence",
+    description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.",
+    items: [],
+    tag: "Clipxu AI Security"
+  }
+};
+
+const odooLogoImage = document.getElementById("odoo-logo-image");
+const odooIconDisplay = document.getElementById("odoo-icon-display");
+
+const tabIcons = {
+  "what-we-do": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
+    <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z"/>
+    <path d="M12 22V12"/>
+    <path d="M2 7L12 12L22 7"/>
+    <path d="M2 17L12 12L22 17"/>
+  </svg>`,
+  "why-odoo": "odoo",
+  "ai-agentic": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
+    <path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/>
+    <path d="M3 21L6 18L9 21L6 18L3 21Z"/>
+    <path d="M15 21L18 18L21 21L18 18L15 21Z"/>
+  </svg>`,
+  "physical-intelligence": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
+    <path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z"/>
+    <path d="M12 8V12M12 16H12.01"/>
+  </svg>`
+};
+
+function updateOdooLogo(tabKey) {
+  if (!odooLogoImage || !odooIconDisplay) return;
+  
+  const iconType = tabIcons[tabKey];
+  
+  if (iconType === "odoo") {
+    // Show Odoo logo
+    odooLogoImage.style.display = "block";
+    odooIconDisplay.style.display = "none";
+  } else {
+    // Show icon
+    odooLogoImage.style.display = "none";
+    odooIconDisplay.style.display = "block";
+    odooIconDisplay.innerHTML = iconType;
+  }
+}
+
+function updateOdooContent(tabKey) {
+  const data = odooContentData[tabKey];
+  if (!data || !odooContent) return;
+  
+  odooContent.style.opacity = "0";
+  
+  setTimeout(() => {
+    const itemsHTML = data.items && data.items.length > 0 
+      ? `<ul>${data.items.map(item => `<li>${item}</li>`).join("")}</ul>`
+      : "";
+    
+    const tagHTML = data.tag 
+      ? `<p class="partner-tag"><em>${data.tag}</em></p>`
+      : "";
+    
+    // Remove animating class to reset
+    odooContent.classList.add('animating');
+    
+    odooContent.innerHTML = `
+      <h2>${data.title}</h2>
+      <p>${data.description}</p>
+      ${itemsHTML}
+      ${tagHTML}
+    `;
+    
+    // Trigger animation
+    setTimeout(() => {
+      odooContent.classList.remove('animating');
+    }, 50);
+    
+    odooContent.style.opacity = "1";
+    
+    // Update logo/icon
+    updateOdooLogo(tabKey);
+  }, 200);
+}
+
+function setActiveOdooTab(activeTab) {
+  odooTabs.forEach((tab) => {
+    tab.classList.remove("active");
+  });
+  activeTab.classList.add("active");
+}
+
+// Initialize with active tab
+if (odooTabs.length > 0) {
+  const activeTab = document.querySelector('.odoo-tab.active') || odooTabs[0];
+  const activeTabKey = activeTab.getAttribute("data-tab");
+  setActiveOdooTab(activeTab);
+  updateOdooContent(activeTabKey);
+  updateOdooLogo(activeTabKey);
+}
+
+// Add click handlers to tabs
+odooTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const tabKey = tab.getAttribute("data-tab");
+    setActiveOdooTab(tab);
+    updateOdooContent(tabKey);
+  });
+});
+
 
 // Intersection Observer for scroll-triggered content updates
 if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
@@ -546,4 +759,81 @@ document.querySelectorAll(".btn").forEach((button) => {
     this.style.boxShadow = "none";
     });
   });
+
+// Highlight "OUR APPROACH" nav link when viewing related sections
+const ourApproachNavLink = document.querySelector('a[href="#our-approach"]');
+const ourApproachSection = document.getElementById("our-approach");
+const engagementLifecycleSection = document.getElementById("engagement-lifecycle");
+const accountabilitySection = document.getElementById("accountability");
+
+if (ourApproachNavLink && (ourApproachSection || engagementLifecycleSection || accountabilitySection)) {
+  const sectionsToWatch = [ourApproachSection, engagementLifecycleSection, accountabilitySection].filter(Boolean);
+  
+  const navObserver = new IntersectionObserver((entries) => {
+    let isAnySectionVisible = false;
+    
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        isAnySectionVisible = true;
+      }
+    });
+    
+    if (isAnySectionVisible) {
+      ourApproachNavLink.classList.add("active");
+    } else {
+      // Check if we're still in any of the sections
+      const scrollY = window.scrollY || window.pageYOffset;
+      let stillInSection = false;
+      
+      sectionsToWatch.forEach((section) => {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top + scrollY;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          
+          if (scrollY >= sectionTop - 200 && scrollY <= sectionBottom) {
+            stillInSection = true;
+          }
+        }
+      });
+      
+      if (!stillInSection) {
+        ourApproachNavLink.classList.remove("active");
+      }
+    }
+  }, {
+    threshold: 0.1,
+    rootMargin: "-100px 0px -100px 0px"
+  });
+  
+  sectionsToWatch.forEach((section) => {
+    if (section) {
+      navObserver.observe(section);
+    }
+  });
+  
+  // Also check on scroll for more accurate detection
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    let inOurApproachSection = false;
+    
+    sectionsToWatch.forEach((section) => {
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + scrollY;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (scrollY >= sectionTop - 200 && scrollY <= sectionBottom + 200) {
+          inOurApproachSection = true;
+        }
+      }
+    });
+    
+    if (inOurApproachSection) {
+      ourApproachNavLink.classList.add("active");
+    } else {
+      ourApproachNavLink.classList.remove("active");
+    }
+  });
+}
   
