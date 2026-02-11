@@ -474,7 +474,7 @@ const layerData = {
   },
   physical: {
     title: "Physical Intelligence",
-    description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments.",
+    description: "Leverage IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments",
     details: [
       "Real-time monitoring and threat detection",
       "IoT sensor integration and data collection",
@@ -484,12 +484,12 @@ const layerData = {
   },
   operational: {
     title: "Operational Backbone",
-    description: "Structured workflows, governance frameworks, and operating discipline that ensure consistency and control. This foundational layer provides the operational backbone for all other capabilities.",
+    description: "This foundational layer ensures consistency and control across all capabilities through structured workflows, governance, and operational discipline. Key elements include:",
     details: [
-      "Workflow design and optimization",
-      "Governance frameworks and controls",
-      "Process standardization across teams",
-      "Consistency and operational discipline"
+      "Optimized workflow design",
+      "Robust governance frameworks and controls",
+      "Standardized processes across teams",
+      "Fostering operational consistency and discipline"
     ]
   }
 };
@@ -543,27 +543,25 @@ const odooContent = document.getElementById("odoo-content");
 const odooContentData = {
   "what-we-do": {
     title: "What We Do",
-    description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes.",
+    description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business.",
     items: [
-      "Architect & Align: Fit-gap analysis and solution design that maps Odoo capabilities to your operational needs",
-      "Implement & Customize: Configuration, migration, and workflow tailoring that fits your business model",
-      "Enable & Sustain: Training, change management, and managed support to ensure adoption and ROI",
-      "Hosting Advisory: Guidance on Odoo Online, Odoo.sh, or On-Premise deployment options"
+      "The powerful synergy between establishing a robust Odoo-powered digital core and activating Advanced Operational Intelligence transforms a business from structured to intelligent.",
+      "Odoo's capabilities—from fit-gap analysis and customized implementation to training and managed support—establish the comprehensive, scalable Operational Backbone required for consistency and standardized workflows.",
+      "This structured, disciplined foundation then becomes the high-integrity platform that fuels the next layer of innovation: ",
+      "Physical Intelligence leverages Odoo's core data with real-time IoT and AI for situational awareness;",
+      "Sustainability & Value Engineering acts as the unifying lens, continuously measuring the cost, efficiency, and ESG impact across the Odoo system and all operational layers to ensure maximum ROI and measurable business outcomes."
     ]
   },
   "why-odoo": {
     title: "Why Odoo",
     description: "Wondering if Odoo is the right platform for your business? Our team will help you understand the benefits and see how it can transform your operations.",
     items: [
-      "Fully Integrated: All business apps in one platform—CRM, inventory, accounting, manufacturing, and more",
-      "Modern UX: Fast, intuitive interface that your team will actually use",
-      "Cost-Effective: Enterprise-grade capabilities without enterprise pricing",
-      "Scalable: Grows with your business from SMB to enterprise scale"
+      "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business."
     ]
   },
   "ai-agentic": {
     title: "AI-Agentic Workforce Platform",
-    description: "Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features.",
+    description: "The Personal AI platform enables businesses to rapidly train and deploy their own AI teammates, delivering 10x productivity at 1/10th the talent cost. Each teammate embodies a specialized persona with agentic capabilities, trained on proprietary. knowledge. This evergreen AI workforce leverages evolving institutional memory to drive human-AI collaboration across business functions. Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features.",
     items: [],
     tag: "Powered by Personal.ai"
   },
@@ -576,15 +574,11 @@ const odooContentData = {
 };
 
 const odooLogoImage = document.getElementById("odoo-logo-image");
+const paiveLogoImage = document.getElementById("paive-logo-image");
 const odooIconDisplay = document.getElementById("odoo-icon-display");
 
 const tabIcons = {
-  "what-we-do": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
-    <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z"/>
-    <path d="M12 22V12"/>
-    <path d="M2 7L12 12L22 7"/>
-    <path d="M2 17L12 12L22 17"/>
-  </svg>`,
+  "what-we-do": "paive",
   "why-odoo": "odoo",
   "ai-agentic": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
     <path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/>
@@ -605,10 +599,17 @@ function updateOdooLogo(tabKey) {
   if (iconType === "odoo") {
     // Show Odoo logo
     odooLogoImage.style.display = "block";
+    if (paiveLogoImage) paiveLogoImage.style.display = "none";
+    odooIconDisplay.style.display = "none";
+  } else if (iconType === "paive") {
+    // Show PAiVE logo
+    odooLogoImage.style.display = "none";
+    if (paiveLogoImage) paiveLogoImage.style.display = "block";
     odooIconDisplay.style.display = "none";
   } else {
     // Show icon
     odooLogoImage.style.display = "none";
+    if (paiveLogoImage) paiveLogoImage.style.display = "none";
     odooIconDisplay.style.display = "block";
     odooIconDisplay.innerHTML = iconType;
   }
