@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mobile menu toggle
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
   const mainNav = document.getElementById("main-nav");
-  
+
   if (mobileMenuToggle && mainNav) {
     mobileMenuToggle.addEventListener("click", () => {
       mobileMenuToggle.classList.toggle("active");
@@ -100,11 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let lineIndex = 0;
     let charIndex = 0;
     let isTyping = true;
-    
+
     function typeText() {
       if (lineIndex < lines.length) {
         const currentLine = lines[lineIndex];
-        
+
         if (isTyping && charIndex <= currentLine.length) {
           // Build the display text
           let displayText = "";
@@ -120,10 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
               displayText += "<br />";
             }
           }
-          
+
           typingText.innerHTML = displayText;
           charIndex++;
-          
+
           // Typing speed varies - slower for spaces, normal for letters
           const speed = currentLine[charIndex - 1] === " " ? 150 : 80;
           setTimeout(typeText, speed);
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Finished typing this line
           lineIndex++;
           charIndex = 0;
-          
+
           if (lineIndex < lines.length) {
             // Add line break and continue to next line
             setTimeout(typeText, 300);
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
-    
+
     // Start typing animation after a short delay
     setTimeout(() => {
       typeText();
@@ -161,13 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let charIndex = 0;
     let isTyping = true;
     let isDeleting = false;
-    
+
     function typeBusinessesText() {
       if (isTyping && charIndex < text.length) {
         // Show text with blinking cursor while typing
         typingBusinesses.innerHTML = text.substring(0, charIndex) + '<span class="typing-cursor">|</span>';
         charIndex++;
-        
+
         // Typing speed varies - slower for spaces, normal for letters
         const currentChar = text[charIndex - 1];
         const speed = currentChar === " " ? 150 : 80;
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(typeBusinessesText, 300); // Brief pause before retyping
       }
     }
-    
+
     // Start typing animation after a short delay (after the main heading animation)
     setTimeout(() => {
       typeBusinessesText();
@@ -240,13 +240,13 @@ document.addEventListener("DOMContentLoaded", () => {
     card.style.transform = "translateY(30px) scale(0.95)";
     card.style.transition = "opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease";
     observer.observe(card);
-    
+
     // Add hover effect
     card.addEventListener("mouseenter", () => {
       card.style.transform = "translateY(-5px) scale(1.02)";
       card.style.boxShadow = "0 10px 30px rgba(0, 229, 255, 0.3)";
     });
-    
+
     card.addEventListener("mouseleave", () => {
       card.style.transform = "translateY(0) scale(1)";
       card.style.boxShadow = "none";
@@ -306,12 +306,12 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 window.addEventListener("scroll", () => {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
-  
+
   let current = "";
   sections.forEach((section) => {
     const sectionTop = section.getBoundingClientRect().top;
     const sectionHeight = section.offsetHeight;
-    
+
     if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
       current = section.getAttribute("id");
     }
@@ -333,11 +333,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (scrollDownArrow && heroSection) {
     let showArrowTimeout;
     let isArrowVisible = false;
-    
+
     function checkIfOnHomePage() {
       const scrollY = window.scrollY || window.pageYOffset;
       const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      
+
       // Check if we're still on the home page (within hero section)
       if (scrollY < heroBottom - 100) {
         // We're on the home page - show arrow after 1 second if not already visible
@@ -358,13 +358,13 @@ document.addEventListener("DOMContentLoaded", () => {
         isArrowVisible = false;
       }
     }
-    
+
     // Check on scroll
     window.addEventListener("scroll", checkIfOnHomePage);
-    
+
     // Check on initial load - start timer if on home page
     checkIfOnHomePage();
-    
+
     // Add click handler to scroll to next section
     scrollDownArrow.addEventListener("click", () => {
       const nextSection = document.querySelector("section:not(#home)");
@@ -385,7 +385,7 @@ if (logo && backToTop && heroSection) {
     const scrollY = window.scrollY || window.pageYOffset;
     const heroRect = heroSection.getBoundingClientRect();
     const heroHeight = heroSection.offsetHeight;
-    
+
     // Hide logo when scrolled past the hero section
     if (scrollY > heroHeight - 100) {
       // Scrolled past home page - hide logo, show back-to-top arrow
@@ -397,13 +397,13 @@ if (logo && backToTop && heroSection) {
       backToTop.classList.remove("visible");
     }
   }
-  
+
   // Check on scroll
   window.addEventListener("scroll", handleLogoVisibility);
-  
+
   // Check on initial load
   handleLogoVisibility();
-  
+
   // Add click handler to scroll to top
   backToTop.addEventListener("click", () => {
     window.scrollTo({
@@ -424,11 +424,11 @@ if (workSteps.length > 0) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const stepNumber = entry.target.getAttribute("data-step");
-        
+
         // Update step content
         workSteps.forEach((step) => step.classList.remove("active"));
         entry.target.classList.add("active");
-        
+
         // Update visual indicator
         stepIndicators.forEach((indicator) => indicator.classList.remove("active"));
         const activeIndicator = document.querySelector(`.step-indicator[data-step="${stepNumber}"]`);
@@ -497,9 +497,9 @@ const layerData = {
 function updateLighthouseContent(layerKey) {
   const data = layerData[layerKey];
   if (!data || !lighthouseContentText) return;
-  
+
   lighthouseContentText.style.opacity = "0";
-  
+
   setTimeout(() => {
     lighthouseContentText.innerHTML = `
       <h3>${data.title}</h3>
@@ -541,8 +541,8 @@ const odooTabs = document.querySelectorAll(".odoo-tab");
 const odooContent = document.getElementById("odoo-content");
 
 const odooContentData = {
-  "what-we-do": {
-    title: "What We Do",
+  "operational-framework": {
+    title: "Operational Framework",
     description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business.",
     items: [
       "The powerful synergy between establishing a robust Odoo-powered digital core and activating Advanced Operational Intelligence transforms a business from structured to intelligent.",
@@ -552,17 +552,12 @@ const odooContentData = {
       "Sustainability & Value Engineering acts as the unifying lens, continuously measuring the cost, efficiency, and ESG impact across the Odoo system and all operational layers to ensure maximum ROI and measurable business outcomes."
     ]
   },
-  "why-odoo": {
-    title: "Why Odoo",
+  "ai-agentic-workforce": {
+    title: "AI-Agentic Workforce Platform",
     description: "Wondering if Odoo is the right platform for your business? Our team will help you understand the benefits and see how it can transform your operations.",
     items: [
-      "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business."
-    ]
-  },
-  "ai-agentic": {
-    title: "AI-Agentic Workforce Platform",
-    description: "The Personal AI platform enables businesses to rapidly train and deploy their own AI teammates, delivering 10x productivity at 1/10th the talent cost. Each teammate embodies a specialized persona with agentic capabilities, trained on proprietary. knowledge. This evergreen AI workforce leverages evolving institutional memory to drive human-AI collaboration across business functions. Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features.",
-    items: [],
+      "The Personal AI platform enables businesses to rapidly train and deploy their own AI teammates, delivering 10x productivity at 1/10th the talent cost. Each teammate embodies a specialized persona with agentic capabilities, trained on proprietary. knowledge. This evergreen AI workforce leverages evolving institutional memory to drive human-AI collaboration across business functions. Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features."
+    ],
     tag: "Powered by Personal.ai"
   },
   "physical-intelligence": {
@@ -570,32 +565,35 @@ const odooContentData = {
     description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.",
     items: [],
     tag: "Clipxu AI Security"
+  },
+  "strategic-operationality": {
+    title: "Strategic Operationality",
+    description: "Thanks to our dual expertise in consulting and business, we firmly believe that strategy must constantly be tested against the reality on the ground. Our approach is based on standardized and data-driven methodologies that accelerate our diagnosis and prioritize the actionability of our recommendations",
+    items: [],
+    tag: "STRATNXT"
   }
 };
 
 const odooLogoImage = document.getElementById("odoo-logo-image");
 const paiveLogoImage = document.getElementById("paive-logo-image");
 const odooIconDisplay = document.getElementById("odoo-icon-display");
+const odooLogoContainer = document.getElementById("odoo-logo-container");
 
 const tabIcons = {
   "what-we-do": "paive",
   "why-odoo": "odoo",
-  "ai-agentic": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
-    <path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/>
-    <path d="M3 21L6 18L9 21L6 18L3 21Z"/>
-    <path d="M15 21L18 18L21 21L18 18L15 21Z"/>
-  </svg>`,
-  "physical-intelligence": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 120px; height: 120px; color: var(--accent-cyan);">
-    <path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z"/>
-    <path d="M12 8V12M12 16H12.01"/>
-  </svg>`
+  "operational-framework": "odoo",
+  "ai-agentic": `<svg class="odoo-tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/><path d="M3 21L6 18L9 21L6 18L3 21Z"/><path d="M15 21L18 18L21 21L18 18L15 21Z"/></svg>`,
+  "ai-agentic-workforce": `<svg class="odoo-tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.5"/><path d="M4 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M17 5l1.5-1.5L20 5l-1.5 1.5L17 5z"/><path d="M19 9l1 1-1 1-1-1 1-1z"/><path d="M17 12l1.5 1.5L20 12l-1.5-1.5L17 12z"/></svg>`,
+  "physical-intelligence": `<svg class="odoo-tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z"/><path d="M12 8V12M12 16H12.01"/></svg>`,
+  "strategic-operationality": `<img src="./images/stratnxt.webp" alt="STRATNXT" class="odoo-tab-icon-img" />`
 };
 
 function updateOdooLogo(tabKey) {
   if (!odooLogoImage || !odooIconDisplay) return;
-  
+
   const iconType = tabIcons[tabKey];
-  
+
   if (iconType === "odoo") {
     // Show Odoo logo
     odooLogoImage.style.display = "block";
@@ -612,41 +610,48 @@ function updateOdooLogo(tabKey) {
     if (paiveLogoImage) paiveLogoImage.style.display = "none";
     odooIconDisplay.style.display = "block";
     odooIconDisplay.innerHTML = iconType;
+    if (tabKey === "strategic-operationality") {
+      odooIconDisplay.classList.add("has-stratnxt");
+      if (odooLogoContainer) odooLogoContainer.classList.add("has-stratnxt");
+    } else {
+      odooIconDisplay.classList.remove("has-stratnxt");
+      if (odooLogoContainer) odooLogoContainer.classList.remove("has-stratnxt");
+    }
   }
 }
 
 function updateOdooContent(tabKey) {
   const data = odooContentData[tabKey];
   if (!data || !odooContent) return;
-  
+
   odooContent.style.opacity = "0";
-  
+
   setTimeout(() => {
-    const itemsHTML = data.items && data.items.length > 0 
+    const itemsHTML = data.items && data.items.length > 0
       ? `<ul>${data.items.map(item => `<li>${item}</li>`).join("")}</ul>`
       : "";
-    
-    const tagHTML = data.tag 
+
+    const tagHTML = data.tag
       ? `<p class="partner-tag"><em>${data.tag}</em></p>`
       : "";
-    
+
     // Remove animating class to reset
     odooContent.classList.add('animating');
-    
+
     odooContent.innerHTML = `
       <h2>${data.title}</h2>
       <p>${data.description}</p>
       ${itemsHTML}
       ${tagHTML}
     `;
-    
+
     // Trigger animation
     setTimeout(() => {
       odooContent.classList.remove('animating');
     }, 50);
-    
+
     odooContent.style.opacity = "1";
-    
+
     // Update logo/icon
     updateOdooLogo(tabKey);
   }, 200);
@@ -677,6 +682,111 @@ odooTabs.forEach((tab) => {
   });
 });
 
+// --- ABOUT SECTION TABS ---
+const aboutContentData = {
+  "about-paive": {
+    title: "About PAiVE",
+    description: "We exist to bridge the gap between SMB operations and enterprise-grade execution. Too many businesses operate on intuition and fragmented tools. PAiVE brings structure, discipline, and measurable outcomes—without the overhead of traditional enterprise solutions."
+  },
+  "how-we-do": {
+    title: "How We Do",
+    description: ""
+  },
+  "what-we-do": {
+    title: "What We Do",
+    description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business.",
+    paragraphs: [
+      "The powerful synergy between establishing a robust Odoo-powered digital core and activating Advanced Operational Intelligence transforms a business from structured to intelligent.",
+      "Odoo's capabilities—from fit-gap analysis and customized implementation to training and managed support—establish the comprehensive, scalable Operational Backbone required for consistency and standardized workflows.",
+      "This structured, disciplined foundation then becomes the high-integrity platform that fuels the next layer of innovation: Physical Intelligence leverages Odoo's core data with real-time IoT and AI for situational awareness."
+    ]
+  },
+  "why-we-do": {
+    title: "Why We Do",
+    description: "We exist to bridge the gap between SMB operations and enterprise-grade execution. Too many businesses operate on intuition and fragmented tools. PAiVE brings structure, discipline, and measurable outcomes—without the overhead of traditional enterprise solutions."
+  }
+};
+
+const aboutTabs = document.querySelectorAll(".about-tab");
+const aboutContent = document.getElementById("about-content");
+const aboutHowWeDo = document.getElementById("about-how-we-do");
+
+function updateAboutContent(tabKey) {
+  const data = aboutContentData[tabKey];
+  if (!data || !aboutContent) return;
+
+  const isHowWeDo = tabKey === "how-we-do";
+
+  if (isHowWeDo && aboutHowWeDo) {
+    aboutContent.hidden = true;
+    aboutHowWeDo.hidden = false;
+  } else {
+    aboutContent.hidden = false;
+    if (aboutHowWeDo) aboutHowWeDo.hidden = true;
+    aboutContent.style.opacity = "0";
+    setTimeout(() => {
+      const paragraphsHTML = data.paragraphs && data.paragraphs.length > 0
+        ? data.paragraphs.map(p => `<p>${p}</p>`).join("")
+        : "";
+      const descriptionHTML = data.description ? `<p>${data.description}</p>` : "";
+      aboutContent.innerHTML = `
+        <h2>${data.title}</h2>
+        ${descriptionHTML}
+        ${paragraphsHTML}
+      `;
+      aboutContent.style.opacity = "1";
+    }, 150);
+  }
+}
+
+function setActiveAboutTab(activeTab) {
+  aboutTabs.forEach((tab) => tab.classList.remove("active"));
+  if (activeTab) activeTab.classList.add("active");
+}
+
+if (aboutTabs.length > 0 && aboutContent) {
+  const activeAboutTab = document.querySelector(".about-tab.active") || aboutTabs[0];
+  const activeAboutKey = activeAboutTab.getAttribute("data-about-tab");
+  setActiveAboutTab(activeAboutTab);
+  updateAboutContent(activeAboutKey);
+
+  aboutTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const tabKey = tab.getAttribute("data-about-tab");
+      setActiveAboutTab(tab);
+      updateAboutContent(tabKey);
+    });
+  });
+}
+
+// How We Do wheel: show segment description on hover in the bottom text area
+const howWeDoHoverText = document.getElementById("how-we-do-hover-text");
+const howWeDoSegments = document.querySelectorAll(".how-we-do-segment");
+const howWeDoDescriptions = [
+  "Understand operations and identify value leakage.",
+  "Define KRAs and improvement levers.",
+  "Architect AI and operating model changes.",
+  "Execute with human + AI collaboration.",
+  "Track KPIs and ROI continuously.",
+  "Expand across teams, sites, or regions."
+];
+const howWeDoDefaultText = "Hover over a segment to see its description.";
+
+if (howWeDoHoverText && howWeDoSegments.length === 6) {
+  howWeDoSegments.forEach((path, i) => {
+    path.addEventListener("mouseenter", () => {
+      howWeDoHoverText.textContent = `${i + 1}. ${howWeDoDescriptions[i]}`;
+      howWeDoHoverText.classList.add("has-content");
+    });
+  });
+  const diagramBox = document.querySelector(".how-we-do-diagram-box");
+  if (diagramBox) {
+    diagramBox.addEventListener("mouseleave", () => {
+      howWeDoHoverText.textContent = howWeDoDefaultText;
+      howWeDoHoverText.classList.remove("has-content");
+    });
+  }
+}
 
 // Intersection Observer for scroll-triggered content updates
 if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
@@ -689,7 +799,7 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
     threshold: 0.3,
     rootMargin: "-30% 0px -30% 0px"
   };
-  
+
   const triggerObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -717,7 +827,7 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
       scrollTriggerSections.forEach((trigger) => {
         triggerObserver.unobserve(trigger);
       });
-      
+
       const newOptions = newIsMobile ? {
         threshold: 0.2,
         rootMargin: "-20% 0px -20% 0px"
@@ -725,7 +835,7 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
         threshold: 0.3,
         rootMargin: "-30% 0px -30% 0px"
       };
-      
+
       const newObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -738,7 +848,7 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
           }
         });
       }, newOptions);
-      
+
       scrollTriggerSections.forEach((trigger) => {
         newObserver.observe(trigger);
       });
@@ -749,55 +859,53 @@ if (scrollTriggerSections.length > 0 && lighthouseShowcase) {
 
 // Button hover animations
 document.querySelectorAll(".btn").forEach((button) => {
-  button.addEventListener("mouseenter", function() {
+  button.addEventListener("mouseenter", function () {
     this.style.transform = "translateY(-2px) scale(1.05)";
     this.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
     this.style.boxShadow = "0 5px 20px rgba(0, 229, 255, 0.4)";
   });
-  
-  button.addEventListener("mouseleave", function() {
+
+  button.addEventListener("mouseleave", function () {
     this.style.transform = "translateY(0) scale(1)";
     this.style.boxShadow = "none";
-    });
   });
+});
 
 // Highlight "OUR APPROACH" nav link when viewing related sections
 const ourApproachNavLink = document.querySelector('a[href="#our-approach"]');
 const ourApproachSection = document.getElementById("our-approach");
-const engagementLifecycleSection = document.getElementById("engagement-lifecycle");
-const accountabilitySection = document.getElementById("accountability");
 
-if (ourApproachNavLink && (ourApproachSection || engagementLifecycleSection || accountabilitySection)) {
-  const sectionsToWatch = [ourApproachSection, engagementLifecycleSection, accountabilitySection].filter(Boolean);
-  
+if (ourApproachNavLink && ourApproachSection) {
+  const sectionsToWatch = [ourApproachSection];
+
   const navObserver = new IntersectionObserver((entries) => {
     let isAnySectionVisible = false;
-    
+
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         isAnySectionVisible = true;
       }
     });
-    
+
     if (isAnySectionVisible) {
       ourApproachNavLink.classList.add("active");
     } else {
       // Check if we're still in any of the sections
       const scrollY = window.scrollY || window.pageYOffset;
       let stillInSection = false;
-      
+
       sectionsToWatch.forEach((section) => {
         if (section) {
           const rect = section.getBoundingClientRect();
           const sectionTop = rect.top + scrollY;
           const sectionBottom = sectionTop + section.offsetHeight;
-          
+
           if (scrollY >= sectionTop - 200 && scrollY <= sectionBottom) {
             stillInSection = true;
           }
         }
       });
-      
+
       if (!stillInSection) {
         ourApproachNavLink.classList.remove("active");
       }
@@ -806,30 +914,30 @@ if (ourApproachNavLink && (ourApproachSection || engagementLifecycleSection || a
     threshold: 0.1,
     rootMargin: "-100px 0px -100px 0px"
   });
-  
+
   sectionsToWatch.forEach((section) => {
     if (section) {
       navObserver.observe(section);
     }
   });
-  
+
   // Also check on scroll for more accurate detection
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY || window.pageYOffset;
     let inOurApproachSection = false;
-    
+
     sectionsToWatch.forEach((section) => {
       if (section) {
         const rect = section.getBoundingClientRect();
         const sectionTop = rect.top + scrollY;
         const sectionBottom = sectionTop + section.offsetHeight;
-        
+
         if (scrollY >= sectionTop - 200 && scrollY <= sectionBottom + 200) {
           inOurApproachSection = true;
         }
       }
     });
-    
+
     if (inOurApproachSection) {
       ourApproachNavLink.classList.add("active");
     } else {
@@ -837,4 +945,3 @@ if (ourApproachNavLink && (ourApproachSection || engagementLifecycleSection || a
     }
   });
 }
-  
