@@ -104,9 +104,6 @@
     </div>
     
     <div class="container hero-grid">
-      <div class="hero-image-wrap">
-        <img src="./images/homepage.png" alt="Enterprise operations and digital connectivity" class="hero-homepage-img" />
-      </div>
       <div class="hero-content">
         <h1>
           Enterprise-grade operations<br />
@@ -120,6 +117,9 @@
           <a href="#contact" class="btn btn-primary">Start a Conversation</a>
           
         </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="./images/homepage.png" alt="Enterprise operations and digital connectivity" class="hero-homepage-img" />
       </div>
     </div>
     
@@ -218,7 +218,7 @@
             <img src="./images/inventory.jpg" alt="Warehouse storage facility with inventory shelves" />
           </div>
           <div class="industry-content">
-            <h3>Inventory-Heavy SMBs</h3>
+            <h3>Supply Chain for SMBs</h3>
             <p>For small to mid-sized businesses managing complex, multi-location inventory—particularly those with stringent supply chain and regulatory requirements—Physical Intelligence transforms operational hurdles into a competitive advantage. This solution moves beyond traditional inventory methods by integrating real-time IoT sensor data with advanced AI, providing superior visibility and control over assets across every site.
             </p>
           </div>
@@ -230,15 +230,6 @@
           <div class="industry-content">
             <h3>Growing SMBs</h3>
             <p>Scaling Operations, Smarter. For businesses rapidly expanding their footprint, we provide the enterprise-grade discipline and system integration needed to control complexity, without the massive IT overhead. Deploy intelligent workflows and AI agents quickly, allowing you to focus on growth, not administrative burdens.            </p>
-          </div>
-        </div>
-        <div class="industry-content-card">
-          <div class="industry-image">
-            <div class="industry-image-placeholder"></div>
-          </div>
-          <div class="industry-content">
-            <h3>Growing SMBs</h3>
-            <p>Businesses scaling operations and needing enterprise-grade discipline without enterprise overhead.</p>
           </div>
         </div>
       </div>
@@ -272,6 +263,7 @@
             </div>
             <div class="about-how-we-do" id="about-how-we-do" hidden>
               <h2>How We Do</h2>
+              <div class="how-we-do-hover-text" id="how-we-do-hover-text" aria-live="polite">Hover over a segment to see its description.</div>
               <div class="how-we-do-diagram-box">
                 <svg class="how-we-do-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="6-step process">
                   <defs>
@@ -282,23 +274,27 @@
                     <linearGradient id="hw-seg4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a52a2a"/><stop offset="100%" stop-color="#d64545"/></linearGradient>
                     <linearGradient id="hw-seg5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4a2c6a"/><stop offset="100%" stop-color="#6b4a8a"/></linearGradient>
                   </defs>
-                  <path id="hw-path-0" class="how-we-do-segment" d="M 200 60 A 140 140 0 0 1 79 130 L 157 175 A 50 50 0 0 0 200 150 Z" fill="url(#hw-seg0)"/>
-                  <path id="hw-path-1" class="how-we-do-segment" d="M 79 130 A 140 140 0 0 1 79 270 L 157 225 A 50 50 0 0 0 157 175 Z" fill="url(#hw-seg1)"/>
-                  <path id="hw-path-2" class="how-we-do-segment" d="M 79 270 A 140 140 0 0 1 200 340 L 200 250 A 50 50 0 0 0 157 225 Z" fill="url(#hw-seg2)"/>
-                  <path id="hw-path-3" class="how-we-do-segment" d="M 200 340 A 140 140 0 0 1 321 270 L 243 225 A 50 50 0 0 0 200 250 Z" fill="url(#hw-seg3)"/>
-                  <path id="hw-path-4" class="how-we-do-segment" d="M 321 270 A 140 140 0 0 1 321 130 L 243 175 A 50 50 0 0 0 243 225 Z" fill="url(#hw-seg4)"/>
-                  <path id="hw-path-5" class="how-we-do-segment" d="M 321 130 A 140 140 0 0 1 200 60 L 200 150 A 50 50 0 0 0 243 175 Z" fill="url(#hw-seg5)"/>
-                  <circle cx="200" cy="200" r="50" fill="#fff"/>
-                  <!-- Text centered inside each segment (radius ~85) -->
-                  <g class="hw-text-1"><text x="158" y="120" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">1</text><text x="158" y="136" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Scan</text></g>
-                  <g class="hw-text-2"><text x="115" y="198" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">2</text><text x="115" y="214" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Diagnose</text></g>
-                  <g class="hw-text-3"><text x="158" y="280" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">3</text><text x="158" y="296" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Design</text></g>
-                  <g class="hw-text-4"><text x="242" y="280" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">4</text><text x="242" y="296" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Deploy</text></g>
-                  <g class="hw-text-5"><text x="285" y="198" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">5</text><text x="285" y="214" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Measure</text></g>
-                  <g class="hw-text-6"><text x="242" y="120" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">6</text><text x="242" y="136" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Scale</text></g>
+                  <!-- 6 equal segments: outer r=120, inner r=50, clockwise from top -->
+                  <path id="hw-path-0" class="how-we-do-segment" d="M 200 80 A 120 120 0 0 1 303.9 140 L 243.3 175 A 50 50 0 0 0 200 150 Z" fill="url(#hw-seg0)"/>
+                  <path id="hw-path-1" class="how-we-do-segment" d="M 303.9 140 A 120 120 0 0 1 303.9 260 L 243.3 225 A 50 50 0 0 0 243.3 175 Z" fill="url(#hw-seg1)"/>
+                  <path id="hw-path-2" class="how-we-do-segment" d="M 303.9 260 A 120 120 0 0 1 200 320 L 200 250 A 50 50 0 0 0 243.3 225 Z" fill="url(#hw-seg2)"/>
+                  <path id="hw-path-3" class="how-we-do-segment" d="M 200 320 A 120 120 0 0 1 96.1 260 L 156.7 225 A 50 50 0 0 0 200 250 Z" fill="url(#hw-seg3)"/>
+                  <path id="hw-path-4" class="how-we-do-segment" d="M 96.1 260 A 120 120 0 0 1 96.1 140 L 156.7 175 A 50 50 0 0 0 156.7 225 Z" fill="url(#hw-seg4)"/>
+                  <path id="hw-path-5" class="how-we-do-segment" d="M 96.1 140 A 120 120 0 0 1 200 80 L 200 150 A 50 50 0 0 0 156.7 175 Z" fill="url(#hw-seg5)"/>
+                  <circle cx="200" cy="200" r="50" class="how-we-do-center" fill="currentColor"/>
+                  <!-- Arrow from center pointing at hovered segment -->
+                  <g id="how-we-do-arrow" class="how-we-do-arrow" aria-hidden="true">
+                    <polygon points="200,158 192,198 208,198" fill="rgba(0,229,255,0.9)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                  </g>
+                  <!-- Text at each segment's center (radius ~92) so labels sit on the colored wedges -->
+                  <g class="hw-text-1"><text x="242" y="126" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">1</text><text x="242" y="140" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Scan</text></g>
+                  <g class="hw-text-2"><text x="285" y="198" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">2</text><text x="285" y="212" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Diagnose</text></g>
+                  <g class="hw-text-3"><text x="242" y="274" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">3</text><text x="242" y="288" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Design</text></g>
+                  <g class="hw-text-4"><text x="158" y="274" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">4</text><text x="158" y="288" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Deploy</text></g>
+                  <g class="hw-text-5"><text x="115" y="198" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">5</text><text x="115" y="212" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Measure</text></g>
+                  <g class="hw-text-6"><text x="158" y="126" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">6</text><text x="158" y="140" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Scale</text></g>
                 </svg>
               </div>
-              <div class="how-we-do-hover-text" id="how-we-do-hover-text" aria-live="polite">Hover over a segment to see its description.</div>
             </div>
           </div>
         </div>
@@ -312,6 +308,14 @@
       <div class="contact-section-layout">
         <div class="contact-section-heading">
           <h2 class="contact-headline">Questions?<br>Reach out.</h2>
+          <div class="contact-direct-wrap">
+            <p class="contact-direct">
+              Reach out directly at <a href="mailto:prem@paive.com" class="contact-email-link">prem@paive.com</a>
+            </p>
+            <p class="contact-phone">
+              <a href="tel:+18002379773" class="contact-phone-link">1.800.237.9773</a>
+            </p>
+          </div>
         </div>
         <div class="contact-section-form-wrap">
           <form class="contact-form" action="#" method="post">
@@ -343,9 +347,6 @@
               <button type="submit" class="contact-submit-btn">Submit</button>
             </div>
           </form>
-          <p class="contact-direct">
-            Reach out directly at <a href="mailto:connect@paive.com" class="contact-email-link">connect@paive.com</a>
-          </p>
         </div>
       </div>
     </div>

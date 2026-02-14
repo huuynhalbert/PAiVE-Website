@@ -554,7 +554,7 @@ const odooContentData = {
   },
   "ai-agentic-workforce": {
     title: "AI-Agentic Workforce Platform",
-    description: "Wondering if Odoo is the right platform for your business? Our team will help you understand the benefits and see how it can transform your operations.",
+    description: "",
     items: [
       "The Personal AI platform enables businesses to rapidly train and deploy their own AI teammates, delivering 10x productivity at 1/10th the talent cost. Each teammate embodies a specialized persona with agentic capabilities, trained on proprietary. knowledge. This evergreen AI workforce leverages evolving institutional memory to drive human-AI collaboration across business functions. Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features."
     ],
@@ -685,7 +685,7 @@ odooTabs.forEach((tab) => {
 // --- ABOUT SECTION TABS ---
 const aboutContentData = {
   "about-paive": {
-    title: "About PAiVE",
+    title: "",
     description: "We exist to bridge the gap between SMB operations and enterprise-grade execution. Too many businesses operate on intuition and fragmented tools. PAiVE brings structure, discipline, and measurable outcomes—without the overhead of traditional enterprise solutions."
   },
   "how-we-do": {
@@ -772,11 +772,19 @@ const howWeDoDescriptions = [
 ];
 const howWeDoDefaultText = "Hover over a segment to see its description.";
 
+// Rotation (deg) so center arrow points at each segment; arrow points up (12 o'clock), positive = clockwise
+const howWeDoArrowAngles = [30, 90, 150, 210, 270, 330];
+
 if (howWeDoHoverText && howWeDoSegments.length === 6) {
+  const howWeDoArrow = document.getElementById("how-we-do-arrow");
   howWeDoSegments.forEach((path, i) => {
     path.addEventListener("mouseenter", () => {
       howWeDoHoverText.textContent = `${i + 1}. ${howWeDoDescriptions[i]}`;
       howWeDoHoverText.classList.add("has-content");
+      if (howWeDoArrow) {
+        howWeDoArrow.style.transform = `rotate(${howWeDoArrowAngles[i]}deg)`;
+        howWeDoArrow.style.opacity = "1";
+      }
     });
   });
   const diagramBox = document.querySelector(".how-we-do-diagram-box");
@@ -784,6 +792,7 @@ if (howWeDoHoverText && howWeDoSegments.length === 6) {
     diagramBox.addEventListener("mouseleave", () => {
       howWeDoHoverText.textContent = howWeDoDefaultText;
       howWeDoHoverText.classList.remove("has-content");
+      if (howWeDoArrow) howWeDoArrow.style.opacity = "0";
     });
   }
 }
