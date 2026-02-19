@@ -542,29 +542,66 @@ const odooContent = document.getElementById("odoo-content");
 
 const odooContentData = {
   "operational-framework": {
-    title: "Operational Framework",
-    description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business.",
-    items: [
-      "The powerful synergy between establishing a robust Odoo-powered digital core and activating Advanced Operational Intelligence transforms a business from structured to intelligent.",
-      "Odoo's capabilities—from fit-gap analysis and customized implementation to training and managed support—establish the comprehensive, scalable Operational Backbone required for consistency and standardized workflows.",
-      "This structured, disciplined foundation then becomes the high-integrity platform that fuels the next layer of innovation: ",
-      "Physical Intelligence leverages Odoo's core data with real-time IoT and AI for situational awareness;",
-      "Sustainability & Value Engineering acts as the unifying lens, continuously measuring the cost, efficiency, and ESG impact across the Odoo system and all operational layers to ensure maximum ROI and measurable business outcomes."
+    layout: "odoo-philosophy-cards",
+    heading: "Odoo Solutions<br>by PAiVE",
+    tagline: "PAiVE is a consulting-led, system-agnostic partner. We offer Odoo not just as software, but as a strategic modular platform to drive operational excellence and measurable business outcomes for your organization.",
+    cards: [
+      {
+        icon: "architect",
+        title: "Architect & Align",
+        description: "We start with fit-gap analysis and solution architecture to ensure the Odoo ecosystem aligns perfectly with your strategic objectives."
+      },
+      {
+        icon: "implement",
+        title: "Implement & Customize",
+        description: "End-to-end execution including configuration, data migration, and precise customization using Studio to match your unique workflows."
+      },
+      {
+        icon: "hosting",
+        title: "Hosting Advisory",
+        description: "Expert guidance on selecting the right hosting environment—Odoo Online, Odoo.sh, or On-Premise—based on your compliance and scale needs."
+      },
+      {
+        icon: "enable",
+        title: "Enable & Sustain",
+        description: "We deliver comprehensive training, change management, and managed support to ensure adoption, faster time-to-value, and lower TCO."
+      }
     ]
   },
   "ai-agentic-workforce": {
-    title: "AI-Agentic Workforce Platform",
-    description: "",
-    items: [
-      "The Personal AI platform enables businesses to rapidly train and deploy their own AI teammates, delivering 10x productivity at 1/10th the talent cost. Each teammate embodies a specialized persona with agentic capabilities, trained on proprietary. knowledge. This evergreen AI workforce leverages evolving institutional memory to drive human-AI collaboration across business functions. Transform individual expertise into scalable, collaborative AI workers. Conceptual approach focused on outcomes, not technical features."
-    ],
-    tag: "Powered by Personal.ai"
-  },
-  "physical-intelligence": {
-    title: "Physical Intelligence",
-    description: "IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness.",
-    items: [],
-    tag: "Clipxu AI Security"
+    layout: "personal-ai",
+    heading: "Personal.ai<br>Workforce<br>Platform",
+    paragraph: "As the AI-Agentic Workforce Layer of PAiVE, Personal.ai allows enterprises to train and deploy specialized AI workers (Personas) at scale. It transforms individual expertise into scalable, collaborative knowledge assets.",
+    firstLineHighlight: true,
+    trustedBy: {
+      label: "TRUSTED BY:",
+      partners: [
+        { name: "AT&T" },
+        { name: "Amer Sports" }
+      ]
+    },
+    cards: [
+      {
+        icon: "personas",
+        title: "Specialized AI Personas",
+        description: "Train and deploy AI workers with specific job functions and deep domain expertise. Scale your team's capability without linear headcount growth."
+      },
+      {
+        icon: "plm",
+        title: "Proprietary Personal Language Models",
+        description: "Unlike generic LLMs, our Personal Language Models (PLM) are trained on your proprietary data, maintaining context, tone, and specific knowledge."
+      },
+      {
+        icon: "nocode",
+        title: "No-Code Platform",
+        description: "Create and manage AI teams without engineering resources. The intuitive interface allows for rapid training and deployment of new AI capabilities."
+      },
+      {
+        icon: "security",
+        title: "Enterprise-Grade Security",
+        description: "Built for the enterprise with SOC 2 and HIPAA compliance. Your data remains private, secure, and exclusively yours—never used to train public models."
+      }
+    ]
   },
   "strategic-operationality": {
     title: "Strategic Operationality",
@@ -578,14 +615,41 @@ const odooLogoImage = document.getElementById("odoo-logo-image");
 const paiveLogoImage = document.getElementById("paive-logo-image");
 const odooIconDisplay = document.getElementById("odoo-icon-display");
 const odooLogoContainer = document.getElementById("odoo-logo-container");
+const odooOperationalIntro = document.getElementById("odoo-operational-intro");
+const odooOperationalHeading = document.getElementById("odoo-operational-heading");
+const odooOperationalTagline = document.getElementById("odoo-operational-tagline");
+const odooPersonalAiIntro = document.getElementById("odoo-personal-ai-intro");
+const personalAiHeading = document.getElementById("personal-ai-heading");
+const personalAiParagraph = document.getElementById("personal-ai-paragraph");
+const personalAiPartners = document.getElementById("personal-ai-partners");
+const odooLogoSide = document.querySelector(".odoo-logo-side");
+
+function getOdooOperationalCardIcon(iconKey) {
+  const icons = {
+    architect: '<svg class="odoo-operational-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+    implement: '<svg class="odoo-operational-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9"/><circle cx="12" cy="12" r="3"/><path d="M12 21a9 9 0 0 1-9-9"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="M12 3v2"/><path d="M12 19v2"/></svg>',
+    hosting: '<svg class="odoo-operational-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><path d="M6 10v10"/><path d="M12 10v10"/><path d="M18 10v10"/></svg>',
+    enable: '<svg class="odoo-operational-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17 9 12 4 7"/><path d="M9 17h6"/><path d="M15 7v10"/><path d="M12 2L14 8h4l-3 4 1 6-4-6-4 6 1-6-3-4h4l2-6z"/></svg>'
+  };
+  return icons[iconKey] || "";
+}
+
+function getPersonalAiCardIcon(iconKey) {
+  const icons = {
+    personas: '<svg class="personal-ai-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/></svg>',
+    plm: '<svg class="personal-ai-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/><circle cx="12" cy="10" r="1.5" fill="currentColor" opacity="0.6"/></svg>',
+    nocode: '<svg class="personal-ai-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/><path d="M8 16l2-2"/><path d="M16 8l-2 2"/></svg>',
+    security: '<svg class="personal-ai-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
+  };
+  return icons[iconKey] || "";
+}
 
 const tabIcons = {
   "what-we-do": "paive",
   "why-odoo": "odoo",
   "operational-framework": "odoo",
   "ai-agentic": `<svg class="odoo-tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/><path d="M3 21L6 18L9 21L6 18L3 21Z"/><path d="M15 21L18 18L21 21L18 18L15 21Z"/></svg>`,
-  "ai-agentic-workforce": `<svg class="odoo-tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.5"/><path d="M4 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M17 5l1.5-1.5L20 5l-1.5 1.5L17 5z"/><path d="M19 9l1 1-1 1-1-1 1-1z"/><path d="M17 12l1.5 1.5L20 12l-1.5-1.5L17 12z"/></svg>`,
-  "physical-intelligence": `<svg class="odoo-tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7L3 12C3 16.55 6.16 20.74 10.5 21.95C11.05 22.1 11.5 22.1 12 22.1C12.5 22.1 12.95 22.1 13.5 21.95C17.84 20.74 21 16.55 21 12V7L12 2Z"/><path d="M12 8V12M12 16H12.01"/></svg>`,
+  "ai-agentic-workforce": `<img src="./images/personalai.png" alt="AI Agentic Workforce" class="odoo-tab-icon-img" />`,
   "strategic-operationality": `<img src="./images/stratnxt.webp" alt="STRATNXT" class="odoo-tab-icon-img" />`
 };
 
@@ -612,10 +676,21 @@ function updateOdooLogo(tabKey) {
     odooIconDisplay.innerHTML = iconType;
     if (tabKey === "strategic-operationality") {
       odooIconDisplay.classList.add("has-stratnxt");
-      if (odooLogoContainer) odooLogoContainer.classList.add("has-stratnxt");
-    } else {
+      odooIconDisplay.classList.remove("has-personal-ai");
+      if (odooLogoContainer) {
+        odooLogoContainer.classList.add("has-stratnxt");
+        odooLogoContainer.classList.remove("has-personal-ai");
+      }
+    } else if (tabKey === "ai-agentic-workforce") {
       odooIconDisplay.classList.remove("has-stratnxt");
-      if (odooLogoContainer) odooLogoContainer.classList.remove("has-stratnxt");
+      odooIconDisplay.classList.add("has-personal-ai");
+      if (odooLogoContainer) {
+        odooLogoContainer.classList.remove("has-stratnxt");
+        odooLogoContainer.classList.add("has-personal-ai");
+      }
+    } else {
+      odooIconDisplay.classList.remove("has-stratnxt", "has-personal-ai");
+      if (odooLogoContainer) odooLogoContainer.classList.remove("has-stratnxt", "has-personal-ai");
     }
   }
 }
@@ -624,35 +699,108 @@ function updateOdooContent(tabKey) {
   const data = odooContentData[tabKey];
   if (!data || !odooContent) return;
 
+  const isPersonalAi = data.layout === "personal-ai";
+  const isOdooPhilosophyCards = data.layout === "odoo-philosophy-cards";
+
+  if (odooLogoSide) {
+    odooLogoSide.classList.toggle("has-personal-ai-intro", isPersonalAi);
+    odooLogoSide.classList.toggle("has-odoo-operational-intro", isOdooPhilosophyCards);
+  }
+  if (odooOperationalIntro) {
+    if (isOdooPhilosophyCards) {
+      odooOperationalIntro.hidden = false;
+      odooOperationalIntro.setAttribute("aria-hidden", "false");
+      if (odooOperationalHeading && data.heading) {
+        odooOperationalHeading.innerHTML = data.heading;
+      }
+      if (odooOperationalTagline && data.tagline) {
+        odooOperationalTagline.textContent = data.tagline;
+      }
+    } else {
+      odooOperationalIntro.hidden = true;
+      odooOperationalIntro.setAttribute("aria-hidden", "true");
+    }
+  }
+  if (odooPersonalAiIntro) {
+    if (isPersonalAi) {
+      odooPersonalAiIntro.hidden = false;
+      odooPersonalAiIntro.setAttribute("aria-hidden", "false");
+      if (personalAiHeading && data.heading) {
+        personalAiHeading.innerHTML = data.heading;
+      }
+      if (personalAiParagraph && data.paragraph) {
+        if (data.firstLineHighlight && data.paragraph.indexOf(".") !== -1) {
+          const firstSentence = data.paragraph.slice(0, data.paragraph.indexOf(".") + 1);
+          const rest = data.paragraph.slice(firstSentence.length).trim();
+          personalAiParagraph.innerHTML = `<span class="personal-ai-first-line">${firstSentence}</span>${rest ? " " + rest : ""}`;
+        } else {
+          personalAiParagraph.textContent = data.paragraph;
+        }
+      }
+      if (personalAiPartners && data.trustedBy && data.trustedBy.partners && data.trustedBy.partners.length > 0) {
+        personalAiPartners.innerHTML = data.trustedBy.partners
+          .map(p => `<span class="personal-ai-partner">${p.name}</span>`)
+          .join("");
+      }
+    } else {
+      odooPersonalAiIntro.hidden = true;
+      odooPersonalAiIntro.setAttribute("aria-hidden", "true");
+    }
+  }
+
   odooContent.style.opacity = "0";
 
   setTimeout(() => {
-    const itemsHTML = data.items && data.items.length > 0
-      ? `<ul>${data.items.map(item => `<li>${item}</li>`).join("")}</ul>`
-      : "";
-
-    const tagHTML = data.tag
-      ? `<p class="partner-tag"><em>${data.tag}</em></p>`
-      : "";
-
-    // Remove animating class to reset
-    odooContent.classList.add('animating');
-
-    odooContent.innerHTML = `
-      <h2>${data.title}</h2>
-      <p>${data.description}</p>
-      ${itemsHTML}
-      ${tagHTML}
-    `;
-
-    // Trigger animation
-    setTimeout(() => {
-      odooContent.classList.remove('animating');
-    }, 50);
+    if (isOdooPhilosophyCards && data.cards && data.cards.length > 0) {
+      odooContent.classList.remove("animating");
+      odooContent.innerHTML = `
+        <div class="odoo-operational-cards">
+          ${data.cards.map(card => `
+            <div class="odoo-operational-card">
+              <div class="odoo-operational-card-icon-wrap">${getOdooOperationalCardIcon(card.icon)}</div>
+              <div class="odoo-operational-card-text">
+                <h3 class="odoo-operational-card-title">${card.title}</h3>
+                <p class="odoo-operational-card-desc">${card.description}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    } else if (isPersonalAi && data.cards && data.cards.length > 0) {
+      odooContent.classList.remove("animating");
+      odooContent.innerHTML = `
+        <div class="personal-ai-cards">
+          ${data.cards.map(card => `
+            <div class="personal-ai-card">
+              <div class="personal-ai-card-icon-wrap">${getPersonalAiCardIcon(card.icon)}</div>
+              <div class="personal-ai-card-text">
+                <h3 class="personal-ai-card-title">${card.title}</h3>
+                <p class="personal-ai-card-desc">${card.description}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    } else {
+      const itemsHTML = data.items && data.items.length > 0
+        ? `<ul>${data.items.map(item => `<li>${item}</li>`).join("")}</ul>`
+        : "";
+      const tagHTML = data.tag
+        ? `<p class="partner-tag"><em>${data.tag}</em></p>`
+        : "";
+      odooContent.classList.add("animating");
+      odooContent.innerHTML = `
+        <h2>${data.title}</h2>
+        <p>${data.description}</p>
+        ${itemsHTML}
+        ${tagHTML}
+      `;
+      setTimeout(() => {
+        odooContent.classList.remove("animating");
+      }, 50);
+    }
 
     odooContent.style.opacity = "1";
-
-    // Update logo/icon
     updateOdooLogo(tabKey);
   }, 200);
 }
@@ -683,22 +831,78 @@ odooTabs.forEach((tab) => {
 });
 
 // --- ABOUT SECTION TABS ---
+const aboutWhoWeAreContent = {
+  heading: "Who We Are",
+  paragraphs: [
+    "PAiVE helps SMEs operate like large enterprises—without the overhead.",
+    "We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes.",
+    "We don't advise and disappear. We build and run with you."
+  ]
+};
+
+const aboutPaiveRightItems = [
+  {
+    title: "Consulting-Led Approach",
+    description: "We combine advisory-led problem solving with an AI-agentic workforce model to augment human teams and improve decision quality.",
+    icon: "consulting"
+  },
+  {
+    title: "AI as a Collaborator",
+    description: "We use AI to scale consulting impact across clients and geographies without burning out teams or diluting service quality.",
+    icon: "ai"
+  },
+  {
+    title: "Hands-On. Business-First",
+    description: "PAiVE is not a product company or a people-heavy system integrator. We are a consulting-led services organization that streamlines and automates SMB operations to drive measurable outcomes.",
+    icon: "briefcase"
+  },
+  {
+    title: "Measurable Outcomes",
+    description: "Our mission is to enable the next generation of SMEs to operate with the intelligence and execution discipline of large enterprises.",
+    icon: "chart"
+  }
+];
+
 const aboutContentData = {
   "about-paive": {
-    title: "",
-    description: "We exist to bridge the gap between SMB operations and enterprise-grade execution. Too many businesses operate on intuition and fragmented tools. PAiVE brings structure, discipline, and measurable outcomes—without the overhead of traditional enterprise solutions."
+    layout: "philosophy-and-cards",
+    philosophy: {
+      heading: "Who We Are",
+      tagline: "PAiVE helps SMEs operate like large enterprises—without the overhead. We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes. We don't advise and disappear. We build and run with you."
+    },
+    rightItems: aboutPaiveRightItems
   },
   "how-we-do": {
     title: "How We Do",
     description: ""
   },
   "what-we-do": {
-    title: "What We Do",
-    description: "PAiVE delivers Odoo as a strategic platform—not just software. We architect, implement, and enable Odoo to drive measurable business outcomes for small and medium business.",
-    paragraphs: [
-      "The powerful synergy between establishing a robust Odoo-powered digital core and activating Advanced Operational Intelligence transforms a business from structured to intelligent.",
-      "Odoo's capabilities—from fit-gap analysis and customized implementation to training and managed support—establish the comprehensive, scalable Operational Backbone required for consistency and standardized workflows.",
-      "This structured, disciplined foundation then becomes the high-integrity platform that fuels the next layer of innovation: Physical Intelligence leverages Odoo's core data with real-time IoT and AI for situational awareness."
+    layout: "philosophy-and-cards",
+    philosophy: {
+      heading: "Our<br>Philosophy",
+      tagline: "We start with understanding. We design what works. And we stay to make it run."
+    },
+    rightItems: [
+      {
+        title: "Consulting First",
+        description: "We move clients from \"As-Is\" (fragmented, manual, intuition-driven) to \"To-Be\" (structured, data-informed, decision-driven).",
+        icon: "gears"
+      },
+      {
+        title: "AI as Force Multiplier",
+        description: "AI-agentic systems are collaborators, not replacements—assisting with analysis, coordination, and execution consistency.",
+        icon: "brain"
+      },
+      {
+        title: "Clarity Before Tech",
+        description: "Technology is introduced only after operational clarity is achieved, ensuring solutions solve real business problems.",
+        icon: "magnifier"
+      },
+      {
+        title: "Human + AI Synergy",
+        description: "Consultants focus on judgment and leadership while AI handles routine, multiplying capability without linear headcount growth.",
+        icon: "team"
+      }
     ]
   },
   "why-we-do": {
@@ -710,12 +914,59 @@ const aboutContentData = {
 const aboutTabs = document.querySelectorAll(".about-tab");
 const aboutContent = document.getElementById("about-content");
 const aboutHowWeDo = document.getElementById("about-how-we-do");
+const aboutWhoWeAre = document.getElementById("about-who-we-are");
+const aboutWhoWeAreBody = document.getElementById("about-who-we-are-body");
+const aboutPhilosophy = document.getElementById("about-philosophy");
+const aboutPhilosophyHeading = document.getElementById("about-philosophy-heading");
+const aboutPhilosophyTagline = document.getElementById("about-philosophy-tagline");
+
+function getAboutPaiveIconSvg(iconKey) {
+  const icons = {
+    consulting: '<svg class="about-paive-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/><path d="M16 11h4"/><path d="M18 9v4"/></svg>',
+    ai: '<svg class="about-paive-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V6"/><path d="M15 8V6"/><path d="M9 12h6"/><path d="M12 12v4"/></svg>',
+    briefcase: '<svg class="about-paive-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M12 12v4"/><path d="M8 16h8"/></svg>',
+    chart: '<svg class="about-paive-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16v-5"/><path d="M12 16v-2"/><path d="M17 16V8"/></svg>'
+  };
+  return icons[iconKey] || "";
+}
+
+function getAboutThinkingIconSvg(iconKey) {
+  const icons = {
+    gears: '<svg class="about-thinking-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9"/><circle cx="12" cy="12" r="3"/><path d="M12 21a9 9 0 0 1-9-9"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="M12 3v2"/><path d="M12 19v2"/></svg>',
+    brain: '<svg class="about-thinking-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>',
+    magnifier: '<svg class="about-thinking-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+    team: '<svg class="about-thinking-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>'
+  };
+  return icons[iconKey] || "";
+}
 
 function updateAboutContent(tabKey) {
   const data = aboutContentData[tabKey];
   if (!data || !aboutContent) return;
 
   const isHowWeDo = tabKey === "how-we-do";
+  const isPhilosophyAndCards = data.layout === "philosophy-and-cards";
+
+  if (aboutWhoWeAre) {
+    aboutWhoWeAre.hidden = true;
+    aboutWhoWeAre.setAttribute("aria-hidden", "true");
+  }
+
+  if (aboutPhilosophy) {
+    if (isPhilosophyAndCards && data.philosophy) {
+      aboutPhilosophy.hidden = false;
+      aboutPhilosophy.setAttribute("aria-hidden", "false");
+      if (aboutPhilosophyHeading) {
+        aboutPhilosophyHeading.innerHTML = data.philosophy.heading || "";
+      }
+      if (aboutPhilosophyTagline) {
+        aboutPhilosophyTagline.textContent = data.philosophy.tagline || "";
+      }
+    } else {
+      aboutPhilosophy.hidden = true;
+      aboutPhilosophy.setAttribute("aria-hidden", "true");
+    }
+  }
 
   if (isHowWeDo && aboutHowWeDo) {
     aboutContent.hidden = true;
@@ -725,15 +976,32 @@ function updateAboutContent(tabKey) {
     if (aboutHowWeDo) aboutHowWeDo.hidden = true;
     aboutContent.style.opacity = "0";
     setTimeout(() => {
-      const paragraphsHTML = data.paragraphs && data.paragraphs.length > 0
-        ? data.paragraphs.map(p => `<p>${p}</p>`).join("")
-        : "";
-      const descriptionHTML = data.description ? `<p>${data.description}</p>` : "";
-      aboutContent.innerHTML = `
-        <h2>${data.title}</h2>
-        ${descriptionHTML}
-        ${paragraphsHTML}
-      `;
+      if (isPhilosophyAndCards && data.rightItems && data.rightItems.length > 0) {
+        const getIconSvg = tabKey === "about-paive" ? getAboutPaiveIconSvg : getAboutThinkingIconSvg;
+        aboutContent.innerHTML = `
+          <div class="about-thinking-cards">
+            ${data.rightItems.map(item => `
+              <div class="about-thinking-card">
+                <div class="about-thinking-card-icon-wrap">${getIconSvg(item.icon)}</div>
+                <div class="about-thinking-card-text">
+                  <h3 class="about-thinking-card-title">${item.title}</h3>
+                  <p class="about-thinking-card-desc">${item.description}</p>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      } else {
+        const paragraphsHTML = data.paragraphs && data.paragraphs.length > 0
+          ? data.paragraphs.map(p => `<p>${p}</p>`).join("")
+          : "";
+        const descriptionHTML = data.description ? `<p>${data.description}</p>` : "";
+        aboutContent.innerHTML = `
+          <h2>${data.title || ""}</h2>
+          ${descriptionHTML}
+          ${paragraphsHTML}
+        `;
+      }
       aboutContent.style.opacity = "1";
     }, 150);
   }
@@ -954,3 +1222,5 @@ if (ourApproachNavLink && ourApproachSection) {
     }
   });
 }
+
+
