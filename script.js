@@ -876,35 +876,6 @@ const aboutContentData = {
     title: "How We Do",
     description: ""
   },
-  "what-we-do": {
-    layout: "philosophy-and-cards",
-    philosophy: {
-      heading: "Our<br>Philosophy",
-      tagline: "We start with understanding. We design what works. And we stay to make it run."
-    },
-    rightItems: [
-      {
-        title: "Consulting First",
-        description: "We move clients from \"As-Is\" (fragmented, manual, intuition-driven) to \"To-Be\" (structured, data-informed, decision-driven).",
-        icon: "gears"
-      },
-      {
-        title: "AI as Force Multiplier",
-        description: "AI-agentic systems are collaborators, not replacements—assisting with analysis, coordination, and execution consistency.",
-        icon: "brain"
-      },
-      {
-        title: "Clarity Before Tech",
-        description: "Technology is introduced only after operational clarity is achieved, ensuring solutions solve real business problems.",
-        icon: "magnifier"
-      },
-      {
-        title: "Human + AI Synergy",
-        description: "Consultants focus on judgment and leadership while AI handles routine, multiplying capability without linear headcount growth.",
-        icon: "team"
-      }
-    ]
-  },
   "why-we-do": {
     title: "Why We Do",
     description: "We exist to bridge the gap between SMB operations and enterprise-grade execution. Too many businesses operate on intuition and fragmented tools. PAiVE brings structure, discipline, and measurable outcomes—without the overhead of traditional enterprise solutions."

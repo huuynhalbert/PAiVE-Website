@@ -121,7 +121,7 @@
     font-size: 0.95rem;
     transition: color 0.3s ease;
     position: relative;
-    padding: 8px 16px;
+    padding: 8px 10px;
   }
 
   .nav-link:hover {
@@ -731,9 +731,21 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 48px 0 64px;
+    margin-top: -200px;
+    padding: 0 0 -100px;
     background: var(--bg-dark);
     overflow: hidden;
+  }
+
+  .lighthouse-showcase::before {
+    content: '';
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+    opacity: 0.8;
   }
 
   .lighthouse-container {
@@ -1076,7 +1088,7 @@
   .industries-section::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -80px;
     left: 0;
     right: 0;
     height: 2px;
@@ -2681,6 +2693,21 @@
     justify-content: center;
   }
 
+  .partnership-logo-wrap--white {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    width: 120px;
+    height: 120px;
+  }
+
+  .partnership-logo-wrap--white .partnership-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
   .partnership-logo {
     max-width: 100%;
     max-height: 100%;
@@ -3529,7 +3556,7 @@
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 32px 60px 40px;
+    padding: 32px 60px 0;
   }
 
   .about-layout {
@@ -3558,6 +3585,11 @@
 
   .about-section.section-alt .about-section-tag {
     color: var(--text-primary);
+  }
+
+  .about-section.section-alt::before,
+  .about-section.section-alt::after {
+    display: none;
   }
 
   .about-image-container {
@@ -4761,7 +4793,7 @@
     }
 
     .about-container {
-      padding: 40px 24px;
+      padding: 40px 24px 0;
     }
 
     .about-image-side {
@@ -4834,6 +4866,12 @@
     .partnership-logo-wrap {
       width: 120px;
       height: 80px;
+    }
+
+    .partnership-logo-wrap--white {
+      padding: 12px;
+      width: 100px;
+      height: 100px;
     }
 
     .partnership-name {
