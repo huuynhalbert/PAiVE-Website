@@ -104,6 +104,83 @@
     transform: rotate(-45deg) translate(7px, -7px);
   }
 
+  /* Accessibility widget - mobile */
+  .a11y-widget {
+    bottom: 24px;
+    right: 20px;
+    left: auto;
+  }
+  .a11y-widget-toggle {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+  }
+  .a11y-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .a11y-panel {
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: none;
+    bottom: 68px;
+    max-height: min(75vh, 420px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 16px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  }
+  .a11y-panel-header {
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    background: var(--card-bg);
+    z-index: 1;
+    border-radius: 16px 16px 0 0;
+  }
+  .a11y-panel-title {
+    font-size: 1.2rem;
+  }
+  .a11y-panel-close {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.75rem;
+  }
+  .a11y-panel-body {
+    padding: 16px 20px 20px;
+  }
+  .a11y-option {
+    padding: 14px 0;
+    gap: 8px 12px;
+  }
+  .a11y-checkbox {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    margin-top: 2px;
+  }
+  .a11y-option label {
+    font-size: 1.05rem;
+    padding-right: 8px;
+  }
+  .a11y-desc {
+    font-size: 0.9rem;
+    margin-left: 0;
+    padding-left: 30px;
+  }
+  .a11y-reset {
+    padding: 14px 20px;
+    font-size: 1rem;
+    margin-top: 16px;
+    border-radius: 12px;
+    min-height: 48px;
+  }
+
   /* Hero Mobile - More Condensed */
   .hero {
     min-height: auto;
@@ -644,6 +721,26 @@
 
 @media (max-width: 480px) {
   /* Extra Small Phones - Even More Condensed */
+  .a11y-widget {
+    bottom: 20px;
+    right: 16px;
+  }
+  .a11y-panel {
+    left: 12px;
+    right: 12px;
+    bottom: 64px;
+    max-height: min(70vh, 380px);
+  }
+  .a11y-panel-header {
+    padding: 14px 16px;
+  }
+  .a11y-panel-body {
+    padding: 14px 16px 18px;
+  }
+  .a11y-option label {
+    font-size: 1rem;
+  }
+
   h1 {
     font-size: 1.65rem;
     line-height: 1.25;
