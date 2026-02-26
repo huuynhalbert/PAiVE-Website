@@ -345,6 +345,11 @@
   .grid > *:nth-child(5) { animation-delay: 0.5s; }
   .grid > *:nth-child(6) { animation-delay: 0.6s; }
 
+  /* About section - prevent solutions from cutting off on mobile */
+  .about-section {
+    margin-bottom: 0;
+  }
+
   /* Lighthouse Section Mobile - Fixed for Layers */
   .lighthouse-showcase {
     padding: 20px 0;
