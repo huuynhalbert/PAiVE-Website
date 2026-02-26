@@ -354,6 +354,8 @@
   .industries-section {
     margin-top: 0;
     overflow: hidden;
+    border-top: 1px solid var(--border-glow);
+    padding-top: 24px;
   }
 
   .industries-container {
@@ -387,6 +389,7 @@
 
   /* Lighthouse Section Mobile - Fixed for Layers */
   .lighthouse-showcase {
+    margin-top: 32px;
     padding: 32px 0 20px;
     min-height: auto !important;
     border-top: 1px solid var(--border-glow);
