@@ -350,6 +350,41 @@
     margin-bottom: 0;
   }
 
+  /* Industries section - prevent overlapping solutions on mobile */
+  .industries-section {
+    margin-top: 0;
+    overflow: hidden;
+  }
+
+  .industries-container {
+    padding: 0;
+  }
+
+  .industries-heading,
+  .industries-subtitle {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .industries-heading {
+    margin-bottom: 12px;
+  }
+
+  .industries-subtitle {
+    margin-bottom: 32px;
+  }
+
+  .industries-carousel {
+    margin-top: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .industries-slide-layout {
+    min-width: 0;
+    max-width: 100%;
+  }
+
   /* Lighthouse Section Mobile - Fixed for Layers */
   .lighthouse-showcase {
     padding: 20px 0;
@@ -598,9 +633,9 @@
     transform: scale(0.98);
   }
 
-  /* Contact Section Mobile - More Condensed */
+  /* Contact Section Mobile - More Condensed (extra bottom padding so submit button isn't covered by footer wave or fixed widgets) */
   .contact-section {
-    padding: 30px 16px;
+    padding: 30px 16px 160px;
   }
 
   .contact-grid {
@@ -846,7 +881,7 @@
   }
 
   .contact-section {
-    padding: 28px 14px;
+    padding: 28px 14px 140px;
   }
 
   .engagement-features {
