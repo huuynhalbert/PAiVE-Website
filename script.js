@@ -15,9 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.getElementById("main-nav");
 
   if (mobileMenuToggle && mainNav) {
+    function setMenuExpanded(expanded) {
+      mobileMenuToggle.setAttribute("aria-expanded", String(!!expanded));
+    }
+    setMenuExpanded(false);
     mobileMenuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("active");
       mobileMenuToggle.classList.toggle("active");
-      mainNav.classList.toggle("active");
+      setMenuExpanded(isOpen);
     });
 
     // Close menu when clicking on a nav link
@@ -26,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => {
         mobileMenuToggle.classList.remove("active");
         mainNav.classList.remove("active");
+        setMenuExpanded(false);
       });
     });
 
@@ -34,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!mainNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
         mobileMenuToggle.classList.remove("active");
         mainNav.classList.remove("active");
+        setMenuExpanded(false);
       }
     });
   }
@@ -453,7 +460,7 @@ const lighthouseListItems = document.querySelectorAll(".lighthouse-list-item");
 
 const layerData = {
   sustainability: {
-    title: "Sustainability Focus",
+    title: "",
     description: "Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements. Value Engineering connects all pillars to deliver measurable business outcomes.",
     details: [
       "Energy efficiency optimization",
@@ -463,7 +470,7 @@ const layerData = {
     ]
   },
   agentic: {
-    title: "Agentic Workforce",
+    title: "",
     description: "Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.",
     details: [
       "Specialized AI Personas by role and function",
@@ -473,7 +480,7 @@ const layerData = {
     ]
   },
   physical: {
-    title: "Physical Intelligence",
+    title: "",
     description: "Leverage IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments",
     details: [
       "Real-time monitoring and threat detection",
@@ -483,7 +490,7 @@ const layerData = {
     ]
   },
   operational: {
-    title: "Operational Backbone",
+    title: "",
     description: "This foundational layer ensures consistency and control across all capabilities through structured workflows, governance, and operational discipline. Key elements include:",
     details: [
       "Optimized workflow design",
@@ -515,6 +522,7 @@ function updateLighthouseContent(layerKey) {
 function setActiveListItem(activeItem) {
   lighthouseListItems.forEach((item) => {
     item.classList.remove("active");
+    item.setAttribute("aria-pressed", item === activeItem ? "true" : "false");
   });
   activeItem.classList.add("active");
 }
@@ -527,12 +535,19 @@ if (lighthouseListItems.length > 0) {
   updateLighthouseContent(firstLayer);
 }
 
-// Add click handlers to list items
+// Add click and keyboard handlers to list items
+function activateLighthouseItem(item) {
+  const layerKey = item.getAttribute("data-layer");
+  setActiveListItem(item);
+  updateLighthouseContent(layerKey);
+}
 lighthouseListItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    const layerKey = item.getAttribute("data-layer");
-    setActiveListItem(item);
-    updateLighthouseContent(layerKey);
+  item.addEventListener("click", () => activateLighthouseItem(item));
+  item.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      activateLighthouseItem(item);
+    }
   });
 });
 
@@ -1193,5 +1208,108 @@ if (ourApproachNavLink && ourApproachSection) {
     }
   });
 }
+
+// Accessibility widget
+const A11Y_STORAGE_KEY = "paive-a11y";
+const A11Y_OPTIONS = ["larger-text", "high-contrast", "reduce-motion", "emphasize-focus"];
+
+function getStoredA11y() {
+  try {
+    const raw = localStorage.getItem(A11Y_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function setStoredA11y(opts) {
+  try {
+    localStorage.setItem(A11Y_STORAGE_KEY, JSON.stringify(opts));
+  } catch (_) {}
+}
+
+function applyA11yOptions(opts) {
+  const html = document.documentElement;
+  A11Y_OPTIONS.forEach((key) => {
+    if (opts[key]) {
+      html.classList.add("a11y-" + key);
+    } else {
+      html.classList.remove("a11y-" + key);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("a11y-widget-toggle");
+  const panel = document.getElementById("a11y-menu");
+  const closeBtn = document.getElementById("a11y-close");
+  const resetBtn = document.getElementById("a11y-reset");
+  const checkboxes = document.querySelectorAll(".a11y-checkbox");
+
+  if (!toggle || !panel) return;
+
+  const stored = getStoredA11y();
+  applyA11yOptions(stored);
+  checkboxes.forEach((cb) => {
+    const opt = cb.getAttribute("data-option");
+    if (stored[opt]) cb.checked = true;
+  });
+
+  function openPanel() {
+    panel.classList.add("is-open");
+    panel.setAttribute("aria-hidden", "false");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close accessibility options");
+  }
+
+  function closePanel() {
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open accessibility options");
+  }
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (panel.classList.contains("is-open")) {
+      closePanel();
+    } else {
+      openPanel();
+    }
+  });
+
+  closeBtn.addEventListener("click", closePanel);
+
+  checkboxes.forEach((cb) => {
+    cb.addEventListener("change", () => {
+      const opt = cb.getAttribute("data-option");
+      const next = { ...getStoredA11y(), [opt]: cb.checked };
+      setStoredA11y(next);
+      applyA11yOptions(next);
+    });
+  });
+
+  resetBtn.addEventListener("click", () => {
+    const empty = {};
+    A11Y_OPTIONS.forEach((k) => (empty[k] = false));
+    setStoredA11y(empty);
+    applyA11yOptions(empty);
+    checkboxes.forEach((c) => (c.checked = false));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panel.classList.contains("is-open")) {
+      closePanel();
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    const widget = document.getElementById("a11y-widget");
+    if (!widget || widget.contains(e.target)) return;
+    if (panel.classList.contains("is-open")) {
+      closePanel();
+    }
+  });
+});
 
 

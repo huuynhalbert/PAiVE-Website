@@ -23,10 +23,238 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   body {
     background: var(--bg-dark);
     color: var(--text-primary);
     line-height: 1.6;
+  }
+
+  /* Skip link - visible on focus for keyboard users */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    padding: 12px 20px;
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    z-index: 1000;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 16px;
+    outline: 3px solid var(--text-primary);
+    outline-offset: 4px;
+  }
+
+  /* Visible focus for keyboard navigation (WCAG 2.4.7) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--accent-cyan);
+    outline-offset: 2px;
+  }
+  .nav-link:focus-visible,
+  .nav-link.nav-button:focus-visible {
+    outline: 3px solid var(--text-primary);
+    outline-offset: 2px;
+  }
+
+  /* Accessibility widget */
+  .a11y-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    font-family: 'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow: visible;
+  }
+  .a11y-widget-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+    border: 2px solid var(--bg-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .a11y-widget-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(0, 229, 255, 0.5);
+  }
+  .a11y-widget-toggle:focus-visible {
+    outline: 3px solid var(--text-primary);
+    outline-offset: 3px;
+  }
+  .a11y-icon {
+    flex-shrink: 0;
+  }
+  .a11y-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 320px;
+    max-width: calc(100vw - 24px);
+    background: var(--card-bg);
+    border: 1px solid var(--border-glow);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+  .a11y-panel.is-open {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .a11y-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-glow);
+  }
+  .a11y-panel-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .a11y-panel-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .a11y-panel-close:hover,
+  .a11y-panel-close:focus-visible {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .a11y-panel-body {
+    padding: 12px 16px 16px;
+  }
+  .a11y-option {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 6px 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .a11y-option:last-of-type {
+    border-bottom: none;
+  }
+  .a11y-checkbox {
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0;
+    accent-color: var(--accent-cyan);
+    cursor: pointer;
+  }
+  .a11y-option label {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+  .a11y-desc {
+    width: 100%;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-left: 30px;
+  }
+  .a11y-reset {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    background: transparent;
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .a11y-reset:hover,
+  .a11y-reset:focus-visible {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: var(--accent-cyan);
+  }
+
+  /* Accessibility mode: larger text */
+  html.a11y-larger-text {
+    font-size: 18px;
+  }
+  html.a11y-larger-text body {
+    font-size: 1.05rem;
+  }
+
+  /* Accessibility mode: high contrast */
+  html.a11y-high-contrast body {
+    --text-primary: #ffffff;
+    --text-secondary: #e5e7eb;
+    --bg-dark: #000000;
+    --bg-deep: #000000;
+    --border-glow: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Accessibility mode: reduce motion */
+  html.a11y-reduce-motion *,
+  html.a11y-reduce-motion *::before,
+  html.a11y-reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.a11y-reduce-motion {
+    scroll-behavior: auto;
+  }
+
+  /* Accessibility mode: emphasize focus */
+  html.a11y-emphasize-focus a:focus-visible,
+  html.a11y-emphasize-focus button:focus-visible,
+  html.a11y-emphasize-focus input:focus-visible,
+  html.a11y-emphasize-focus textarea:focus-visible,
+  html.a11y-emphasize-focus [tabindex]:focus-visible {
+    outline: 4px solid #ffff00;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(255, 255, 0, 0.3);
   }
   
   /* HEADER */
@@ -731,8 +959,8 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    margin-top: -200px;
-    padding: 0 0 -100px;
+    margin-top: 0;
+    padding: 0 0 56px;
     background: var(--bg-dark);
     overflow: hidden;
   }
@@ -754,10 +982,19 @@
     gap: 48px;
     max-width: 1800px;
     margin: 0 auto;
-    padding: 0 80px;
+    padding: 94px 80px 0;
     align-items: center;
     width: 100%;
     min-height: min(92vh, 960px);
+  }
+
+  .lighthouse-heading {
+    grid-column: 1 / -1;
+    font-size: 2.25rem;
+    color: var(--text-primary);
+    margin: 32px 0 -150px;
+    font-weight: 700;
+    text-align: center;
   }
 
   /* Left Panel - Image (more space for bigger lighthouse) */
@@ -806,6 +1043,8 @@
 
   .lighthouse-list-item.active {
     color: var(--accent-cyan);
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 
   .lighthouse-list-item.active::after {
@@ -1072,7 +1311,8 @@
   /* INDUSTRIES SECTION */
   .industries-section {
     background: var(--bg-dark);
-    padding: 32px 0 40px;
+    padding: 0 0 40px;
+    margin-top: -16px;
     position: relative;
     width: 100%;
     min-height: 0;
@@ -2037,10 +2277,14 @@
 
   .form-group input:focus,
   .form-group textarea:focus {
-    outline: none;
     border-color: var(--accent-cyan);
     box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
     background: rgba(0, 229, 255, 0.05);
+  }
+  .form-group input:focus-visible,
+  .form-group textarea:focus-visible {
+    outline: 3px solid var(--accent-cyan);
+    outline-offset: 2px;
   }
 
   .form-group input:hover,
@@ -2435,7 +2679,7 @@
   .industries-subtitle {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -3550,6 +3794,7 @@
     display: flex;
     align-items: flex-start;
     padding: 0;
+    margin-bottom: -170px;
   }
 
   .about-container {
@@ -4111,6 +4356,10 @@
       min-height: auto;
     }
 
+    .lighthouse-heading {
+      font-size: 2rem;
+    }
+
     .lighthouse-image-container {
       min-height: 0;
     }
@@ -4122,6 +4371,10 @@
 
     .lighthouse-list-item {
       font-size: 1.1rem;
+    }
+
+    .lighthouse-list-item.active {
+      font-size: 1.3rem;
     }
 
     .lighthouse-content-text h3 {
@@ -4552,6 +4805,11 @@
   .contact-field input:focus,
   .contact-field textarea:focus {
     border-bottom-color: var(--accent-cyan);
+  }
+  .contact-field input:focus-visible,
+  .contact-field textarea:focus-visible {
+    outline: 3px solid var(--accent-cyan);
+    outline-offset: 2px;
   }
 
   .contact-field textarea {

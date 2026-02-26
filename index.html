@@ -15,16 +15,17 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- HEADER / LOGO -->
-  <header class="site-header">
+  <header class="site-header" role="banner">
     <div class="container header-inner">
       <div class="logo">
         <a href="#home">
           <img src="./images/paivelogo.svg" alt="PAiVE Logo" />
         </a>
       </div>
-      <nav class="main-nav" id="main-nav">
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
         <a href="#home" class="nav-link">HOME</a>
         <a href="#about" class="nav-link">ABOUT</a>
         <a href="#our-approach" class="nav-link">SOLUTIONS</a>
@@ -32,7 +33,7 @@
         <a href="#careers" class="nav-link">CAREERS</a>
         <a href="#contact" class="nav-link nav-button">CONTACT</a>
       </nav>
-      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
         <span></span>
         <span></span>
         <span></span>
@@ -40,8 +41,9 @@
     </div>
   </header>
 
+  <main id="main-content">
   <!-- HERO -->
-  <section class="hero" id="home">
+  <section class="hero" id="home" aria-label="Introduction">
     <!-- AI Neural Network Background Animation -->
     <div class="bg-animation">
       <svg class="animated-bg" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid meet">
@@ -109,7 +111,7 @@
       <div class="hero-content">
         <h1>
           Enterprise-grade operations<br />
-          Purpose Built for <span id="typing-businesses"></span>
+          purpose built for <span id="typing-businesses"></span>
         </h1>
         <p style="font-size: 1.2rem; line-height: 1.8;">
           By transforming fragmented processes into intelligent, connected systems, we empower growing companies to
@@ -139,7 +141,7 @@
   </section>
 
   <!-- ABOUT PAiVE -->
-  <section class="section-alt about-section" id="about">
+  <section class="section-alt about-section" id="about" aria-label="About PAiVE">
     <div class="about-container">
       <div class="about-layout">
         <!-- Left Side - Image + Who We Are (for About PAiVE tab) -->
@@ -252,40 +254,41 @@
   </section>
 
   <!-- OUR APPROACH - THE LIGHT HOUSE MODEL -->
-  <section class="lighthouse-showcase" id="our-approach">
+  <section class="lighthouse-showcase" id="our-approach" aria-label="Paive Solutions">
     <div class="lighthouse-container">
+      <h2 class="lighthouse-heading">Paive Solutions</h2>
       <!-- Left Panel - Image -->
       <div class="lighthouse-image-container">
         <img src="./images/lighthouse.png" alt="Lighthouse Model" class="lighthouse-img" />
       </div>
 
       <!-- Middle Panel - Nav Bar -->
-      <div class="lighthouse-list-panel">
-        <div class="lighthouse-list-item" data-layer="sustainability">
+      <div class="lighthouse-list-panel" role="list">
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="sustainability" aria-pressed="true">
           <span>Sustainability Focus</span>
         </div>
-        <div class="lighthouse-list-item" data-layer="agentic">
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="agentic" aria-pressed="false">
           <span>Agentic Workforce</span>
         </div>
-        <div class="lighthouse-list-item" data-layer="physical">
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="physical" aria-pressed="false">
           <span>Physical Intelligence</span>
         </div>
-        <div class="lighthouse-list-item" data-layer="operational">
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="operational" aria-pressed="false">
           <span>Operational Backbone</span>
         </div>
       </div>
 
       <!-- Right Panel - Content Text -->
-      <div class="lighthouse-content-text" id="lighthouse-content-text">
+      <div class="lighthouse-content-text" id="lighthouse-content-text" aria-live="polite" aria-atomic="true">
         <!-- Content will be updated via JavaScript -->
       </div>
     </div>
   </section>
 
   <!-- INDUSTRIES WE SERVE - Carousel -->
-  <section class="industries-section" id="industries">
+  <section class="industries-section" id="industries" aria-labelledby="industries-heading">
     <div class="industries-container">
-      <h2 class="industries-heading">Focusing On Industries That Drive Results</h2>
+      <h2 class="industries-heading" id="industries-heading">Focusing On Industries That Drive Results</h2>
       <p class="industries-subtitle">We specialize in industries where operational clarity and discipline drive
         measurable outcomes. Focus beats breadth.</p>
       <div class="industries-carousel" id="industries-carousel" aria-label="Industries carousel">
@@ -301,7 +304,7 @@
               </div>
             </div>
           </div>
-          <div class="industries-slide" data-index="1" style="background-image: url('./images/inventory.jpg')">
+          <div class="industries-slide" data-index="1" style="background-image: url('./images/inventory.webp')">
             <div class="industries-slide-layout">
               <h3 class="industries-slide-title">Supply Chain<br>for SMBs</h3>
               <div class="industries-slide-description">
@@ -436,13 +439,13 @@
   </script>
 
   <!-- PARTNERSHIPS -->
-  <section class="partnerships-section" id="partnerships">
+  <section class="partnerships-section" id="partnerships" aria-label="Partnerships">
     <div class="partnerships-container">
       <p class="partnerships-tagline">Partnerships</p>
       <div class="partnerships-carousel" aria-label="Partnership logos carousel">
         <div class="partnerships-carousel-track">
           <div class="partnerships-slide">
-            <a href="#" class="partnership-card" aria-label="Personal.ai">
+            <a href="https://www.personal.ai" target="_blank" rel="noopener noreferrer" class="partnership-card" aria-label="Personal.ai">
               <div class="partnership-logo-wrap">
                 <img src="./images/personalai.png" alt="Personal.ai" class="partnership-logo" />
               </div>
@@ -450,7 +453,7 @@
             </a>
           </div>
           <div class="partnerships-slide">
-            <a href="#" class="partnership-card" aria-label="Odoo">
+            <a href="https://www.odoo.com" target="_blank" rel="noopener noreferrer" class="partnership-card" aria-label="Odoo">
               <div class="partnership-logo-wrap partnership-logo-wrap--white">
                 <img src="./images/odoologo.png" alt="Odoo" class="partnership-logo" />
               </div>
@@ -458,7 +461,7 @@
             </a>
           </div>
           <div class="partnerships-slide">
-            <a href="#" class="partnership-card" aria-label="STRATNXT">
+            <a href="https://stratnxt.com/en/" target="_blank" rel="noopener noreferrer" class="partnership-card" aria-label="STRATNXT">
               <div class="partnership-logo-wrap partnership-logo-wrap--white">
                 <img src="./images/stratnxt.webp" alt="STRATNXT" class="partnership-logo" />
               </div>
@@ -467,7 +470,7 @@
           </div>
           <!-- Duplicated for seamless loop -->
           <div class="partnerships-slide">
-            <a href="#" class="partnership-card" aria-label="Personal.ai">
+            <a href="https://www.personal.ai" target="_blank" rel="noopener noreferrer" class="partnership-card" aria-label="Personal.ai">
               <div class="partnership-logo-wrap">
                 <img src="./images/personalai.png" alt="Personal.ai" class="partnership-logo" />
               </div>
@@ -475,7 +478,7 @@
             </a>
           </div>
           <div class="partnerships-slide">
-            <a href="#" class="partnership-card" aria-label="Odoo">
+            <a href="https://www.odoo.com" target="_blank" rel="noopener noreferrer" class="partnership-card" aria-label="Odoo">
               <div class="partnership-logo-wrap partnership-logo-wrap--white">
                 <img src="./images/odoologo.png" alt="Odoo" class="partnership-logo" />
               </div>
@@ -483,7 +486,7 @@
             </a>
           </div>
           <div class="partnerships-slide">
-            <a href="#" class="partnership-card" aria-label="STRATNXT">
+            <a href="https://stratnxt.com/en/" target="_blank" rel="noopener noreferrer" class="partnership-card" aria-label="STRATNXT">
               <div class="partnership-logo-wrap partnership-logo-wrap--white">
                 <img src="./images/stratnxt.webp" alt="STRATNXT" class="partnership-logo" />
               </div>
@@ -496,11 +499,11 @@
   </section>
 
   <!-- CONTACT SECTION - Questions? Reach out. -->
-  <section class="contact-section" id="contact">
+  <section class="contact-section" id="contact" aria-labelledby="contact-heading">
     <div class="contact-section-container">
       <div class="contact-section-layout">
         <div class="contact-section-heading">
-          <h2 class="contact-headline">Questions?<br>Reach out.</h2>
+          <h2 class="contact-headline" id="contact-heading">Questions?<br>Reach out.</h2>
           <div class="contact-direct-wrap">
             <p class="contact-direct">
               Reach out directly at <a href="mailto:info@paive.net" class="contact-email-link">info@paive.net</a>
@@ -545,8 +548,10 @@
     </div>
   </section>
 
+  </main>
+
   <!-- YELLOW FOOTER -->
-  <footer class="yellow-footer">
+  <footer class="yellow-footer" role="contentinfo">
     <div class="yellow-footer-wave">
       <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <path d="M0 70H1440V40Q1080 5 720 40T0 40V70Z" fill="currentColor" />
@@ -585,13 +590,52 @@
     </div>
   </footer>
 
+  <!-- Accessibility menu -->
+  <div class="a11y-widget" id="a11y-widget">
+    <button type="button" class="a11y-widget-toggle" id="a11y-widget-toggle" aria-label="Open accessibility options" aria-expanded="false" aria-haspopup="true" aria-controls="a11y-menu">
+      <svg class="a11y-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 6v10M9 16l3-10 3 10M8 12h8"/>
+      </svg>
+    </button>
+    <div class="a11y-panel" id="a11y-menu" role="dialog" aria-label="Accessibility options" aria-hidden="true">
+      <div class="a11y-panel-header">
+        <h3 class="a11y-panel-title">Accessibility</h3>
+        <button type="button" class="a11y-panel-close" id="a11y-close" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="a11y-panel-body">
+        <div class="a11y-option">
+          <input type="checkbox" id="a11y-larger-text" class="a11y-checkbox" data-option="larger-text" aria-describedby="a11y-desc-larger">
+          <label for="a11y-larger-text">Larger text</label>
+          <span class="a11y-desc" id="a11y-desc-larger">Increase base font size</span>
+        </div>
+        <div class="a11y-option">
+          <input type="checkbox" id="a11y-high-contrast" class="a11y-checkbox" data-option="high-contrast" aria-describedby="a11y-desc-contrast">
+          <label for="a11y-high-contrast">High contrast</label>
+          <span class="a11y-desc" id="a11y-desc-contrast">Stronger text and background contrast</span>
+        </div>
+        <div class="a11y-option">
+          <input type="checkbox" id="a11y-reduce-motion" class="a11y-checkbox" data-option="reduce-motion" aria-describedby="a11y-desc-motion">
+          <label for="a11y-reduce-motion">Reduce motion</label>
+          <span class="a11y-desc" id="a11y-desc-motion">Minimize animations and transitions</span>
+        </div>
+        <div class="a11y-option">
+          <input type="checkbox" id="a11y-emphasize-focus" class="a11y-checkbox" data-option="emphasize-focus" aria-describedby="a11y-desc-focus">
+          <label for="a11y-emphasize-focus">Emphasize focus</label>
+          <span class="a11y-desc" id="a11y-desc-focus">Thicker, brighter focus outlines</span>
+        </div>
+        <button type="button" class="a11y-reset" id="a11y-reset">Reset all</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Back to Top Arrow -->
-  <div class="back-to-top" id="back-to-top">
+  <a href="#main-content" class="back-to-top" id="back-to-top" aria-label="Back to top of page">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
         stroke-linejoin="round" />
     </svg>
-  </div>
+  </a>
 
   <script src="./script.js"></script>
 </body>
