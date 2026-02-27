@@ -3795,6 +3795,11 @@
     align-items: flex-start;
     padding: 0;
     margin-bottom: -170px;
+    position: relative;
+    background-image: url('images/Finger Click Background_imgupscaler.ai_General_16K.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .about-container {
