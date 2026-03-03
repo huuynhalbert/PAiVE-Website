@@ -163,6 +163,7 @@
         <div class="about-content-side">
           <div class="about-tabs" role="tablist">
             <button type="button" class="about-tab active" role="tab" data-about-tab="about-paive">About PAiVE</button>
+            <button type="button" class="about-tab" role="tab" data-about-tab="who-we-are">Who We Are</button>
             <button type="button" class="about-tab" role="tab" data-about-tab="how-we-do">Engagement Model</button>
           </div>
 
@@ -221,8 +222,8 @@
                   <circle cx="200" cy="200" r="50" class="how-we-do-center" fill="currentColor" />
                   <!-- Arrow from center pointing at hovered segment -->
                   <g id="how-we-do-arrow" class="how-we-do-arrow" aria-hidden="true">
-                    <polygon points="200,158 192,198 208,198" fill="rgba(0,229,255,0.9)" stroke="rgba(255,255,255,0.4)"
-                      stroke-width="1" />
+                    <path d="M 200 152 L 194 182 L 196 200 L 200 200 L 204 200 L 206 182 Z" fill="rgba(0,229,255,0.95)" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linejoin="round" />
+                    <circle cx="200" cy="200" r="5" fill="rgba(0,229,255,0.9)" stroke="rgba(255,255,255,0.5)" stroke-width="1" />
                   </g>
                   <!-- Text at each segment's center (radius ~92) so labels sit on the colored wedges -->
                   <g class="hw-text-1"><text x="242" y="126" text-anchor="middle" fill="#fff" font-size="16"
@@ -513,7 +514,7 @@
           </div>
         </div>
         <div class="contact-section-form-wrap">
-          <form class="contact-form" action="#" method="post">
+          <form class="contact-form" id="contact-form" action="#" method="post">
             <div class="contact-form-row">
               <div class="contact-field">
                 <label for="contact-first-name">First Name</label>

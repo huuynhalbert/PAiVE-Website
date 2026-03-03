@@ -881,11 +881,11 @@ const aboutPaiveRightItems = [
 const aboutContentData = {
   "about-paive": {
     layout: "philosophy-and-cards",
-    philosophy: {
-      heading: "Who We Are",
-      tagline: "PAiVE helps SMEs operate like large enterprises—without the overhead. We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes. We don't advise and disappear. We build and run with you."
-    },
     rightItems: aboutPaiveRightItems
+  },
+  "who-we-are": {
+    title: "Who We Are",
+    description: "PAiVE helps SMEs operate like large enterprises—without the overhead. We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes. We don't advise and disappear. We build and run with you."
   },
   "how-we-do": {
     title: "How We Do",
@@ -1029,14 +1029,28 @@ const howWeDoDefaultText = "Hover over a segment to see its description.";
 // Rotation (deg) so center arrow points at each segment; arrow points up (12 o'clock), positive = clockwise
 const howWeDoArrowAngles = [30, 90, 150, 210, 270, 330];
 
+// Find shortest rotation delta in [-180, 180]; then apply so arrow always spins the short way (e.g. 6→1 goes forward)
+function shortestRotationDelta(fromDeg, toDeg) {
+  let delta = toDeg - fromDeg;
+  while (delta > 180) delta -= 360;
+  while (delta <= -180) delta += 360;
+  return delta;
+}
+
 if (howWeDoHoverText && howWeDoSegments.length === 6) {
   const howWeDoArrow = document.getElementById("how-we-do-arrow");
+  let howWeDoCurrentAngle = howWeDoArrowAngles[0]; // track cumulative angle so we can always add shortest delta
+
   howWeDoSegments.forEach((path, i) => {
     path.addEventListener("mouseenter", () => {
       howWeDoHoverText.textContent = `${i + 1}. ${howWeDoDescriptions[i]}`;
       howWeDoHoverText.classList.add("has-content");
       if (howWeDoArrow) {
-        howWeDoArrow.style.transform = `rotate(${howWeDoArrowAngles[i]}deg)`;
+        const targetAngle = howWeDoArrowAngles[i];
+        const currentNormalized = ((howWeDoCurrentAngle % 360) + 360) % 360;
+        const delta = shortestRotationDelta(currentNormalized, targetAngle);
+        howWeDoCurrentAngle += delta;
+        howWeDoArrow.style.transform = `rotate(${howWeDoCurrentAngle}deg)`;
         howWeDoArrow.style.opacity = "1";
       }
     });

@@ -2886,7 +2886,7 @@
   .partnerships-carousel-track {
     display: flex;
     width: 300%;
-    animation: partnerships-scroll 24s linear infinite;
+    animation: partnerships-scroll 12s linear infinite;
   }
 
   .partnerships-slide {
@@ -2895,7 +2895,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10px;
+    padding: 0 2px;
     box-sizing: border-box;
   }
 
@@ -3237,7 +3237,7 @@
   .how-we-do-diagram-box {
     width: 100%;
     max-width: 560px;
-    margin: -72px auto 24px;
+    margin: -120px auto 48px;
   }
 
   .how-we-do-svg {
@@ -3268,7 +3268,7 @@
     transform-origin: 200px 200px;
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: opacity 0.2s ease;
   }
 
   .how-we-do-hover-text {
@@ -3821,6 +3821,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     min-height: 0;
     flex-shrink: 0;
   }
@@ -5118,7 +5119,7 @@
     }
 
     .partnerships-slide {
-      padding: 0 12px;
+      padding: 0 2px;
     }
 
     .partnership-card {
