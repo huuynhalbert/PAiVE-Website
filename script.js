@@ -879,13 +879,13 @@ const aboutPaiveRightItems = [
 ];
 
 const aboutContentData = {
-  "about-paive": {
-    layout: "philosophy-and-cards",
-    rightItems: aboutPaiveRightItems
-  },
   "who-we-are": {
-    title: "Who We Are",
-    description: "PAiVE helps SMEs operate like large enterprises—without the overhead. We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes. We don't advise and disappear. We build and run with you."
+    layout: "philosophy-and-cards",
+    philosophy: {
+      heading: "Who We Are",
+      tagline: "PAiVE helps SMEs operate like large enterprises—without the overhead. We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes. We don't advise and disappear. We build and run with you."
+    },
+    rightItems: aboutPaiveRightItems
   },
   "how-we-do": {
     title: "How We Do",
@@ -900,6 +900,7 @@ const aboutContentData = {
 const aboutTabs = document.querySelectorAll(".about-tab");
 const aboutContent = document.getElementById("about-content");
 const aboutHowWeDo = document.getElementById("about-how-we-do");
+const aboutEngagementIntro = document.getElementById("about-engagement-intro");
 const aboutWhoWeAre = document.getElementById("about-who-we-are");
 const aboutWhoWeAreBody = document.getElementById("about-who-we-are-body");
 const aboutPhilosophy = document.getElementById("about-philosophy");
@@ -938,6 +939,16 @@ function updateAboutContent(tabKey) {
     aboutWhoWeAre.setAttribute("aria-hidden", "true");
   }
 
+  if (aboutEngagementIntro) {
+    if (isHowWeDo) {
+      aboutEngagementIntro.hidden = false;
+      aboutEngagementIntro.setAttribute("aria-hidden", "false");
+    } else {
+      aboutEngagementIntro.hidden = true;
+      aboutEngagementIntro.setAttribute("aria-hidden", "true");
+    }
+  }
+
   if (aboutPhilosophy) {
     if (isPhilosophyAndCards && data.philosophy) {
       aboutPhilosophy.hidden = false;
@@ -963,7 +974,7 @@ function updateAboutContent(tabKey) {
     aboutContent.style.opacity = "0";
     setTimeout(() => {
       if (isPhilosophyAndCards && data.rightItems && data.rightItems.length > 0) {
-        const getIconSvg = tabKey === "about-paive" ? getAboutPaiveIconSvg : getAboutThinkingIconSvg;
+        const getIconSvg = tabKey === "who-we-are" ? getAboutPaiveIconSvg : getAboutThinkingIconSvg;
         aboutContent.innerHTML = `
           <div class="about-thinking-cards">
             ${data.rightItems.map(item => `
@@ -1014,17 +1025,16 @@ if (aboutTabs.length > 0 && aboutContent) {
 }
 
 // How We Do wheel: show segment description on hover in the bottom text area
-const howWeDoHoverText = document.getElementById("how-we-do-hover-text");
+const howWeDoSegmentTooltip = document.getElementById("how-we-do-segment-tooltip");
 const howWeDoSegments = document.querySelectorAll(".how-we-do-segment");
 const howWeDoDescriptions = [
-  "Understand operations and identify value leakage.",
-  "Define KRAs and improvement levers.",
-  "Architect AI and operating model changes.",
-  "Execute with human + AI collaboration.",
-  "Track KPIs and ROI continuously.",
-  "Expand across teams, sites, or regions."
+  "Scan: Comprehensive understanding—identifying operational issues, bottlenecks, and value leakage. Findings directly inform Diagnose.",
+  "Diagnose: Pinpoint KRAs and improvement levers from Scan data. These targets become the blueprint for Design.",
+  "Design: Define the \"To-Be\" state: operating model changes and AI-agentic interventions to achieve KRAs from Diagnose.",
+  "Deploy: Put the Design plan into action. Human and AI collaboration implement the new operating model and interventions.",
+  "Measure: Track KPIs against baselines to validate impact and deliver transparent ROI reporting after deployment.",
+  "Scale: Extend proven models across functions, sites, or regions to multiply business value from Measure outcomes."
 ];
-const howWeDoDefaultText = "Hover over a segment to see its description.";
 
 // Rotation (deg) so center arrow points at each segment; arrow points up (12 o'clock), positive = clockwise
 const howWeDoArrowAngles = [30, 90, 150, 210, 270, 330];
@@ -1037,14 +1047,40 @@ function shortestRotationDelta(fromDeg, toDeg) {
   return delta;
 }
 
-if (howWeDoHoverText && howWeDoSegments.length === 6) {
+if (howWeDoSegmentTooltip && howWeDoSegments.length === 6) {
   const howWeDoArrow = document.getElementById("how-we-do-arrow");
-  let howWeDoCurrentAngle = howWeDoArrowAngles[0]; // track cumulative angle so we can always add shortest delta
+  const diagramBox = document.querySelector(".how-we-do-diagram-box");
+  let howWeDoCurrentAngle = howWeDoArrowAngles[0];
+
+  function showSegmentTooltip(path, i) {
+    const segRect = path.getBoundingClientRect();
+    const boxRect = diagramBox.getBoundingClientRect();
+    const centerX = segRect.left - boxRect.left + segRect.width / 2;
+    const centerY = segRect.top - boxRect.top + segRect.height / 2;
+    const wheelCenterX = boxRect.width / 2;
+    const wheelCenterY = boxRect.height / 2;
+    const outX = centerX - wheelCenterX;
+    const outY = centerY - wheelCenterY;
+    const len = Math.sqrt(outX * outX + outY * outY) || 1;
+    const pushOut = 95;
+    const tooltipX = centerX + (outX / len) * pushOut;
+    const tooltipY = centerY + (outY / len) * pushOut;
+    howWeDoSegmentTooltip.textContent = howWeDoDescriptions[i];
+    howWeDoSegmentTooltip.style.left = tooltipX + "px";
+    howWeDoSegmentTooltip.style.top = tooltipY + "px";
+    howWeDoSegmentTooltip.style.transform = "translate(-50%, -50%)";
+    howWeDoSegmentTooltip.classList.add("is-visible");
+    howWeDoSegmentTooltip.setAttribute("aria-hidden", "false");
+  }
+
+  function hideSegmentTooltip() {
+    howWeDoSegmentTooltip.classList.remove("is-visible");
+    howWeDoSegmentTooltip.setAttribute("aria-hidden", "true");
+  }
 
   howWeDoSegments.forEach((path, i) => {
     path.addEventListener("mouseenter", () => {
-      howWeDoHoverText.textContent = `${i + 1}. ${howWeDoDescriptions[i]}`;
-      howWeDoHoverText.classList.add("has-content");
+      if (diagramBox) showSegmentTooltip(path, i);
       if (howWeDoArrow) {
         const targetAngle = howWeDoArrowAngles[i];
         const currentNormalized = ((howWeDoCurrentAngle % 360) + 360) % 360;
@@ -1054,12 +1090,14 @@ if (howWeDoHoverText && howWeDoSegments.length === 6) {
         howWeDoArrow.style.opacity = "1";
       }
     });
+    path.addEventListener("mouseleave", () => {
+      hideSegmentTooltip();
+    });
   });
-  const diagramBox = document.querySelector(".how-we-do-diagram-box");
+
   if (diagramBox) {
     diagramBox.addEventListener("mouseleave", () => {
-      howWeDoHoverText.textContent = howWeDoDefaultText;
-      howWeDoHoverText.classList.remove("has-content");
+      hideSegmentTooltip();
       if (howWeDoArrow) howWeDoArrow.style.opacity = "0";
     });
   }

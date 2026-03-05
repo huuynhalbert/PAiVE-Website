@@ -27,7 +27,7 @@
       </div>
       <nav class="main-nav" id="main-nav" aria-label="Main navigation">
         <a href="#home" class="nav-link">HOME</a>
-        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#about" class="nav-link">ABOUT US</a>
         <a href="#our-approach" class="nav-link">SOLUTIONS</a>
         <a href="#industries" class="nav-link">INDUSTRIES</a>
         <a href="#careers" class="nav-link">CAREERS</a>
@@ -149,6 +149,9 @@
           <div class="about-image-container" id="about-image-container">
             <img src="./images/paivelogo.svg" alt="PAiVE" class="about-hero-image" id="about-hero-image" />
           </div>
+          <div class="about-engagement-intro" id="about-engagement-intro" hidden aria-hidden="true">
+            <p class="about-engagement-intro-text">PAiVE's Engagement Model is a structured, value-led lifecycle anchored by continuity and accountability. The transition through the six phases of the PAiVE Engagement Model is a continuous flow designed for predictable progress and measurable outcomes:</p>
+          </div>
           <div class="about-who-we-are" id="about-who-we-are" hidden aria-hidden="true">
             <h2 class="about-who-we-are-heading">Who We Are</h2>
             <div class="about-who-we-are-body" id="about-who-we-are-body"></div>
@@ -162,8 +165,7 @@
         <!-- Right Side - Tabs and Content -->
         <div class="about-content-side">
           <div class="about-tabs" role="tablist">
-            <button type="button" class="about-tab active" role="tab" data-about-tab="about-paive">About PAiVE</button>
-            <button type="button" class="about-tab" role="tab" data-about-tab="who-we-are">Who We Are</button>
+            <button type="button" class="about-tab active" role="tab" data-about-tab="who-we-are">Who We Are</button>
             <button type="button" class="about-tab" role="tab" data-about-tab="how-we-do">Engagement Model</button>
           </div>
 
@@ -173,9 +175,9 @@
             </div>
             <div class="about-how-we-do" id="about-how-we-do" hidden>
               <h2>How We Do</h2>
-              <div class="how-we-do-hover-text" id="how-we-do-hover-text" aria-live="polite">Hover over a segment to see
-                its description.</div>
+              <p class="how-we-do-instruction">Hover over a segment to see its description.</p>
               <div class="how-we-do-diagram-box">
+                <div class="how-we-do-segment-tooltip" id="how-we-do-segment-tooltip" role="tooltip" aria-hidden="true"></div>
                 <svg class="how-we-do-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"
                   aria-label="6-step process">
                   <defs>
@@ -511,6 +513,7 @@
             <p class="contact-phone">
               <a href="tel:+4086442055" class="contact-phone-link">(408) 644-2055</a>
             </p>
+            <p class="contact-location">Based in San Francisco, California and India.</p>
           </div>
         </div>
         <div class="contact-section-form-wrap">
