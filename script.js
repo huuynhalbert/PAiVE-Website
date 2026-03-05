@@ -1062,9 +1062,20 @@ if (howWeDoSegmentTooltip && howWeDoSegments.length === 6) {
     const outX = centerX - wheelCenterX;
     const outY = centerY - wheelCenterY;
     const len = Math.sqrt(outX * outX + outY * outY) || 1;
-    const pushOut = 95;
+    // SVG viewBox 400x400, outer radius 120 → scale to box pixels
+    const scale = Math.min(boxRect.width, boxRect.height) / 400;
+    const outerRadiusPx = 120 * scale;
+    const tooltipHalfWidth = 140;
+    const gapFromCircle = 20;
+    // Place tooltip outside the circle, on the side of the hovered segment
+    const minDistanceFromCenter = outerRadiusPx + tooltipHalfWidth + gapFromCircle;
+    let pushOut = Math.max(0, minDistanceFromCenter - len);
+    // Push segment 1 (Scan) and 6 (Scale) tooltips a bit further out so they don't touch the circle
+    if (i === 0 || i === 5) pushOut += 40;
     const tooltipX = centerX + (outX / len) * pushOut;
-    const tooltipY = centerY + (outY / len) * pushOut;
+    let tooltipY = centerY + (outY / len) * pushOut;
+    // Move tooltips down for segment 1 (Scan) and 6 (Scale) so they sit lower
+    if (i === 0 || i === 5) tooltipY += 50;
     howWeDoSegmentTooltip.textContent = howWeDoDescriptions[i];
     howWeDoSegmentTooltip.style.left = tooltipX + "px";
     howWeDoSegmentTooltip.style.top = tooltipY + "px";
