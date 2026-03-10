@@ -459,44 +459,60 @@ const lighthouseContentText = document.getElementById("lighthouse-content-text")
 const lighthouseListItems = document.querySelectorAll(".lighthouse-list-item");
 
 const layerData = {
+  measurable: {
+    title: "",
+    description: "",
+    details: [
+      "Operational visibility",
+      "Process efficiency",
+      "Intelligent decision making"
+    ]
+  },
   sustainability: {
     title: "",
-    description: "Continuous measurement and optimization of cost, efficiency, energy usage, and ESG-aligned improvements. Value Engineering connects all pillars to deliver measurable business outcomes.",
+    description: "",
     details: [
-      "Energy efficiency optimization",
-      "ESG-aligned process improvements",
-      "Value-driven decision making",
-      "ROI measurement and optimization"
+      "Operational Efficiency Aligned With Environmental Responsibility.",
+      "Energy Optimization",
+      "Resource Utilization Monitoring",
+      "Carbon Footprint Visibility",
+      "Sustainable Infrastructure Operations",
+      "This Layer Ensures Operations Are Efficient, Resilient, and Environmentally Responsible.",
     ]
   },
   agentic: {
     title: "",
-    description: "Deploy specialized AI Personas trained on your proprietary knowledge to support decision-making, coordination, and execution at scale.",
+    description: "",
     details: [
-      "Specialized AI Personas by role and function",
-      "Proprietary Personal Language Models (PLMs)",
-      "No-code training and deployment",
-      "Enterprise-grade security (SOC 2, HIPAA)"
+      "Predictive Models",
+      "Automation Engines",
+      "Agentic Workforce & Workflows",
     ]
   },
   physical: {
     title: "",
-    description: "Leverage IoT-enabled real-time visibility and AI-powered threat detection for safety, security, and situational awareness in physical environments",
+    description: "",
     details: [
-      "Real-time monitoring and threat detection",
-      "IoT sensor integration and data collection",
-      "Automated response protocols",
-      "Safety and security optimization"
+      "Sensors",
+      "IoT",
+      "Smart Environments "
     ]
   },
   operational: {
     title: "",
-    description: "This foundational layer ensures consistency and control across all capabilities through structured workflows, governance, and operational discipline. Key elements include:",
+    description: "",
     details: [
-      "Optimized workflow design",
-      "Robust governance frameworks and controls",
-      "Standardized processes across teams",
-      "Fostering operational consistency and discipline"
+      "ERP",
+      "Workflow Platforms",
+      "Data Infastructure",
+    ]
+  },
+  "consulting-led": {
+    title: "",
+    description: "",
+    details: [
+      "Business architecture",
+      "Operational strategy"
     ]
   }
 };
@@ -857,23 +873,23 @@ const aboutWhoWeAreContent = {
 
 const aboutPaiveRightItems = [
   {
-    title: "Consulting-Led Approach",
-    description: "We combine advisory-led problem solving with an AI-agentic workforce model to augment human teams and improve decision quality.",
+    title: "Consulting-Led Transformation",
+    description: "We approach every engagement with a consulting mindset—designing solutions around business outcomes rather than technology alone. Structured architecture and outcome-driven frameworks translate technology investments into measurable operational value.",
     icon: "consulting"
   },
   {
-    title: "AI as a Collaborator",
-    description: "We use AI to scale consulting impact across clients and geographies without burning out teams or diluting service quality.",
+    title: "Built by Industry Practitioners",
+    description: "PAiVE was founded by professionals from enterprise operations, consulting, and technology. We understand the real challenges organizations face—we have lived them as operators and advisors.",
     icon: "ai"
   },
   {
-    title: "Hands-On. Business-First",
-    description: "PAiVE is not a product company or a people-heavy system integrator. We are a consulting-led services organization that streamlines and automates SMB operations to drive measurable outcomes.",
+    title: "Next-Generation Technology Ecosystem",
+    description: "PAiVE partners with leading and emerging technology platforms to deliver intelligent, integrated solutions. These partnerships enable scalable, future-ready solutions across enterprise systems, AI, and intelligent infrastructure.",
     icon: "briefcase"
   },
   {
-    title: "Measurable Outcomes",
-    description: "Our mission is to enable the next generation of SMEs to operate with the intelligence and execution discipline of large enterprises.",
+    title: "Practical and Accessible Solutions",
+    description: "Enterprise transformation should not be reserved for the largest organizations. PAiVE delivers powerful yet practical solutions so organizations can access modern capabilities without the complexity or cost of traditional enterprise platforms.",
     icon: "chart"
   }
 ];
@@ -883,7 +899,7 @@ const aboutContentData = {
     layout: "philosophy-and-cards",
     philosophy: {
       heading: "Who We Are",
-      tagline: "PAiVE helps SMEs operate like large enterprises—without the overhead. We blend consulting expertise, AI-assisted execution, digital operations, and physical-world intelligence to drive measurable outcomes. We don't advise and disappear. We build and run with you."
+      tagline: "PAiVE is building the foundation for the next generation of enterprises where physical infrastructure, enterprise systems, and artificial intelligence operate as a unified operational platform that drives intelligent operations, measurable business value, and environmentally responsible outcomes."
     },
     rightItems: aboutPaiveRightItems
   },
@@ -1288,7 +1304,7 @@ function getStoredA11y() {
 function setStoredA11y(opts) {
   try {
     localStorage.setItem(A11Y_STORAGE_KEY, JSON.stringify(opts));
-  } catch (_) {}
+  } catch (_) { }
 }
 
 function applyA11yOptions(opts) {
