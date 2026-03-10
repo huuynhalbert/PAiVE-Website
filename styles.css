@@ -622,6 +622,21 @@
     z-index: 2;
   }
 
+  .hero-subsection-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0 0 12px 0;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    letter-spacing: 0.08em;
+    margin: 0 0 28px 0;
+  }
+
   /* Scroll Down Arrow */
   .scroll-down-arrow {
     position: fixed;
