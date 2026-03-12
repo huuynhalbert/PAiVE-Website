@@ -5006,6 +5006,15 @@
     margin: 0 0 12px 0;
   }
 
+  .contact-location-heading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+  }
+
   .contact-direct-wrap p:last-child {
     margin-bottom: 0;
   }

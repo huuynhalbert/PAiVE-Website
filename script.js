@@ -851,7 +851,7 @@ const aboutPaiveRightItems = [
   },
   {
     title: "Built by Industry Practitioners",
-    description: "PAiVE was founded by professionals from enterprise operations, consulting, and technology. We understand the real challenges organizations face—we have lived them as operators and advisors.",
+    description: "PAiVE was founded by professionals from enterprise operations, consulting, and technology. We understand the real challenges organizations face. We have lived them as operators and advisors, and we bring that hands-on experience to every engagement.",
     icon: "ai"
   },
   {
