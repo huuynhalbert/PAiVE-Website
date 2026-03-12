@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
-  // Animate logo
-  const logo = document.querySelector(".logo img");
-  if (logo) {
-    logo.style.opacity = "0";
-    logo.style.transform = "scale(0.8)";
-    logo.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+  // Animate hero logo
+  const heroLogo = document.querySelector(".hero-logo img");
+  if (heroLogo) {
+    heroLogo.style.opacity = "0";
+    heroLogo.style.transform = "scale(0.9)";
+    heroLogo.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     setTimeout(() => {
-      logo.style.opacity = "1";
-      logo.style.transform = "scale(1)";
+      heroLogo.style.opacity = "1";
+      heroLogo.style.transform = "scale(1)";
     }, 50);
   }
 
@@ -382,41 +382,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Hide logo and show back-to-top arrow when scrolling past home page
-const logo = document.querySelector(".logo");
+// Show back-to-top when scrolled past hero
 const backToTop = document.getElementById("back-to-top");
 const heroSection = document.getElementById("home");
 
-if (logo && backToTop && heroSection) {
-  function handleLogoVisibility() {
+if (backToTop && heroSection) {
+  function handleBackToTopVisibility() {
     const scrollY = window.scrollY || window.pageYOffset;
-    const heroRect = heroSection.getBoundingClientRect();
     const heroHeight = heroSection.offsetHeight;
-
-    // Hide logo when scrolled past the hero section
-    if (scrollY > heroHeight - 100) {
-      // Scrolled past home page - hide logo, show back-to-top arrow
-      logo.classList.add("hidden");
-      backToTop.classList.add("visible");
-    } else {
-      // On home page - show logo, hide back-to-top arrow
-      logo.classList.remove("hidden");
-      backToTop.classList.remove("visible");
-    }
+    backToTop.classList.toggle("visible", scrollY > heroHeight - 100);
   }
 
-  // Check on scroll
-  window.addEventListener("scroll", handleLogoVisibility);
+  window.addEventListener("scroll", handleBackToTopVisibility);
+  handleBackToTopVisibility();
 
-  // Check on initial load
-  handleLogoVisibility();
-
-  // Add click handler to scroll to top
   backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
@@ -459,15 +440,6 @@ const lighthouseContentText = document.getElementById("lighthouse-content-text")
 const lighthouseListItems = document.querySelectorAll(".lighthouse-list-item");
 
 const layerData = {
-  measurable: {
-    title: "",
-    description: "",
-    details: [
-      "Operational visibility",
-      "Process efficiency",
-      "Intelligent decision making"
-    ]
-  },
   sustainability: {
     title: "",
     description: "",

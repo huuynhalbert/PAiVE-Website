@@ -109,6 +109,9 @@
 
     <div class="container hero-grid">
       <div class="hero-content">
+        <a href="#home" class="hero-logo" aria-label="PAiVE Home">
+          <img src="./images/paivelogo.svg" alt="PAiVE" />
+        </a>
         <h1>
           Enterprise-grade Operations Built for<br />
            <span id="typing-businesses"></span>
@@ -145,8 +148,8 @@
       <div class="about-layout">
         <!-- Left Side - Image + Who We Are (for About PAiVE tab) -->
         <div class="about-image-side">
-          <div class="about-image-container" id="about-image-container">
-            <img src="./images/paivelogo.svg" alt="PAiVE" class="about-hero-image" id="about-hero-image" />
+          <div class="about-image-container" aria-hidden="true">
+            <img src="./images/about-who-we-are.jpg" alt="PAiVE team or workspace" class="about-who-we-are-image" />
           </div>
           <div class="about-engagement-intro" id="about-engagement-intro" hidden aria-hidden="true">
             <p class="about-engagement-intro-text">PAiVE's Engagement Model is a structured, value-led lifecycle anchored by continuity and accountability. The transition through the six phases of the PAiVE Engagement Model is a continuous flow designed for predictable progress and measurable outcomes:</p>
@@ -265,29 +268,37 @@
 
       <!-- Middle Panel - Nav Bar -->
       <div class="lighthouse-list-panel" role="list">
-        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="measurable" aria-pressed="true">
-          <span>Measurable Outcomes</span>
-        </div>
-        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="sustainability" aria-pressed="false">
-          <span>Sustainability Focus</span>
-        </div>
-        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="agentic" aria-pressed="false">
-          <span>Agentic Workforce</span>
-        </div>
-        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="physical" aria-pressed="false">
-          <span>Physical Intelligence</span>
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="consulting-led" aria-pressed="true">
+          <span>Consulting Led</span>
         </div>
         <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="operational" aria-pressed="false">
           <span>Operational Backbone</span>
         </div>
-        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="consulting-led" aria-pressed="false">
-          <span>Consulting Led</span>
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="physical" aria-pressed="false">
+          <span>Physical Intelligence</span>
+        </div>
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="agentic" aria-pressed="false">
+          <span>Agentic Workforce</span>
+        </div>
+        <div class="lighthouse-list-item" role="button" tabindex="0" data-layer="sustainability" aria-pressed="false">
+          <span>Sustainability Focus</span>
         </div>
       </div>
 
       <!-- Right Panel - Content Text -->
       <div class="lighthouse-content-text" id="lighthouse-content-text" aria-live="polite" aria-atomic="true">
         <!-- Content will be updated via JavaScript -->
+      </div>
+
+      <!-- Measurable Outcomes - standalone text at bottom of section -->
+      <div class="lighthouse-measurable-outcomes">
+        <h3 class="lighthouse-measurable-heading">Measurable Outcomes</h3>
+        <p class="lighthouse-measurable-desc">Translate execution into visibility, efficiency, and better decisions.</p>
+        <ul class="lighthouse-measurable-list">
+          <li>Operational visibility</li>
+          <li>Process efficiency</li>
+          <li>Intelligent decision making</li>
+        </ul>
       </div>
     </div>
   </section>

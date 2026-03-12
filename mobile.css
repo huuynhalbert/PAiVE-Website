@@ -18,18 +18,8 @@
     transition: padding 0.3s ease;
   }
 
-  .logo {
-    margin-left: 0;
-    transition: transform 0.3s ease;
-  }
-
-  .logo:active {
-    transform: scale(0.95);
-  }
-
-  .logo img {
-    height: 45px;
-    transition: height 0.3s ease;
+  .hero-logo img {
+    height: 88px;
   }
 
   .main-nav {
