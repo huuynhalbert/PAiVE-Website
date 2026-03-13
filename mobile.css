@@ -18,8 +18,18 @@
     transition: padding 0.3s ease;
   }
 
+  .hero-logo {
+    top: -36px;
+    left: 0;
+    padding: 0 0 0 10px;
+  }
+
   .hero-logo img {
     height: 88px;
+  }
+
+  .hero-content {
+    padding-top: 116px;
   }
 
   .main-nav {

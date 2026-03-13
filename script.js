@@ -7,6 +7,78 @@ document.addEventListener("DOMContentLoaded", () => {
       // In a real implementation, this would send data to a server
       alert("Thank you for your interest! We'll be in touch soon.");
       contactForm.reset();
+      const inquiryInput = document.getElementById("contact-inquiry-type");
+      if (inquiryInput) inquiryInput.value = "general";
+      document.querySelectorAll(".contact-inquiry-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-inquiry") === "general");
+      });
+      setContactFormForInquiry("general");
+    });
+  }
+
+  // Contact inquiry type buttons – switch tabs and show/hide form fields per inquiry type
+  const contactInquiryBtns = document.querySelectorAll(".contact-inquiry-btn");
+  const contactInquiryInput = document.getElementById("contact-inquiry-type");
+  const contactLocationWrap = document.querySelector(".contact-field-location-wrap");
+  const contactLocationSelect = document.getElementById("contact-location");
+  const contactExtraFields = document.querySelectorAll(".contact-field-extra");
+  const contactCompanyInput = document.getElementById("contact-company-name");
+  const contactFormHelp = document.getElementById("contact-form-help");
+  const contactMessageLabel = document.getElementById("contact-message-label");
+  const contactRowEmailLocation = document.querySelector(".contact-form-row-email-location");
+
+  function setContactFormForInquiry(inquiry) {
+    const isOther = inquiry === "other";
+    if (contactRowEmailLocation) contactRowEmailLocation.classList.toggle("contact-form-row-location-hidden", isOther);
+    // Location: show for general, partnerships, careers; hide for other
+    if (contactLocationWrap) {
+      contactLocationWrap.style.display = isOther ? "none" : "";
+      contactLocationWrap.hidden = isOther;
+    }
+    if (contactLocationSelect) {
+      contactLocationSelect.required = !isOther;
+      if (isOther) contactLocationSelect.value = "";
+    }
+    // Extra field: show only the one for this inquiry
+    contactExtraFields.forEach((wrap) => {
+      const match = wrap.getAttribute("data-inquiry") === inquiry;
+      wrap.hidden = !match;
+      wrap.style.display = match ? "" : "none";
+      const input = wrap.querySelector("input");
+      if (input) {
+        input.required = match && wrap.getAttribute("data-inquiry") === "partnerships";
+        if (!match) input.value = "";
+      }
+    });
+    // Optional: update help text and message label per tab
+    const helpTexts = {
+      general: "Please use this form for general inquiries. * Required fields.",
+      partnerships: "Tell us about your organization and how you'd like to partner. * Required fields.",
+      careers: "Share your background and the role you're interested in. * Required fields.",
+      other: "Describe your inquiry. * Required fields."
+    };
+    const messageLabels = {
+      general: "How can we help?",
+      partnerships: "Tell us about your partnership interest",
+      careers: "Cover message or questions",
+      other: "How can we help?"
+    };
+    if (contactFormHelp) contactFormHelp.textContent = helpTexts[inquiry] || helpTexts.general;
+    if (contactMessageLabel) {
+      contactMessageLabel.innerHTML = messageLabels[inquiry] ? `${messageLabels[inquiry]} <span class="required">*</span>` : "How can we help? <span class=\"required\">*</span>";
+    }
+  }
+
+  if (contactInquiryBtns.length && contactInquiryInput) {
+    setContactFormForInquiry("general");
+    contactInquiryBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        contactInquiryBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const inquiry = btn.getAttribute("data-inquiry") || "general";
+        contactInquiryInput.value = inquiry;
+        setContactFormForInquiry(inquiry);
+      });
     });
   }
 
@@ -382,19 +454,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Show back-to-top when scrolled past hero
+// Show back-to-top when scrolled past hero; hide hero logo when past hero (logo fixed top-left only on home)
 const backToTop = document.getElementById("back-to-top");
 const heroSection = document.getElementById("home");
+const heroLogo = document.querySelector(".hero-logo");
 
 if (backToTop && heroSection) {
-  function handleBackToTopVisibility() {
+  function handleHeroVisibility() {
     const scrollY = window.scrollY || window.pageYOffset;
     const heroHeight = heroSection.offsetHeight;
-    backToTop.classList.toggle("visible", scrollY > heroHeight - 100);
+    const pastHero = scrollY > heroHeight - 100;
+    backToTop.classList.toggle("visible", pastHero);
+    if (heroLogo) heroLogo.classList.toggle("hero-logo-hidden", pastHero);
   }
 
-  window.addEventListener("scroll", handleBackToTopVisibility);
-  handleBackToTopVisibility();
+  window.addEventListener("scroll", handleHeroVisibility);
+  handleHeroVisibility();
 
   backToTop.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1060,10 +1135,23 @@ if (howWeDoSegmentTooltip && howWeDoSegments.length === 6) {
     let pushOut = Math.max(0, minDistanceFromCenter - len);
     // Push segment 1 (Scan) and 6 (Scale) tooltips a bit further out so they don't touch the circle
     if (i === 0 || i === 5) pushOut += 40;
-    const tooltipX = centerX + (outX / len) * pushOut;
+    let tooltipX = centerX + (outX / len) * pushOut;
     let tooltipY = centerY + (outY / len) * pushOut;
     // Move tooltips down for segment 1 (Scan) and 6 (Scale) so they sit lower
     if (i === 0 || i === 5) tooltipY += 50;
+    // Segment 6 (Scale): move box down below "How We Do" and to the left
+    if (i === 5) {
+      tooltipY += 120;
+      tooltipX -= 90;
+    }
+    // Segment 1 (Scan): same vertical position as Scale 6 but on the right; more rectangular box
+    if (i === 0) {
+      tooltipY += 120;
+      tooltipX += 90;
+      howWeDoSegmentTooltip.classList.add("tooltip-scan");
+    } else {
+      howWeDoSegmentTooltip.classList.remove("tooltip-scan");
+    }
     howWeDoSegmentTooltip.textContent = howWeDoDescriptions[i];
     howWeDoSegmentTooltip.style.left = tooltipX + "px";
     howWeDoSegmentTooltip.style.top = tooltipY + "px";
@@ -1073,7 +1161,7 @@ if (howWeDoSegmentTooltip && howWeDoSegments.length === 6) {
   }
 
   function hideSegmentTooltip() {
-    howWeDoSegmentTooltip.classList.remove("is-visible");
+    howWeDoSegmentTooltip.classList.remove("is-visible", "tooltip-scan");
     howWeDoSegmentTooltip.setAttribute("aria-hidden", "true");
   }
 
