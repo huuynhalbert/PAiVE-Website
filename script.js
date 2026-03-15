@@ -28,40 +28,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactRowEmailLocation = document.querySelector(".contact-form-row-email-location");
 
   function setContactFormForInquiry(inquiry) {
-    const isOther = inquiry === "other";
-    if (contactRowEmailLocation) contactRowEmailLocation.classList.toggle("contact-form-row-location-hidden", isOther);
-    // Location: show for general, partnerships, careers; hide for other
+    // Location: always shown for all inquiry types
+    if (contactRowEmailLocation) contactRowEmailLocation.classList.remove("contact-form-row-location-hidden");
     if (contactLocationWrap) {
-      contactLocationWrap.style.display = isOther ? "none" : "";
-      contactLocationWrap.hidden = isOther;
+      contactLocationWrap.style.display = "";
+      contactLocationWrap.hidden = false;
     }
     if (contactLocationSelect) {
-      contactLocationSelect.required = !isOther;
-      if (isOther) contactLocationSelect.value = "";
+      contactLocationSelect.required = true;
     }
-    // Extra field: show only the one for this inquiry
+    // Extra fields: show only the one for this inquiry; set required per field
     contactExtraFields.forEach((wrap) => {
       const match = wrap.getAttribute("data-inquiry") === inquiry;
       wrap.hidden = !match;
       wrap.style.display = match ? "" : "none";
-      const input = wrap.querySelector("input");
-      if (input) {
-        input.required = match && wrap.getAttribute("data-inquiry") === "partnerships";
+      wrap.querySelectorAll("input").forEach((input) => {
+        const isStrategyCompany = wrap.getAttribute("data-inquiry") === "strategy" && input.id === "contact-company-name";
+        input.required = match && isStrategyCompany;
         if (!match) input.value = "";
-      }
+      });
     });
     // Optional: update help text and message label per tab
     const helpTexts = {
+      services: "Tell us which PAiVE services you're interested in. * Required fields.",
+      strategy: "Book a strategy session with our team. * Required fields.",
       general: "Please use this form for general inquiries. * Required fields.",
-      partnerships: "Tell us about your organization and how you'd like to partner. * Required fields.",
-      careers: "Share your background and the role you're interested in. * Required fields.",
-      other: "Describe your inquiry. * Required fields."
+      careers: "Share your background and the role you're interested in. * Required fields."
     };
     const messageLabels = {
+      services: "How can we help?",
+      strategy: "Tell us about your goals for the strategy session",
       general: "How can we help?",
-      partnerships: "Tell us about your partnership interest",
-      careers: "Cover message or questions",
-      other: "How can we help?"
+      careers: "Cover message or questions"
     };
     if (contactFormHelp) contactFormHelp.textContent = helpTexts[inquiry] || helpTexts.general;
     if (contactMessageLabel) {

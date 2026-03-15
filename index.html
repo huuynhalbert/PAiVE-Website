@@ -515,10 +515,10 @@
               <input type="hidden" name="inquiryType" id="contact-inquiry-type" value="general" />
               <p class="contact-inquiry-label">Select inquiry type below <span class="required">*</span></p>
               <div class="contact-inquiry-types" role="group" aria-label="Inquiry type">
-                <button type="button" class="contact-inquiry-btn active" data-inquiry="general">General inquiry</button>
-                <button type="button" class="contact-inquiry-btn" data-inquiry="partnerships">Partnerships</button>
+                <button type="button" class="contact-inquiry-btn" data-inquiry="services">PAiVE Services</button>
+                <button type="button" class="contact-inquiry-btn" data-inquiry="strategy">Book Strategy Session</button>
+                <button type="button" class="contact-inquiry-btn active" data-inquiry="general">General Inquiry</button>
                 <button type="button" class="contact-inquiry-btn" data-inquiry="careers">Careers</button>
-                <button type="button" class="contact-inquiry-btn" data-inquiry="other">Other</button>
               </div>
               <p class="contact-form-help" id="contact-form-help">Please use this form for general inquiries. <span class="required">*</span> Required fields.</p>
               <div class="contact-form-row">
@@ -739,17 +739,29 @@
                   </select>
                 </div>
               </div>
+              <!-- PAiVE Services: service area -->
+              <div class="contact-field contact-field-extra" data-inquiry="services" hidden>
+                <label for="contact-service-area">Which PAiVE service are you interested in?</label>
+                <input type="text" id="contact-service-area" name="serviceArea" placeholder="e.g. Operations, Strategy, Technology" />
+              </div>
+              <!-- Book Strategy Session: company + preferred timeframe -->
+              <div class="contact-field contact-field-extra" data-inquiry="strategy" hidden>
+                <label for="contact-company-name">Company Name <span class="required">*</span></label>
+                <input type="text" id="contact-company-name" name="companyName" placeholder="Your company or organization" required />
+                <label for="contact-timeframe" class="contact-field-label-secondary">Preferred timeframe for session</label>
+                <input type="text" id="contact-timeframe" name="preferredTimeframe" placeholder="e.g. Next 2 weeks, Q2" />
+              </div>
+              <!-- General Inquiry: job title -->
               <div class="contact-field contact-field-extra" data-inquiry="general">
                 <label for="contact-job-title">Job Title</label>
-                <input type="text" id="contact-job-title" name="jobTitle" placeholder="Type" />
+                <input type="text" id="contact-job-title" name="jobTitle" placeholder="Your role (optional)" />
               </div>
-              <div class="contact-field contact-field-extra" data-inquiry="partnerships" hidden>
-                <label for="contact-company-name">Company Name <span class="required">*</span></label>
-                <input type="text" id="contact-company-name" name="companyName" placeholder="Type" />
-              </div>
+              <!-- Careers: position + LinkedIn -->
               <div class="contact-field contact-field-extra" data-inquiry="careers" hidden>
                 <label for="contact-position">Position of interest</label>
-                <input type="text" id="contact-position" name="positionInterest" placeholder="Type" />
+                <input type="text" id="contact-position" name="positionInterest" placeholder="Role or area you're interested in" />
+                <label for="contact-linkedin" class="contact-field-label-secondary">LinkedIn profile (optional)</label>
+                <input type="url" id="contact-linkedin" name="linkedInUrl" placeholder="https://linkedin.com/in/..." />
               </div>
               <div class="contact-field contact-field-full">
                 <label for="contact-message" id="contact-message-label">How can we help? <span class="required">*</span></label>

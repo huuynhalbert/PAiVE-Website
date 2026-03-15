@@ -5095,6 +5095,14 @@
     color: var(--text-primary);
   }
 
+  .contact-field-label-secondary {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
   .contact-field input,
   .contact-field textarea,
   .contact-field select {
